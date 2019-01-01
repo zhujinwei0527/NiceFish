@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { HttpModule, JsonpModule, Http } from '@angular/http';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -14,17 +14,18 @@ import { MessageService } from 'primeng/api';
 
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
-import { UserLoginService } from './user/user-login/user-login.service';
+import { SignInService } from './user/sign-in/sign-in.service';
 import { RetrievePwdComponent } from './user/retrieve-pwd/retrieve-pwd.component';
-import { UserRegisterComponent } from './user/user-register/user-register.component';
-import { UserRegisterService } from './user/user-register/user-register.service';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignUpService } from './user/sign-up/sign-up.service';
 import { RetrievePwdService } from './user/retrieve-pwd/retrieve-pwd.service';
 
-import { EqualValidator } from './user/user-register/directives/equal-validator.directive';
+import { EqualValidator } from './user/sign-up/directives/equal-validator.directive';
 
 import { ChartComponent } from './chart/chart.component';
 import { EChartOptionDirective1 } from './chart/echart-option.directive';
 import { appRoutes } from './app.routes';
+import { AuthInterceptor } from './auth-interceptor';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -35,7 +36,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     RetrievePwdComponent,
-    UserRegisterComponent,
+    SignUpComponent,
     EqualValidator,
     EChartOptionDirective1,
     ChartComponent
@@ -62,10 +63,16 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     TranslateService,
     TranslateStore,
-    UserLoginService,
-    UserRegisterService,
+    SignInService,
+    SignUpService,
     RetrievePwdService,
     MessageService
+    // ,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

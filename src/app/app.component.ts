@@ -1,8 +1,8 @@
 import { Component, HostListener, ElementRef, Renderer, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterState, RouterStateSnapshot } from '@angular/router';
 import { TranslateService, TranslateStore } from '@ngx-translate/core';
-import { UserLoginService } from './user/user-login/user-login.service';
-import { UserRegisterService } from './user/user-register/user-register.service';
+import { SignInService } from './user/sign-in/sign-in.service';
+import { SignUpService } from './user/sign-up/sign-up.service';
 import { User } from './user/model/user-model';
 import { merge } from 'rxjs'
 import { MessageService } from 'primeng/api';
@@ -22,8 +22,8 @@ export class AppComponent {
 		public router: Router,
 		public activatedRoute: ActivatedRoute,
 		public translate: TranslateService,
-		public userLoginService: UserLoginService,
-		public userRegisterService: UserRegisterService,
+		public signInService: SignInService,
+		public signUpService: SignUpService,
 		private messageService: MessageService
 	) {
 
@@ -36,7 +36,7 @@ export class AppComponent {
 
 		this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-		merge(this.userLoginService.currentUser, this.userRegisterService.currentUser)
+		merge(this.signInService.currentUser, this.signUpService.currentUser)
 			.subscribe(
 				data => {
 					this.currentUser = data;
@@ -48,8 +48,8 @@ export class AppComponent {
 					console.log(routerState);
 					console.log(routerStateSnapshot);
 
-					//如果是从/login这个URL进行的登录，跳转到首页，否则什么都不做
-					if (routerStateSnapshot.url.indexOf("/login") != -1) {
+					//如果是从/signin这个URL进行的登录，跳转到首页，否则什么都不做
+					if (routerStateSnapshot.url.indexOf("/signin") != -1) {
 						this.router.navigateByUrl("/home");
 					}
 				},
@@ -75,7 +75,7 @@ export class AppComponent {
 	}
 
 	public doLogout(): void {
-		this.userLoginService.logout();
+		this.signInService.logout();
 		this.messageService.add({ severity: 'danger', summary: 'Success Message', detail: '退出成功' });
 		this.router.navigateByUrl("");
 	}

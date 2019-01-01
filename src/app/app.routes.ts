@@ -1,6 +1,6 @@
-import { UserLoginComponent } from './user/user-login/user-login.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
 import { RetrievePwdComponent } from './user/retrieve-pwd/retrieve-pwd.component';
-import { UserRegisterComponent } from './user/user-register/user-register.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { ChartComponent } from './chart/chart.component';
 
 export const appRoutes = [
@@ -26,16 +26,16 @@ export const appRoutes = [
 		loadChildren: './post/post.module#PostModule'
 	},
 	{
-		path: 'login',
-		component: UserLoginComponent
+		path: 'signin',
+		component: SignInComponent
 	},
 	{
 		path: 'retrievepwd',
 		component: RetrievePwdComponent
 	},
 	{
-		path: 'register',
-		component: UserRegisterComponent
+		path: 'signup',
+		component: SignUpComponent
 	},
 	{
 		path: 'user',

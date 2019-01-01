@@ -1,6 +1,7 @@
 <!-- 顶部导航 -->
 <div class="navbar navbar-fixed-top main-nav" role="navigation">
     <div class="container">
+        <!-- 全局消息 -->
         <p-toast position="top-center"></p-toast>
         <div class="navbar-header">
             <button #button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"
@@ -33,10 +34,10 @@
             </ul>
             <ul *ngIf="!currentUser?.userName" class="nav navbar-nav navbar-right">
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a routerLink="login">{{'app.login' | translate}}</a>
+                    <a routerLink="signin">{{'app.signin' | translate}}</a>
                 </li>
                 <li routerLinkActive="active">
-                    <a routerLink="register">{{'app.register' | translate}}</a>
+                    <a routerLink="signup">{{'app.signup' | translate}}</a>
                 </li>
             </ul>
             <ul *ngIf="currentUser?.userName" class="nav navbar-nav navbar-right">

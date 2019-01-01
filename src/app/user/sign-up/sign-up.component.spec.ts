@@ -1,8 +1,8 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { UserLoginComponent } from './user-login.component';
+import { SignUpComponent } from './sign-up.component';
 
-describe('Component: UserLogin', () => {
+describe('Component: SignUpComponent', () => {
 	
 });

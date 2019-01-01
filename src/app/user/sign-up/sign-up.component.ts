@@ -3,16 +3,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { User } from '../model/user-model';
-import { UserRegisterService } from './user-register.service';
+import { SignUpService } from './sign-up.service';
 import { fadeIn } from '../../animations/fade-in';
 
 @Component({
-  selector: 'user-register',
-  templateUrl: './user-register.component.html',
-  styleUrls: ['./user-register.component.scss'],
+  selector: 'sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss'],
   animations: [fadeIn]
 })
-export class UserRegisterComponent implements OnInit {
+export class SignUpComponent implements OnInit {
 
   public userForm: FormGroup;
   public userInfo: User = new User();
@@ -41,7 +41,7 @@ export class UserRegisterComponent implements OnInit {
   };
 
   constructor(public fb: FormBuilder,
-    public userRegisterService: UserRegisterService,
+    public signUpService: SignUpService,
     public router: Router,
     public route: ActivatedRoute, ) {
   }
@@ -95,10 +95,11 @@ export class UserRegisterComponent implements OnInit {
     }
   }
 
-  doRegister() {
+  doSignUp() {
+    console.log(this.userInfo);
     if (this.userForm.valid) {
       this.userInfo = this.userForm.value;
-      this.userRegisterService.register(this.userInfo)
+      this.signUpService.signup(this.userInfo)
         .subscribe(
           data => {
             this.router.navigateByUrl("home");
@@ -111,12 +112,11 @@ export class UserRegisterComponent implements OnInit {
     } else {
       this.formErrors.formError = "存在不合法的输入项，请检查。";
     }
-    console.log(this.userInfo);
   }
 
   testEmail() {
     let email = this.userForm.get("email").value;
-    this.userRegisterService.testEmail(email)
+    this.signUpService.testEmail(email)
       .subscribe(
         data => {
           console.log(data);

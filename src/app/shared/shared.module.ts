@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { UserLoginComponent } from '../user/user-login/user-login.component';
+import { SignInComponent } from '../user/sign-in/sign-in.component';
 import { UserInfoComponent } from '../user/user-info/user-info.component';
 import { UserProfileComponent } from '../user/user-profile/user-profile.component';
 import { FormControlComponent } from '../user/user-profile/dynamic-form/form-control.component';
@@ -17,7 +17,7 @@ import { FormControlComponent } from '../user/user-profile/dynamic-form/form-con
     ReactiveFormsModule
   ],
   declarations: [
-    UserLoginComponent,
+    SignInComponent,
     UserInfoComponent,
     UserProfileComponent,
     FormControlComponent
@@ -26,7 +26,7 @@ import { FormControlComponent } from '../user/user-profile/dynamic-form/form-con
     TranslateModule,
     CommonModule,
     FormsModule,
-    UserLoginComponent,
+    SignInComponent,
     UserInfoComponent,
     UserProfileComponent
   ]

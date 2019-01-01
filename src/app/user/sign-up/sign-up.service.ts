@@ -5,8 +5,8 @@ import { map } from "rxjs/operators";
 import { User } from '../model/user-model';
 
 @Injectable()
-export class UserRegisterService {
-    public userRegisterURL = "mock-data/user-register-mock.json";
+export class SignUpService {
+    public signUpURL = "mock-data/sign-up-mock.json";
     public testEmailURL = "";
     public subject: Subject<User> = new Subject<User>();
 
@@ -17,17 +17,9 @@ export class UserRegisterService {
         return this.subject.asObservable();
     }
 
-    public register(user: User) {
-        console.log(user);
-
-        //向后台post数据的写法如下
-        // let data = new URLSearchParams();
-        // data.append('email', user.email);
-        // data.append('password', user.password);
-        // return this.http.post(this.userRegisterURL,data);
-
+    public signup(user: User) {
         return this.http
-            .get(this.userRegisterURL)
+            .get(this.signUpURL)
             .pipe(map((response: Response) => {
                 let user = response.json();
                 localStorage.setItem("currentUser", JSON.stringify(user));

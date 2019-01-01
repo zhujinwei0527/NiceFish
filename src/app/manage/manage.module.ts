@@ -10,7 +10,7 @@ import { UserTableComponent } from './user-table/user-table.component';
 import { SysParamComponent } from './sys-param/sys-param.component';
 
 import { PostTableService } from './post-table/services/post-table.service';
-import { AuthGuard } from './auth-guard';
+import { AuthGuard } from '../auth-guard';
 
 import { manageRoutes } from './manage.routes';
 
