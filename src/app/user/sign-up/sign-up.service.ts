@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Request, RequestOptions, Response, RequestMethod, URLSearchParams } from '@angular/http';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from 'rxjs';
-import { map } from "rxjs/operators";
 import { User } from '../model/user-model';
 
 @Injectable()
 export class SignUpService {
-    public signUpURL = "mock-data/sign-up-mock.json";
-    public testEmailURL = "";
     public subject: Subject<User> = new Subject<User>();
 
-    constructor(public http: Http) {
+    constructor(public httpClient: HttpClient) {
     }
 
     public get currentUser(): Observable<User> {
@@ -18,17 +15,22 @@ export class SignUpService {
     }
 
     public signup(user: User) {
-        return this.http
-            .get(this.signUpURL)
-            .pipe(map((response: Response) => {
-                let user = response.json();
-                localStorage.setItem("currentUser", JSON.stringify(user));
-                this.subject.next(user);
-            }));
-    }
+        let headers = new HttpHeaders({
+            "Content-Type": "application/json"
+        });
+        let observable = this.httpClient.post("http://localhost:9002/users/create", {
+            email: user.email,
+            password: user.password
+        }, { headers: headers });
 
-    public testEmail(email: string) {
-        return this.http.get(this.testEmailURL)
-            .pipe(map((response: Response) => response.json()));
+        observable.subscribe(
+            (response: any) => {
+                console.log(response);
+            },
+            error => {
+                console.log(error);
+            }
+        );
+        return observable;
     }
 }

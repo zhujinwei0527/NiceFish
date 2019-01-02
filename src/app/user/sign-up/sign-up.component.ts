@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 import { User } from '../model/user-model';
 import { SignUpService } from './sign-up.service';
@@ -43,7 +44,8 @@ export class SignUpComponent implements OnInit {
   constructor(public fb: FormBuilder,
     public signUpService: SignUpService,
     public router: Router,
-    public route: ActivatedRoute, ) {
+    public route: ActivatedRoute,
+    private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -63,7 +65,7 @@ export class SignUpComponent implements OnInit {
         this.userInfo.password,
         [
           Validators.required,
-          Validators.minLength(8),
+          Validators.minLength(8)
         ]
       ],
       "confirmPassword": [
@@ -79,9 +81,6 @@ export class SignUpComponent implements OnInit {
   }
 
   onValueChanged(data?: any) {
-    if (!this.userForm) {
-      return;
-    }
     const form = this.userForm;
     for (const field in this.formErrors) {
       this.formErrors[field] = '';
@@ -96,13 +95,18 @@ export class SignUpComponent implements OnInit {
   }
 
   doSignUp() {
-    console.log(this.userInfo);
     if (this.userForm.valid) {
       this.userInfo = this.userForm.value;
+      console.log(this.userInfo);
       this.signUpService.signup(this.userInfo)
         .subscribe(
-          data => {
-            this.router.navigateByUrl("home");
+          (response: any) => {
+            if (response && response.success) {
+              this.messageService.add({ severity: 'danger', summary: '注册成功', detail: '请登录' });
+              this.router.navigateByUrl("signin");
+            } else {
+              this.formErrors.formError = response.msg;
+            }
           },
           error => {
             this.formErrors.formError = error.message;
@@ -112,18 +116,5 @@ export class SignUpComponent implements OnInit {
     } else {
       this.formErrors.formError = "存在不合法的输入项，请检查。";
     }
-  }
-
-  testEmail() {
-    let email = this.userForm.get("email").value;
-    this.signUpService.testEmail(email)
-      .subscribe(
-        data => {
-          console.log(data);
-        },
-        error => {
-          console.error(error);
-        }
-      )
   }
 }
