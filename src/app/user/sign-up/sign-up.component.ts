@@ -98,7 +98,8 @@ export class SignUpComponent implements OnInit {
     if (this.userForm.valid) {
       this.userInfo = this.userForm.value;
       console.log(this.userInfo);
-      this.signUpService.signup(this.userInfo)
+      this.signUpService
+        .signup(this.userInfo)
         .subscribe(
           (response: any) => {
             if (response && response.success) {

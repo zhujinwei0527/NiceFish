@@ -29,7 +29,17 @@ export class SignInComponent implements OnInit {
 
   public doSignIn(): void {
     this.signInService.signIn(this.user).subscribe((data: any) => {
-
+      console.log(data);
+      if (data && data.access_token && data.refresh_token) {
+        let userObj = {
+          id: data.id,
+          userName: data.first_name ? data.first_name : data.email,
+          access_token: data.access_token,
+          refresh_token: data.refresh_token
+        };
+        localStorage.setItem("currentUser", JSON.stringify(userObj));
+        this.signInService.subject.next(Object.assign({}, userObj));
+      }
     }, (error: any) => {
       this.messageService.add({ severity: 'danger', summary: '登录失败', detail: '用户名或密码不正确' });
     });

@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Md5 } from 'ts-md5';
 import { User } from "../model/user-model";
 
 @Injectable()
@@ -15,36 +16,15 @@ export class SignInService {
   }
 
   public signIn(user: User) {
-    let url = "http://localhost:9001/oauth/token";
-    let data = `username=${user.userName}&password=${user.password}&grant_type=password`;
-    let headers = new HttpHeaders({
-      "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Basic " + btoa("fish:fish")
-    });
-
-    let observable = this.httpClient.post(url, data, {
-      headers: headers
-    });
-
-    observable.subscribe(
-      (data: any) => {
-        console.log(data);
-        if (data && data.first_name && data.last_name && data.access_token && data.refresh_token) {
-          let userObj = {
-            id: data.id,
-            userName: data.first_name,
-            access_token: data.access_token,
-            refresh_token: data.refresh_token
-          };
-          localStorage.setItem("currentUser", JSON.stringify(userObj));
-          this.subject.next(Object.assign({}, userObj));
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    );
-    return observable;
+    return this.httpClient.post(
+      "http://localhost:9001/oauth/token",
+      `username=${user.userName}&password=${new Md5().appendStr(user.password).end()}&grant_type=password`,
+      {
+        headers: new HttpHeaders({
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: "Basic " + btoa("fish:fish")
+        })
+      });
   }
 
   public logout(): void {
