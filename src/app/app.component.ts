@@ -10,7 +10,7 @@ import { MessageService } from 'primeng/api';
 @Component({
 	selector: 'root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss']
+	styleUrls: ['./app.component.scss', './my-toast.scss']
 })
 export class AppComponent {
 	public currentUser: User;
@@ -76,7 +76,13 @@ export class AppComponent {
 
 	public doLogout(): void {
 		this.signInService.logout();
-		this.messageService.add({ severity: 'danger', summary: 'Success Message', detail: '退出成功' });
+		this.messageService.add({
+			severity: 'warn',
+			summary: 'Success Message',
+			detail: '退出成功',
+			sticky: true,
+			life: 100000
+		});
 		this.router.navigateByUrl("");
 	}
 
