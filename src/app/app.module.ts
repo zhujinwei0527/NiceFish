@@ -67,12 +67,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     SignUpService,
     RetrievePwdService,
     MessageService
-    // ,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptor,
-    //   multi: true
-    // }
+    ,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

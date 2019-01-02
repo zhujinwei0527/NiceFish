@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { tap } from "rxjs/operators";
 import { of } from "rxjs";
 
+/**
+ * 全局HTTP拦截器，自动向所有HTTP请求头上加Authorization
+ */
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
     constructor(
@@ -12,11 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (req.headers.get("No-Auth") == "True") {
-            return next.handle(req.clone());
-        }
         if (!localStorage.getItem("currentUser")) {
-            this.router.navigateByUrl("signin");
             return next.handle(req.clone());
         }
         const clonedReq = req.clone({
