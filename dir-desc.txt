@@ -1,7 +1,7 @@
 ├─app
 │  ├─animations						//这里定义了动画效果
 │  ├─comment 						//这里是添加评论组件
-│  │  ├─add-comment
+│  │  ├─comment-list
 │  │  ├─model
 │  │  └─services
 │  ├─home 							//这是首页组件

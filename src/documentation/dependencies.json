@@ -2794,14 +2794,14 @@
       },
       {
         "name": "AddCommentComponent",
-        "file": "comment/add-comment/add-comment.component.ts",
-        "selector": "add-comment",
+        "file": "comment/comment-list/comment-list.component.ts",
+        "selector": "comment-list",
         "providers": [],
         "templateUrl": [
-          "add-comment.component.html"
+          "comment-list.component.html"
         ],
         "styleUrls": [
-          "add-comment.component.scss"
+          "comment-list.component.scss"
         ],
         "__raw": [
           {
@@ -2821,7 +2821,7 @@
               "pos": 262,
               "end": 280,
               "flags": 0,
-              "text": "add-comment"
+              "text": "comment-list"
             }
           },
           {
@@ -2841,7 +2841,7 @@
               "pos": 297,
               "end": 328,
               "flags": 0,
-              "text": "./add-comment.component.html"
+              "text": "./comment-list.component.html"
             }
           },
           {
@@ -2867,7 +2867,7 @@
                   "pos": 345,
                   "end": 375,
                   "flags": 0,
-                  "text": "./add-comment.component.scss"
+                  "text": "./comment-list.component.scss"
                 }
               ]
             }

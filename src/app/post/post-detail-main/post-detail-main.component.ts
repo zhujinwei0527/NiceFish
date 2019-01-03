@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class PostDetailMainComponent implements OnInit {
   private subscription: Subscription;
+  public hasLogin: boolean = false;
 
   constructor(
     public router: Router,
@@ -24,6 +25,10 @@ export class PostDetailMainComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (window.localStorage.getItem("currentUser")) {
+      this.hasLogin = true;
+    }
+
     this.subscription = this.signInService.currentUser
       .subscribe(
         data => {

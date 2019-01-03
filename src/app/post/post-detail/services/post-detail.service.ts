@@ -1,22 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
-import { Post } from '../../model/post-model';
-
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 @Injectable()
 export class PostDetailService {
-    public postDetailURL = "mock-data/post-mock.json";
-
-    constructor(public http: Http) {
+    constructor(public httpClient: HttpClient) {
     }
 
-    public getPost(id: number): Observable<Post> {
-        return this.http
-            .get(this.postDetailURL)
-            .pipe(
-                map((res: Response) => res.json())
-            );
+    public getPostDetail(id: string): Observable<any> {
+        return this.httpClient.get(
+            `http://localhost:9003/blog/post-detail/${id}`
+        );
     }
 }

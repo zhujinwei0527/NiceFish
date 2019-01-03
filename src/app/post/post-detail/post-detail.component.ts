@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-
-import { Post } from '../model/post-model';
 import { PostDetailService } from './services/post-detail.service';
 
 @Component({
@@ -10,7 +8,7 @@ import { PostDetailService } from './services/post-detail.service';
   styleUrls: ['./post-detail.component.scss']
 })
 export class PostDetailComponent implements OnInit {
-  public post: Post = new Post();
+  public post: any = {};
 
   constructor(public postDetailService: PostDetailService,
     public activeRoute: ActivatedRoute
@@ -20,15 +18,17 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.params.subscribe(
-      params => this.getPost(params["postId"])
+      params => this.getPostDetail(params["postId"])
     );
   }
 
-  public getPost(id: number) {
+  public getPostDetail(id: string) {
     this.postDetailService
-      .getPost(id)
+      .getPostDetail(id)
       .subscribe(
-        data => this.post = data,
+        (data) => {
+          this.post = data;
+        },
         error => console.error(error)
       );
   }

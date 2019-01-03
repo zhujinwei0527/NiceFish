@@ -1,22 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
-
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
-import { map } from "rxjs/operators";
-
-import { Comment } from '../model/comment-model';
 
 @Injectable()
 export class CommentService {
-    public commentListURL = "mock-data/comment-mock.json";
+    constructor(public httpClient: HttpClient) {
 
-    constructor(public http: Http) { }
+    }
 
-    public getCommentList(postId: number): Observable<Comment[]> {
-        return this.http
-            .get(this.commentListURL)
-            .pipe(
-                map((res: Response) => res.json())
-            );
+    public getCommentList(postId: string, page: number = 1): Observable<any> {
+        return this.httpClient.get(
+            `http://localhost:9003/blog/comment/${postId}/page/${page}`
+        );
     }
 }

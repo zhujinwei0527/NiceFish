@@ -12,7 +12,7 @@ export const postRoutes = [
 		component: PostlistComponent
 	},
 	{
-		path: 'postdetail/:postId',
+		path: 'post-detail/:postId',
 		component: PostDetailMainComponent
 	}
 ];
