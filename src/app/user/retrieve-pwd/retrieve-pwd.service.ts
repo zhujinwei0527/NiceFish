@@ -5,14 +5,12 @@ import { map } from "rxjs/operators";
 
 @Injectable()
 export class RetrievePwdService {
-    public validateEmailURL = "mock-data/forget-pwd-mock.json";
-
     constructor(public http: Http) { }
 
     public sendValidationEmail(email: string): Observable<any> {
-        return this.http.get(this.validateEmailURL)
-            .pipe(
-                map((res: Response) => res.json())
-            );
+        // {
+        //     "message": "邮件发送成功，请登录邮箱查看。"
+        // }
+        return null;
     }
 }

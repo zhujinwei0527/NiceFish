@@ -5,7 +5,6 @@ import { Md5 } from 'ts-md5';
 
 @Injectable()
 export class SignInService {
-  public signInURL = "mock-data/sign-in-mock.json";
   public subject: Subject<any> = new Subject<any>();
 
   constructor(public httpClient: HttpClient) { }

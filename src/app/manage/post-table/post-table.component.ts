@@ -13,9 +13,129 @@ import { DataTableModule } from 'primeng/primeng';
   ]
 })
 export class PostTableComponent implements OnInit {
-  @Input() dataURL: string = "mock-data/postlist-mock.json";
-
-  public postList: Array<any>;
+  public postList: Array<any> = [
+    {
+      "postId": 1,
+      "title": "这是文章的标题",
+      "postTime": "2018-05-17 10:44",
+      "userName": "大漠穷秋",
+      "userId": "1",
+      "readTimes": "10000",
+      "commentTimes": "10000",
+      "likedTimes": "5555",
+      "isfamous": "true"
+    },
+    {
+      "postId": 2,
+      "title": "这是文章的标题",
+      "postTime": "2018-11-21 10:44",
+      "userName": "大漠穷秋",
+      "userId": "1",
+      "readTimes": "10000",
+      "commentTimes": "10000",
+      "likedTimes": "5555",
+      "isfamous": "false"
+    },
+    {
+      "postId": 3,
+      "title": "这是文章的标题",
+      "postTime": "2018-11-21 10:44",
+      "userName": "大漠穷秋",
+      "userId": "1",
+      "readTimes": "10000",
+      "commentTimes": "10000",
+      "likedTimes": "5555",
+      "isfamous": "false"
+    },
+    {
+      "postId": 4,
+      "title": "这是文章的标题",
+      "postTime": "2018-11-21 10:44",
+      "userName": "大漠穷秋",
+      "userId": "1",
+      "readTimes": "10000",
+      "commentTimes": "10000",
+      "likedTimes": "5555",
+      "isfamous": "true"
+    },
+    {
+      "postId": 5,
+      "title": "这是文章的标题",
+      "postTime": "2018-11-21 10:44",
+      "userName": "大漠穷秋",
+      "userId": "1",
+      "readTimes": "10000",
+      "commentTimes": "10000",
+      "likedTimes": "5555",
+      "isfamous": "false"
+    },
+    {
+      "postId": 6,
+      "title": "这是文章的标题",
+      "postTime": "2018-11-21 10:44",
+      "userName": "大漠穷秋",
+      "userId": "1",
+      "readTimes": "10000",
+      "commentTimes": "10000",
+      "likedTimes": "5555",
+      "isfamous": "false"
+    },
+    {
+      "postId": 7,
+      "title": "这是文章的标题",
+      "postTime": "2018-11-21 10:44",
+      "userName": "大漠穷秋",
+      "userId": "1",
+      "readTimes": "10000",
+      "commentTimes": "10000",
+      "likedTimes": "5555",
+      "isfamous": "false"
+    },
+    {
+      "postId": 8,
+      "title": "这是文章的标题",
+      "postTime": "2018-11-21 10:44",
+      "userName": "大漠穷秋",
+      "userId": "1",
+      "readTimes": "10000",
+      "commentTimes": "10000",
+      "likedTimes": "5555",
+      "isfamous": "false"
+    },
+    {
+      "postId": 9,
+      "title": "这是文章的标题",
+      "postTime": "2018-11-21 10:44",
+      "userName": "大漠穷秋",
+      "userId": "1",
+      "readTimes": "10000",
+      "commentTimes": "10000",
+      "likedTimes": "5555",
+      "isfamous": "false"
+    },
+    {
+      "postId": 10,
+      "title": "这是文章的标题",
+      "postTime": "2018-11-21 10:44",
+      "userName": "大漠穷秋",
+      "userId": "1",
+      "readTimes": "10000",
+      "commentTimes": "10000",
+      "likedTimes": "5555",
+      "isfamous": "false"
+    },
+    {
+      "postId": 11,
+      "title": "这是文章的标题",
+      "postTime": "2018-11-21 10:44",
+      "userName": "大漠穷秋",
+      "userId": "1",
+      "readTimes": "10000",
+      "commentTimes": "10000",
+      "likedTimes": "5555",
+      "isfamous": "false"
+    }
+  ];
 
   constructor(
     public router: Router,
@@ -32,15 +152,7 @@ export class PostTableComponent implements OnInit {
   }
 
   public getPostsByPage(page: Number) {
-    console.log("页码>" + page);
-    return this.postTableService.getPostTable(this.dataURL).subscribe(
-      res => {
-        console.log(res);
-        this.postList = res.items;
-      },
-      error => { console.log(error) },
-      () => { }
-    );
+
   }
 
   public pageChanged(event: any): void {

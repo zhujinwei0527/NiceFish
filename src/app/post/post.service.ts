@@ -4,8 +4,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class PostService {
-    public postListURL = 'mock-data/postlist-mock.json';
-
     constructor(public httpClient: HttpClient) { }
 
     public getPostList(page: number = 1): Observable<any> {

@@ -52,5 +52,4 @@
 │          ├─fonts
 │          └─img
 ├─documentation
-├─environments
-└─mock-data 						//测试数据全部放在这个目录里面，【注意】这个目录需要你手动拷贝到Tomcat去
+└─environments
