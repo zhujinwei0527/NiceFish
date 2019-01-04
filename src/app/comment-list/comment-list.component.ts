@@ -1,15 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { CommentService } from '../services/comment.service';
+import { CommentService } from './comment.service';
 
 @Component({
   selector: 'comment-list',
   templateUrl: './comment-list.component.html',
   styleUrls: ['./comment-list.component.scss']
 })
-export class AddCommentComponent implements OnInit {
+export class CommentListComponent implements OnInit {
   @Input()
   public hasLogin: boolean = false;
+  @Input()
+  public postId: string;
+  public comment: any = {};
 
   public comments: Array<any>;
   public rows: number = 5;
@@ -17,8 +20,6 @@ export class AddCommentComponent implements OnInit {
   public currentPage: number = 1;
   public offset: number = 0;
   public end: number = 0;
-
-  public postId: string;
 
   constructor(
     public commentService: CommentService,
@@ -28,8 +29,7 @@ export class AddCommentComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.params.subscribe(
-      params => {
-        this.postId = params["postId"];
+      (res) => {
         this.getCommentList();
       });
   }
@@ -46,6 +46,21 @@ export class AddCommentComponent implements OnInit {
         },
         error => console.error(error)
       );
+  }
+
+  public doWriteComment() {
+    let currentUser = JSON.parse(window.localStorage.getItem("currentUser"));
+    this.comment.userId = currentUser.id;
+    this.comment.postId = this.postId;
+    this.commentService.writeComment(this.comment).subscribe(
+      (res) => {
+        this.currentPage = 1;
+        this.getCommentList();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   public pageChanged(event: any): void {

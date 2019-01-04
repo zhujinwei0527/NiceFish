@@ -18,12 +18,12 @@ export class PostlistComponent implements OnInit {
 
 	constructor(
 		public router: Router,
-		public activeRoute: ActivatedRoute,
+		public activatedRoute: ActivatedRoute,
 		public postService: PostService) {
 	}
 
 	ngOnInit() {
-		this.activeRoute.params.subscribe(params => {
+		this.activatedRoute.params.subscribe(params => {
 			console.log(params);
 			this.currentPage = params.page;
 			this.loadData();

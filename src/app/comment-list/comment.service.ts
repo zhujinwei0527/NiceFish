@@ -13,4 +13,16 @@ export class CommentService {
             `http://localhost:9003/blog/comment/${postId}/page/${page}`
         );
     }
+
+    public writeComment(comment: any): Observable<any> {
+        return this.httpClient.post(
+            `http://localhost:9003/blog/comment/write-comment`,
+            comment,
+            {
+                headers: new HttpHeaders({
+                    "Content-Type": "application/json"
+                })
+            }
+        );
+    }
 }
