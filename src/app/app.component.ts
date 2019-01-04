@@ -3,9 +3,8 @@ import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterState, RouterStat
 import { TranslateService, TranslateStore } from '@ngx-translate/core';
 import { SignInService } from './user/sign-in/sign-in.service';
 import { SignUpService } from './user/sign-up/sign-up.service';
-import { User } from './user/model/user-model';
-import { merge } from 'rxjs'
 import { MessageService } from 'primeng/api';
+import { merge } from 'rxjs'
 
 @Component({
 	selector: 'root',
@@ -13,7 +12,7 @@ import { MessageService } from 'primeng/api';
 	styleUrls: ['./app.component.scss', './my-toast.scss']
 })
 export class AppComponent {
-	public currentUser: User;
+	public currentUser: any;
 	private globalClickCallbackFn: Function;
 
 	constructor(

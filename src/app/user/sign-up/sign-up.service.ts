@@ -2,20 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from 'rxjs';
 import { Md5 } from 'ts-md5';
-import { User } from '../model/user-model';
 
 @Injectable()
 export class SignUpService {
-    public subject: Subject<User> = new Subject<User>();
+    public subject: Subject<any> = new Subject<any>();
 
     constructor(public httpClient: HttpClient) {
     }
 
-    public get currentUser(): Observable<User> {
+    public get currentUser(): Observable<any> {
         return this.subject.asObservable();
     }
 
-    public signup(user: User) {
+    public signup(user: any) {
         return this.httpClient.post(
             "http://localhost:9002/users/create",
             {

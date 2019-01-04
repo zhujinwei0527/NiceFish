@@ -15,8 +15,8 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class PostDetailMainComponent implements OnInit {
   private subscription: Subscription;
-  public hasLogin: boolean = false;
   public postId: string;
+  public currentUser: any;
 
   constructor(
     public router: Router,
@@ -26,10 +26,6 @@ export class PostDetailMainComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (window.localStorage.getItem("currentUser")) {
-      this.hasLogin = true;
-    }
-
     this.activatedRoute.params.subscribe(params => {
       console.log(params);
       this.postId = params.postId;
@@ -37,14 +33,8 @@ export class PostDetailMainComponent implements OnInit {
 
     this.subscription = this.signInService.currentUser
       .subscribe(
-        data => {
-          let activatedRouteSnapshot: ActivatedRouteSnapshot = this.activatedRoute.snapshot;
-          let routerState: RouterState = this.router.routerState;
-          let routerStateSnapshot: RouterStateSnapshot = routerState.snapshot;
-          //如果是从/signin这个URL进行的登录，什么都不做
-          if (routerStateSnapshot.url.indexOf("/signin") == -1) {
-            alert("用户登录成功，可以隐藏登录面板了！");
-          }
+        (data) => {
+          this.currentUser = data;
         },
         error => {
           console.error(error);

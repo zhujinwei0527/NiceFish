@@ -1,5 +1,5 @@
 <div class="add-component-container">
-    <div *ngIf="hasLogin">
+    <div *ngIf="currentUser?.userName">
         <div class="row">
             <div class="col-md-12">
                 <form role="form" #commentForm="ngForm" (ngSubmit)="commentForm.form.valid&&doWriteComment()"

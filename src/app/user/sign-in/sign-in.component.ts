@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterState, RouterStateSnapshot } from "@angular/router";
 import { SignInService } from "./sign-in.service";
 import { MessageService } from 'primeng/api';
-
-import { User } from "../model/user-model";
 import { fadeIn } from "../../animations/fade-in";
 
 @Component({
@@ -13,7 +11,7 @@ import { fadeIn } from "../../animations/fade-in";
   animations: [fadeIn]
 })
 export class SignInComponent implements OnInit {
-  public user: User = new User();
+  public user: any = {};
   public error: Error;
 
   constructor(public router: Router,

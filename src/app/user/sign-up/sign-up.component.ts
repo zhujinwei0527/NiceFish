@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-
-import { User } from '../model/user-model';
 import { SignUpService } from './sign-up.service';
 import { fadeIn } from '../../animations/fade-in';
 
@@ -16,7 +14,7 @@ import { fadeIn } from '../../animations/fade-in';
 export class SignUpComponent implements OnInit {
 
   public userForm: FormGroup;
-  public userInfo: User = new User();
+  public userInfo: any = {};
 
   public formErrors = {
     'email': '',
