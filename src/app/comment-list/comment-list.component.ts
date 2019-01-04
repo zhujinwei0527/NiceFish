@@ -63,8 +63,7 @@ export class CommentListComponent implements OnInit {
   }
 
   public doWriteComment() {
-    let currentUser = JSON.parse(window.localStorage.getItem("currentUser"));
-    this.comment.userId = currentUser.id;
+    this.comment.userId = this.currentUser.id;
     this.comment.postId = this.postId;
     this.commentService.writeComment(this.comment).subscribe(
       (res) => {

@@ -31,6 +31,8 @@ export class PostDetailMainComponent implements OnInit {
       this.postId = params.postId;
     });
 
+    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
     this.subscription = this.signInService.currentUser
       .subscribe(
         (data) => {
