@@ -5,8 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 import { PostSharedModule } from '../shared/post.module';
-
-import { WritePostComponent } from '../post/write-post/write-post.component';
 import { UserMainComponent } from './user-main/user-main.component';
 
 import { PostTableService } from '../manage/post-table/services/post-table.service';
@@ -15,8 +13,7 @@ import { userRoutes } from './user.routes';
 
 @NgModule({
   declarations: [
-    UserMainComponent,
-    WritePostComponent
+    UserMainComponent
   ],
   imports: [
     CommonModule,

@@ -87,7 +87,6 @@ export class AppComponent {
 	}
 
 	public gotoWrite(): void {
-		//TODO：如果没有登录，跳转到登录页，如果已登录，跳往写作页
-		this.router.navigateByUrl("user/write");
+		this.router.navigateByUrl("post/write");
 	}
 }

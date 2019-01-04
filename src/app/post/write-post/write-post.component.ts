@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { PostService } from '../post.service';
 import { flyIn } from '../../animations/fly-in';
 
 @Component({
@@ -9,7 +11,13 @@ import { flyIn } from '../../animations/fly-in';
 })
 
 export class WritePostComponent implements OnInit, AfterViewInit, OnDestroy {
-  constructor() { }
+  public post: any = {};
+
+  constructor(
+    public router: Router,
+    public activeRoute: ActivatedRoute,
+    public postService: PostService) {
+  }
 
   ngOnInit() {
 
@@ -58,5 +66,19 @@ export class WritePostComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+  }
+
+  doWritePost() {
+    let currentUser = JSON.parse(window.localStorage.getItem("currentUser"));
+    this.post.userId = currentUser.id;
+    this.postService.writePost(this.post).subscribe(
+      (res) => {
+        alert("发布成功");
+        this.router.navigateByUrl("/home");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

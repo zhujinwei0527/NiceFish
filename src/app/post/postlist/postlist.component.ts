@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { PostlistService } from './services/postlist.service';
+import { PostService } from '../post.service';
 
 @Component({
 	selector: 'postlist',
@@ -8,7 +8,7 @@ import { PostlistService } from './services/postlist.service';
 	styleUrls: ['./postlist.component.scss']
 })
 export class PostlistComponent implements OnInit {
-	public rows: number = 5;
+	public rows: number = 10;
 	public totalElements: number = 0;
 	public currentPage: number = 0;
 	public offset: number = 0;
@@ -19,7 +19,7 @@ export class PostlistComponent implements OnInit {
 	constructor(
 		public router: Router,
 		public activeRoute: ActivatedRoute,
-		public postService: PostlistService) {
+		public postService: PostService) {
 	}
 
 	ngOnInit() {

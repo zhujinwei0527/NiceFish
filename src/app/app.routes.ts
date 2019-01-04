@@ -2,6 +2,8 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { RetrievePwdComponent } from './user/retrieve-pwd/retrieve-pwd.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { ChartComponent } from './chart/chart.component';
+import { AuthGuard } from './auth-guard';
+import { WritePostComponent } from './post/write-post/write-post.component';
 
 export const appRoutes = [
 	{
@@ -24,6 +26,11 @@ export const appRoutes = [
 	{
 		path: 'post',
 		loadChildren: './post/post.module#PostModule'
+	},
+	{
+		path: 'post/write',
+		canActivate: [AuthGuard],
+		component: WritePostComponent
 	},
 	{
 		path: 'signin',

@@ -24,8 +24,11 @@ import { EqualValidator } from './user/sign-up/directives/equal-validator.direct
 
 import { ChartComponent } from './chart/chart.component';
 import { EChartOptionDirective1 } from './chart/echart-option.directive';
-import { appRoutes } from './app.routes';
+import { WritePostComponent } from './post/write-post/write-post.component';
+import { PostService } from './post/post.service';
 import { AuthInterceptor } from './auth-interceptor';
+import { AuthGuard } from './auth-guard';
+import { appRoutes } from './app.routes';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,7 +42,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SignUpComponent,
     EqualValidator,
     EChartOptionDirective1,
-    ChartComponent
+    ChartComponent,
+    WritePostComponent
   ],
   imports: [
     BrowserModule,
@@ -66,13 +70,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     SignInService,
     SignUpService,
     RetrievePwdService,
-    MessageService
+    MessageService,
+    PostService
     ,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

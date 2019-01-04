@@ -51,7 +51,7 @@ export class PostTableComponent implements OnInit {
   }
 
   public goToWrite(): void {
-    this.router.navigateByUrl("user/write");
+    this.router.navigateByUrl("post/write");
   }
 
   public editPost(event): void {
