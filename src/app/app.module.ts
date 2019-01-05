@@ -26,8 +26,8 @@ import { ChartComponent } from './blog/chart/chart.component';
 import { EChartOptionDirective1 } from './blog/chart/echart-option.directive';
 import { WritePostComponent } from './blog/post/write-post/write-post.component';
 import { PostService } from './blog/post/post.service';
-import { AuthInterceptor } from './auth-interceptor';
-import { AuthGuard } from './auth-guard';
+import { AuthInterceptor } from './shared/auth-interceptor';
+import { AuthGuard } from './shared/auth-guard';
 import { appRoutes } from './app.routes';
 
 

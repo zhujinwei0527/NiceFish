@@ -4,7 +4,7 @@ import { CommentTableComponent } from './comment-table-mng/comment-table-mng.com
 import { UserTableComponent } from './user-table-mng/user-table-mng.component';
 import { UserProfileComponent } from '../blog/user/user-profile/user-profile.component';
 import { SysParamComponent } from './sys-param-mng/sys-param-mng.component';
-import { AuthGuard } from '../auth-guard';
+import { AuthGuard } from '../shared/auth-guard';
 
 export const manageRoutes = [
 	{
@@ -19,6 +19,7 @@ export const manageRoutes = [
 			{ path: 'usertable/edituser/:userId', component: UserProfileComponent },
 			{ path: 'usertable/newuser', component: UserProfileComponent },
 			{ path: 'sysparam', component: SysParamComponent },
+			{ path: 'profile', component: UserProfileComponent },
 			{ path: '**', redirectTo: 'posttable/page/1' }
 		]
 	}

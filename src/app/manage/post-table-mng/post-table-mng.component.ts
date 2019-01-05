@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { flyIn } from '../../shared/animations/fly-in';
-import { ActivatedRoute, Router, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { PostTableService } from './services/post-table-mng.service';
-import { DataTableModule } from 'primeng/primeng';
 
 @Component({
   selector: 'post-table-mng',
@@ -13,6 +12,14 @@ import { DataTableModule } from 'primeng/primeng';
   ]
 })
 export class PostTableComponent implements OnInit {
+  public cols: any = [
+    { field: 'title', header: '标题' },
+    { field: 'postTime', header: '发布时间' },
+    { field: 'userName', header: '作者' },
+    { field: 'readTimes', header: '阅读数' },
+    { field: 'commentTimes', header: '评论数' },
+    { field: 'likedTimes', header: '点赞数' }
+  ];
   public postList: Array<any> = [
     {
       "postId": 1,
@@ -22,8 +29,7 @@ export class PostTableComponent implements OnInit {
       "userId": "1",
       "readTimes": "10000",
       "commentTimes": "10000",
-      "likedTimes": "5555",
-      "isfamous": "true"
+      "likedTimes": "5555"
     },
     {
       "postId": 2,
@@ -33,8 +39,7 @@ export class PostTableComponent implements OnInit {
       "userId": "1",
       "readTimes": "10000",
       "commentTimes": "10000",
-      "likedTimes": "5555",
-      "isfamous": "false"
+      "likedTimes": "5555"
     },
     {
       "postId": 3,
@@ -44,8 +49,7 @@ export class PostTableComponent implements OnInit {
       "userId": "1",
       "readTimes": "10000",
       "commentTimes": "10000",
-      "likedTimes": "5555",
-      "isfamous": "false"
+      "likedTimes": "5555"
     },
     {
       "postId": 4,
@@ -55,8 +59,7 @@ export class PostTableComponent implements OnInit {
       "userId": "1",
       "readTimes": "10000",
       "commentTimes": "10000",
-      "likedTimes": "5555",
-      "isfamous": "true"
+      "likedTimes": "5555"
     },
     {
       "postId": 5,
@@ -66,8 +69,7 @@ export class PostTableComponent implements OnInit {
       "userId": "1",
       "readTimes": "10000",
       "commentTimes": "10000",
-      "likedTimes": "5555",
-      "isfamous": "false"
+      "likedTimes": "5555"
     },
     {
       "postId": 6,
@@ -77,8 +79,7 @@ export class PostTableComponent implements OnInit {
       "userId": "1",
       "readTimes": "10000",
       "commentTimes": "10000",
-      "likedTimes": "5555",
-      "isfamous": "false"
+      "likedTimes": "5555"
     },
     {
       "postId": 7,
@@ -88,8 +89,7 @@ export class PostTableComponent implements OnInit {
       "userId": "1",
       "readTimes": "10000",
       "commentTimes": "10000",
-      "likedTimes": "5555",
-      "isfamous": "false"
+      "likedTimes": "5555"
     },
     {
       "postId": 8,
@@ -99,8 +99,7 @@ export class PostTableComponent implements OnInit {
       "userId": "1",
       "readTimes": "10000",
       "commentTimes": "10000",
-      "likedTimes": "5555",
-      "isfamous": "false"
+      "likedTimes": "5555"
     },
     {
       "postId": 9,
@@ -110,8 +109,7 @@ export class PostTableComponent implements OnInit {
       "userId": "1",
       "readTimes": "10000",
       "commentTimes": "10000",
-      "likedTimes": "5555",
-      "isfamous": "false"
+      "likedTimes": "5555"
     },
     {
       "postId": 10,
@@ -121,8 +119,7 @@ export class PostTableComponent implements OnInit {
       "userId": "1",
       "readTimes": "10000",
       "commentTimes": "10000",
-      "likedTimes": "5555",
-      "isfamous": "false"
+      "likedTimes": "5555"
     },
     {
       "postId": 11,
@@ -132,8 +129,7 @@ export class PostTableComponent implements OnInit {
       "userId": "1",
       "readTimes": "10000",
       "commentTimes": "10000",
-      "likedTimes": "5555",
-      "isfamous": "false"
+      "likedTimes": "5555"
     }
   ];
 
@@ -156,10 +152,8 @@ export class PostTableComponent implements OnInit {
   }
 
   public pageChanged(event: any): void {
-    let urlTree: UrlTree = this.router.parseUrl(this.router.url);
-    const g: UrlSegmentGroup = urlTree.root.children[PRIMARY_OUTLET];
-    const s: UrlSegment[] = g.segments;
-    this.router.navigateByUrl(s[0] + "/posttable/page/" + event.page);
+    let page = parseInt(event.page) + 1;
+    this.router.navigateByUrl(`/manage/posttable/page/${page}`);
   }
 
   public goToWrite(): void {
@@ -192,13 +186,5 @@ export class PostTableComponent implements OnInit {
     var nameAttr = target.attributes.name;
     var value = nameAttr.nodeValue;
     console.log("postId>" + value);
-  }
-
-  public onRowSelect(event): void {
-    console.log(event.data);
-  }
-
-  public onRowUnselect(event): void {
-    console.log(event.data);
   }
 }

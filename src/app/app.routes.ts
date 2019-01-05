@@ -2,7 +2,7 @@ import { SignInComponent } from './blog/user/sign-in/sign-in.component';
 import { RetrievePwdComponent } from './blog/user/retrieve-pwd/retrieve-pwd.component';
 import { SignUpComponent } from './blog/user/sign-up/sign-up.component';
 import { ChartComponent } from './blog/chart/chart.component';
-import { AuthGuard } from './auth-guard';
+import { AuthGuard } from './shared/auth-guard';
 import { WritePostComponent } from './blog/post/write-post/write-post.component';
 
 export const appRoutes = [
@@ -43,10 +43,6 @@ export const appRoutes = [
 	{
 		path: 'signup',
 		component: SignUpComponent
-	},
-	{
-		path: 'user',
-		loadChildren: './blog/user/user.module#UserModule'
 	},
 	{
 		path: 'manage',

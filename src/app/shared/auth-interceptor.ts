@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { tap } from "rxjs/operators";
-import { of } from "rxjs";
 
 /**
  * 全局HTTP拦截器，自动向所有HTTP请求头上加Authorization

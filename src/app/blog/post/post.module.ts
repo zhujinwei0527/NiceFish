@@ -10,7 +10,7 @@ import { PostDetailMainComponent } from './post-detail-main/post-detail-main.com
 import { CommentListComponent } from '../comment-list/comment-list.component';
 import { CommentService } from '../comment-list/comment.service';
 import { BooleanPipe } from '../../shared/boolean-pipe';
-import { AuthGuard } from '../../auth-guard';
+import { AuthGuard } from '../../shared/auth-guard';
 
 import { postRoutes } from './post.routes';
 

@@ -42,7 +42,7 @@
             </ul>
             <ul *ngIf="currentUser?.userName" class="nav navbar-nav navbar-right">
                 <li routerLinkActive="active">
-                    <a routerLink="user">{{'app.welcome' | translate}}：{{currentUser?.userName}}</a>
+                    <a routerLink="home">{{'app.welcome' | translate}}：{{currentUser?.userName}}</a>
                 </li>
                 <li routerLinkActive="active">
                     <a routerLink="manage">{{'app.console' | translate}}</a>
