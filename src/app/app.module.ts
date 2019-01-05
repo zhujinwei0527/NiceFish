@@ -14,18 +14,18 @@ import { MessageService } from 'primeng/api';
 
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
-import { SignInService } from './user/sign-in/sign-in.service';
-import { RetrievePwdComponent } from './user/retrieve-pwd/retrieve-pwd.component';
-import { SignUpComponent } from './user/sign-up/sign-up.component';
-import { SignUpService } from './user/sign-up/sign-up.service';
-import { RetrievePwdService } from './user/retrieve-pwd/retrieve-pwd.service';
+import { SignInService } from './blog/user/sign-in/sign-in.service';
+import { RetrievePwdComponent } from './blog/user/retrieve-pwd/retrieve-pwd.component';
+import { SignUpComponent } from './blog/user/sign-up/sign-up.component';
+import { SignUpService } from './blog/user/sign-up/sign-up.service';
+import { RetrievePwdService } from './blog/user/retrieve-pwd/retrieve-pwd.service';
 
-import { EqualValidator } from './user/sign-up/directives/equal-validator.directive';
+import { EqualValidator } from './blog/user/sign-up/directives/equal-validator.directive';
 
-import { ChartComponent } from './chart/chart.component';
-import { EChartOptionDirective1 } from './chart/echart-option.directive';
-import { WritePostComponent } from './post/write-post/write-post.component';
-import { PostService } from './post/post.service';
+import { ChartComponent } from './blog/chart/chart.component';
+import { EChartOptionDirective1 } from './blog/chart/echart-option.directive';
+import { WritePostComponent } from './blog/post/write-post/write-post.component';
+import { PostService } from './blog/post/post.service';
 import { AuthInterceptor } from './auth-interceptor';
 import { AuthGuard } from './auth-guard';
 import { appRoutes } from './app.routes';

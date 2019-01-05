@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { fadeIn } from '../animations/fade-in';
+import { fadeIn } from '../../shared/animations/fade-in';
 
 @Component({
   selector: 'chart',

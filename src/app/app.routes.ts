@@ -1,9 +1,9 @@
-import { SignInComponent } from './user/sign-in/sign-in.component';
-import { RetrievePwdComponent } from './user/retrieve-pwd/retrieve-pwd.component';
-import { SignUpComponent } from './user/sign-up/sign-up.component';
-import { ChartComponent } from './chart/chart.component';
+import { SignInComponent } from './blog/user/sign-in/sign-in.component';
+import { RetrievePwdComponent } from './blog/user/retrieve-pwd/retrieve-pwd.component';
+import { SignUpComponent } from './blog/user/sign-up/sign-up.component';
+import { ChartComponent } from './blog/chart/chart.component';
 import { AuthGuard } from './auth-guard';
-import { WritePostComponent } from './post/write-post/write-post.component';
+import { WritePostComponent } from './blog/post/write-post/write-post.component';
 
 export const appRoutes = [
 	{
@@ -17,15 +17,15 @@ export const appRoutes = [
 	},
 	{
 		path: 'home',
-		loadChildren: './home/home.module#HomeModule'
+		loadChildren: './blog/home/home.module#HomeModule'
 	},
 	{
 		path: 'posts',
-		loadChildren: './home/home.module#HomeModule'
+		loadChildren: './blog/home/home.module#HomeModule'
 	},
 	{
 		path: 'post',
-		loadChildren: './post/post.module#PostModule'
+		loadChildren: './blog/post/post.module#PostModule'
 	},
 	{
 		path: 'post/write',
@@ -46,7 +46,7 @@ export const appRoutes = [
 	},
 	{
 		path: 'user',
-		loadChildren: './user/user.module#UserModule'
+		loadChildren: './blog/user/user.module#UserModule'
 	},
 	{
 		path: 'manage',
@@ -54,6 +54,6 @@ export const appRoutes = [
 	},
 	{
 		path: '**',//fallback router must in the last
-		loadChildren: './home/home.module#HomeModule'
+		loadChildren: './blog/home/home.module#HomeModule'
 	}
 ];

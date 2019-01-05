@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterState, RouterStateSnapshot } from "@angular/router";
 import { SignInService } from "./sign-in.service";
 import { MessageService } from 'primeng/api';
-import { fadeIn } from "../../animations/fade-in";
+import { fadeIn } from "../../../shared/animations/fade-in";
 
 @Component({
   selector: "sign-in",

@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { PostService } from '../post.service';
-import { flyIn } from '../../animations/fly-in';
+import { flyIn } from '../../../shared/animations/fly-in';
 
 @Component({
   selector: 'write-post',

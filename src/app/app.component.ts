@@ -1,8 +1,8 @@
 import { Component, HostListener, ElementRef, Renderer, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterState, RouterStateSnapshot } from '@angular/router';
 import { TranslateService, TranslateStore } from '@ngx-translate/core';
-import { SignInService } from './user/sign-in/sign-in.service';
-import { SignUpService } from './user/sign-up/sign-up.service';
+import { SignInService } from './blog/user/sign-in/sign-in.service';
+import { SignUpService } from './blog/user/sign-up/sign-up.service';
 import { MessageService } from 'primeng/api';
 import { merge } from 'rxjs'
 

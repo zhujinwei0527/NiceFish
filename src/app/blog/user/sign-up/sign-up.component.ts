@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { SignUpService } from './sign-up.service';
-import { fadeIn } from '../../animations/fade-in';
+import { fadeIn } from '../../../shared/animations/fade-in';
 
 @Component({
   selector: 'sign-up',

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PaginatorModule } from 'primeng/paginator';
@@ -9,8 +9,8 @@ import { PostService } from './post.service';
 import { PostDetailMainComponent } from './post-detail-main/post-detail-main.component';
 import { CommentListComponent } from '../comment-list/comment-list.component';
 import { CommentService } from '../comment-list/comment.service';
-import { BooleanPipe } from '../utils/boolean-pipe';
-import { AuthGuard } from '../auth-guard';
+import { BooleanPipe } from '../../shared/boolean-pipe';
+import { AuthGuard } from '../../auth-guard';
 
 import { postRoutes } from './post.routes';
 
