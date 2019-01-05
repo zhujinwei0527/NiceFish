@@ -9,7 +9,7 @@ import { merge } from 'rxjs'
 @Component({
 	selector: 'root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss', './my-toast.scss']
+	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 	public currentUser: any;
