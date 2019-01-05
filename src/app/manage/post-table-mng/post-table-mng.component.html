@@ -1,7 +1,8 @@
 <div class="post-table-mng-container" [@flyIn]="'active'">
     <div class="row">
         <div class="col-md-12">
-            <p-table #dt [columns]="cols" [value]="postList" [paginator]="true" [rows]="10">
+            <p-table #dt [columns]="cols" [value]="postList" [lazy]="true" [paginator]="true" [rows]="10"
+                [totalRecords]="totalRecords" [loading]="loading" (onPage)="onPage($event)">
                 <ng-template pTemplate="caption">
                     <div style="text-align:left;">
                         <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')"
@@ -26,31 +27,4 @@
             </p-table>
         </div>
     </div>
-    <!-- <form class="form-vertical" role="form">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="标题，作者">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i>
-                            搜索</button>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </form>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="post-item-container">
-                <p-dataTable [value]="postList" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                    (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="postId">
-                    <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
-                    <p-column field="postId" header="序号" [sortable]="true"></p-column>
-                    <p-column field="title" header="标题" [sortable]="true" [editable]="true"></p-column>
-                    <p-column field="userName" header="作者" [sortable]="true" [editable]="true"></p-column>
-                    <p-column field="postTime" header="日期" [sortable]="true" [editable]="true"></p-column>
-                </p-dataTable>
-            </div>
-        </div>
-    </div> -->
 </div>

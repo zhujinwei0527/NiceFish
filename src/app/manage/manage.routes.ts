@@ -12,15 +12,15 @@ export const manageRoutes = [
 		component: ManageMainComponent,
 		canActivate: [AuthGuard],
 		children: [
-			{ path: '', redirectTo: 'posttable/page/1', pathMatch: 'full' },
-			{ path: 'posttable/page/:page', component: PostTableComponent },
+			{ path: '', redirectTo: 'post-table/page/1', pathMatch: 'full' },
+			{ path: 'post-table/page/:page', component: PostTableComponent },
 			{ path: 'commenttable/page/:page', component: CommentTableComponent },
 			{ path: 'usertable/page/:page', component: UserTableComponent },
 			{ path: 'usertable/edituser/:userId', component: UserProfileComponent },
 			{ path: 'usertable/newuser', component: UserProfileComponent },
 			{ path: 'sysparam', component: SysParamComponent },
 			{ path: 'profile', component: UserProfileComponent },
-			{ path: '**', redirectTo: 'posttable/page/1' }
+			{ path: '**', redirectTo: 'post-table/page/1' }
 		]
 	}
 ];

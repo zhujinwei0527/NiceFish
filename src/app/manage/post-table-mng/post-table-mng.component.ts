@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { flyIn } from '../../shared/animations/fly-in';
-import { ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LazyLoadEvent } from 'primeng/primeng';
 import { PostTableService } from './services/post-table-mng.service';
+import { flyIn } from '../../shared/animations/fly-in';
 
 @Component({
   selector: 'post-table-mng',
@@ -12,6 +13,9 @@ import { PostTableService } from './services/post-table-mng.service';
   ]
 })
 export class PostTableComponent implements OnInit {
+  public loading: boolean = true;
+  public currentPage: number = 1;
+  public totalRecords: number = 11;
   public cols: any = [
     { field: 'title', header: '标题' },
     { field: 'postTime', header: '发布时间' },
@@ -30,106 +34,6 @@ export class PostTableComponent implements OnInit {
       "readTimes": "10000",
       "commentTimes": "10000",
       "likedTimes": "5555"
-    },
-    {
-      "postId": 2,
-      "title": "这是文章的标题",
-      "postTime": "2018-11-21 10:44",
-      "userName": "大漠穷秋",
-      "userId": "1",
-      "readTimes": "10000",
-      "commentTimes": "10000",
-      "likedTimes": "5555"
-    },
-    {
-      "postId": 3,
-      "title": "这是文章的标题",
-      "postTime": "2018-11-21 10:44",
-      "userName": "大漠穷秋",
-      "userId": "1",
-      "readTimes": "10000",
-      "commentTimes": "10000",
-      "likedTimes": "5555"
-    },
-    {
-      "postId": 4,
-      "title": "这是文章的标题",
-      "postTime": "2018-11-21 10:44",
-      "userName": "大漠穷秋",
-      "userId": "1",
-      "readTimes": "10000",
-      "commentTimes": "10000",
-      "likedTimes": "5555"
-    },
-    {
-      "postId": 5,
-      "title": "这是文章的标题",
-      "postTime": "2018-11-21 10:44",
-      "userName": "大漠穷秋",
-      "userId": "1",
-      "readTimes": "10000",
-      "commentTimes": "10000",
-      "likedTimes": "5555"
-    },
-    {
-      "postId": 6,
-      "title": "这是文章的标题",
-      "postTime": "2018-11-21 10:44",
-      "userName": "大漠穷秋",
-      "userId": "1",
-      "readTimes": "10000",
-      "commentTimes": "10000",
-      "likedTimes": "5555"
-    },
-    {
-      "postId": 7,
-      "title": "这是文章的标题",
-      "postTime": "2018-11-21 10:44",
-      "userName": "大漠穷秋",
-      "userId": "1",
-      "readTimes": "10000",
-      "commentTimes": "10000",
-      "likedTimes": "5555"
-    },
-    {
-      "postId": 8,
-      "title": "这是文章的标题",
-      "postTime": "2018-11-21 10:44",
-      "userName": "大漠穷秋",
-      "userId": "1",
-      "readTimes": "10000",
-      "commentTimes": "10000",
-      "likedTimes": "5555"
-    },
-    {
-      "postId": 9,
-      "title": "这是文章的标题",
-      "postTime": "2018-11-21 10:44",
-      "userName": "大漠穷秋",
-      "userId": "1",
-      "readTimes": "10000",
-      "commentTimes": "10000",
-      "likedTimes": "5555"
-    },
-    {
-      "postId": 10,
-      "title": "这是文章的标题",
-      "postTime": "2018-11-21 10:44",
-      "userName": "大漠穷秋",
-      "userId": "1",
-      "readTimes": "10000",
-      "commentTimes": "10000",
-      "likedTimes": "5555"
-    },
-    {
-      "postId": 11,
-      "title": "这是文章的标题",
-      "postTime": "2018-11-21 10:44",
-      "userName": "大漠穷秋",
-      "userId": "1",
-      "readTimes": "10000",
-      "commentTimes": "10000",
-      "likedTimes": "5555"
     }
   ];
 
@@ -143,17 +47,31 @@ export class PostTableComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.params.subscribe(
-      params => this.getPostsByPage(params["page"])
+      (params) => {
+        this.currentPage = parseInt(params["page"]);
+        this.getPostByUserIdAndPaging();
+      }
     );
   }
 
-  public getPostsByPage(page: Number) {
-
+  public getPostByUserIdAndPaging() {
+    this.loading = true;
+    let userId = JSON.parse(window.localStorage.getItem("currentUser")).id;
+    this.postTableService.getPostByUserIdAndPaging(this.currentPage, userId).subscribe(
+      (res) => {
+        this.postList = res.content;
+        this.totalRecords = res.totalElements;
+        this.loading = false;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
-  public pageChanged(event: any): void {
-    let page = parseInt(event.page) + 1;
-    this.router.navigateByUrl(`/manage/posttable/page/${page}`);
+  public onPage(event: any): void {
+    this.currentPage = parseInt((event.first / event.rows) + "") + 1;
+    this.router.navigateByUrl(`/manage/post-table/page/${this.currentPage}`);
   }
 
   public goToWrite(): void {
