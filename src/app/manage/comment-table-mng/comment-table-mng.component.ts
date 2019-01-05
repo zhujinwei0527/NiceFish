@@ -3,9 +3,9 @@ import { ActivatedRoute, Router, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSe
 import { flyIn } from '../../shared/animations/fly-in';
 
 @Component({
-  selector: 'comment-table',
-  templateUrl: './comment-table.component.html',
-  styleUrls: ['./comment-table.component.scss'],
+  selector: 'comment-table-mng',
+  templateUrl: './comment-table-mng.component.html',
+  styleUrls: ['./comment-table-mng.component.scss'],
   animations: [
     flyIn
   ]

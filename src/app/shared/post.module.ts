@@ -5,25 +5,25 @@ import { CalendarModule } from 'primeng/components/calendar/calendar';
 
 import { SharedModule } from './shared.module';
 
-import { CommentTableComponent } from '../manage/comment-table/comment-table.component';
-import { PostTableComponent } from '../manage/post-table/post-table.component';
+import { CommentTableComponent } from '../manage/comment-table-mng/comment-table-mng.component';
+import { PostTableComponent } from '../manage/post-table-mng/post-table-mng.component';
 
 @NgModule({
-  imports:[ 
+  imports: [
     SharedModule,
     DataTableModule,
     CalendarModule
   ],
-  declarations:[ 
-  	CommentTableComponent, 
-  	PostTableComponent
+  declarations: [
+    CommentTableComponent,
+    PostTableComponent
   ],
-  exports:[
-  	CommentTableComponent, 
-  	PostTableComponent
+  exports: [
+    CommentTableComponent,
+    PostTableComponent
   ]
 })
 
 export class PostSharedModule {
-  
+
 }

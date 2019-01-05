@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { flyIn } from '../../shared/animations/fly-in';
 
 @Component({
-  selector: 'user-table',
-  templateUrl: './user-table.component.html',
-  styleUrls: ['./user-table.component.scss'],
+  selector: 'user-table-mng',
+  templateUrl: './user-table-mng.component.html',
+  styleUrls: ['./user-table-mng.component.scss'],
   animations: [
     flyIn
   ]

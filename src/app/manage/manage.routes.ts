@@ -1,9 +1,9 @@
 import { ManageMainComponent } from './manage-main/manage-main.component';
-import { PostTableComponent } from './post-table/post-table.component';
-import { CommentTableComponent } from './comment-table/comment-table.component';
-import { UserTableComponent } from './user-table/user-table.component';
+import { PostTableComponent } from './post-table-mng/post-table-mng.component';
+import { CommentTableComponent } from './comment-table-mng/comment-table-mng.component';
+import { UserTableComponent } from './user-table-mng/user-table-mng.component';
 import { UserProfileComponent } from '../blog/user/user-profile/user-profile.component';
-import { SysParamComponent } from './sys-param/sys-param.component';
+import { SysParamComponent } from './sys-param-mng/sys-param-mng.component';
 import { AuthGuard } from '../auth-guard';
 
 export const manageRoutes = [

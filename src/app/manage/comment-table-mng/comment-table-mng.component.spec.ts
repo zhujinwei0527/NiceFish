@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { CommentTableComponent } from './comment-table.component';
+import { CommentTableComponent } from './comment-table-mng.component';
 
 describe('Component: CommentTable', () => {
 

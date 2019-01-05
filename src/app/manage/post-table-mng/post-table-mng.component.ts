@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { flyIn } from '../../shared/animations/fly-in';
 import { ActivatedRoute, Router, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from '@angular/router';
-import { PostTableService } from './services/post-table.service';
+import { PostTableService } from './services/post-table-mng.service';
 import { DataTableModule } from 'primeng/primeng';
 
 @Component({
-  selector: 'post-table',
-  templateUrl: './post-table.component.html',
-  styleUrls: ['./post-table.component.scss'],
+  selector: 'post-table-mng',
+  templateUrl: './post-table-mng.component.html',
+  styleUrls: ['./post-table-mng.component.scss'],
   animations: [
     flyIn
   ]

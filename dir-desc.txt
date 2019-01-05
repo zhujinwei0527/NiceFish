@@ -8,12 +8,12 @@
 │  │  ├─online-contact
 │  │  └─social-channel
 │  ├─manage                         //这是管理员后台组件
-│  │  ├─comment-table
+│  │  ├─comment-table-mng
 │  │  ├─manage-main
-│  │  ├─post-table
+│  │  ├─post-table-mng
 │  │  │  └─services
-│  │  ├─sys-param
-│  │  └─user-table
+│  │  ├─sys-param-mng
+│  │  └─user-table-mng
 │  ├─post 							//这是跟文章有关的组件
 │  │  ├─model
 │  │  ├─post-detail

@@ -6,10 +6,10 @@ import { PaginatorModule } from 'primeng/paginator';
 import { SharedModule } from '../shared/shared.module';
 import { PostSharedModule } from '../shared/post.module';
 import { ManageMainComponent } from './manage-main/manage-main.component';
-import { UserTableComponent } from './user-table/user-table.component';
-import { SysParamComponent } from './sys-param/sys-param.component';
+import { UserTableComponent } from './user-table-mng/user-table-mng.component';
+import { SysParamComponent } from './sys-param-mng/sys-param-mng.component';
 
-import { PostTableService } from './post-table/services/post-table.service';
+import { PostTableService } from './post-table-mng/services/post-table-mng.service';
 import { AuthGuard } from '../auth-guard';
 
 import { manageRoutes } from './manage.routes';
