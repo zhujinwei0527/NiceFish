@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
 
 import { PaginatorModule } from 'primeng/paginator';
-import { DataTableModule } from 'primeng/primeng';
+import { TableModule } from 'primeng/table';
 import { SharedModule } from '../shared/shared.module';
 
 import { CalendarModule } from 'primeng/components/calendar/calendar';
@@ -31,7 +31,7 @@ import { manageRoutes } from './manage.routes';
     CommonModule,
     SharedModule,
     PaginatorModule,
-    DataTableModule,
+    TableModule,
     CalendarModule,
     RouterModule.forChild(manageRoutes)
   ],
