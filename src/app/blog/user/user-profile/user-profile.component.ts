@@ -20,12 +20,8 @@ export class UserProfileComponent implements OnInit {
       type: "file"
     }),
     new Textbox({
-      label: "用户名:",
-      placeholder: "用户名"
-    }),
-    new Textbox({
-      label: "常用邮箱:",
-      placeholder: "常用邮箱"
+      label: "邮箱:",
+      placeholder: "邮箱"
     }),
     new Textbox({
       label: "密码:",
