@@ -1,29 +1,34 @@
-<div class="comment-table-mng-container" [@flyIn]="'active'">
-    <!-- <form class="form-vertical" role="form">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="内容，用户名">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i>
-                            {{'search' | translate}}</button>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </form>
+<div class="comment-table-mng-container" [@flyIn]="active">
     <div class="row">
         <div class="col-md-12">
-            <div class="comment-item-container">
-                <p-dataTable [value]="commentList" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                    (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="id">
-                    <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
-                    <p-column field="id" header="序号" [sortable]="true"></p-column>
-                    <p-column field="content" header="内容" [sortable]="true" [editable]="true"></p-column>
-                    <p-column field="userName" header="用户" [sortable]="true" [editable]="true"></p-column>
-                    <p-column field="time" header="日期" [sortable]="true" [editable]="true"></p-column>
-                </p-dataTable>
-            </div>
+            <p-table #dt [columns]="cols" [value]="commentList" [lazy]="true" [paginator]="true" [rows]="10"
+                [totalRecords]="totalRecords" [loading]="loading" (onPage)="onPage($event)">
+                <ng-template pTemplate="caption">
+                    <div style="text-align:left;">
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            style="width:auto">
+                        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr style="border-bottom: 1px solid #ccc;">
+                        <td>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h5>
+                                        {{rowData["content"]}}
+                                    </h5>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-success btn-xs">编辑</button>
+                                    <button class="btn btn-danger btn-xs">删除</button>
+                                    <button class="btn btn-info btn-xs">未定义</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
         </div>
-    </div> -->
+    </div>
 </div>

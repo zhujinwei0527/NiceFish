@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LazyLoadEvent } from 'primeng/primeng';
-import { PostTableService } from './services/post-table-mng.service';
+import { PostTableService } from './post-table-mng.service';
 import { flyIn } from '../../shared/animations/fly-in';
 
 @Component({

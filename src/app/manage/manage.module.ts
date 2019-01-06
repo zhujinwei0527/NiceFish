@@ -14,7 +14,8 @@ import { ManageMainComponent } from './manage-main/manage-main.component';
 import { UserTableComponent } from './user-table-mng/user-table-mng.component';
 import { SysParamComponent } from './sys-param-mng/sys-param-mng.component';
 
-import { PostTableService } from './post-table-mng/services/post-table-mng.service';
+import { PostTableService } from './post-table-mng/post-table-mng.service';
+import { CommentTableService } from './comment-table-mng/comment-table-mng.service';
 import { AuthGuard } from '../shared/auth-guard';
 
 import { manageRoutes } from './manage.routes';
@@ -40,6 +41,7 @@ import { manageRoutes } from './manage.routes';
   ],
   providers: [
     PostTableService,
+    CommentTableService,
     AuthGuard
   ]
 })

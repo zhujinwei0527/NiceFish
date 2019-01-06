@@ -14,7 +14,7 @@ export const manageRoutes = [
 		children: [
 			{ path: '', redirectTo: 'post-table/page/1', pathMatch: 'full' },
 			{ path: 'post-table/page/:page', component: PostTableComponent },
-			{ path: 'commenttable/page/:page', component: CommentTableComponent },
+			{ path: 'comment-table/page/:page', component: CommentTableComponent },
 			{ path: 'usertable/page/:page', component: UserTableComponent },
 			{ path: 'usertable/edituser/:userId', component: UserProfileComponent },
 			{ path: 'usertable/newuser', component: UserProfileComponent },

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommentTableService } from './comment-table-mng.service';
 import { flyIn } from '../../shared/animations/fly-in';
 
 @Component({
@@ -11,42 +12,47 @@ import { flyIn } from '../../shared/animations/fly-in';
   ]
 })
 export class CommentTableComponent implements OnInit {
-
-  public commentList: Array<any> = [
-    { id: '1', content: '这是一条不合法的评论', userName: 'damoqiongqiu', time: '2017-07-15 16:22:58' }
-  ];
+  public loading: boolean = true;
+  public currentPage: number = 1;
+  public totalRecords: number = 11;
+  public commentList: Array<any> = [];
 
   constructor(public router: Router,
-    public activeRoute: ActivatedRoute) {
+    public activeRoute: ActivatedRoute,
+    public commentTableService: CommentTableService) {
 
   }
 
   ngOnInit() {
     this.activeRoute.params.subscribe(
-      params => this.getCommentsByPage(params["page"])
+      (params) => {
+        this.currentPage = parseInt(params["page"]);
+        this.getCommentByUserIdAndPaging();
+      }
     );
   }
 
-  public getCommentsByPage(page: Number): void {
-    console.log("页码>" + page);
+  public getCommentByUserIdAndPaging(): void {
+    this.loading = true;
+    let userId = JSON.parse(window.localStorage.getItem("currentUser")).id;
+    this.commentTableService.getCommentByUserIdAndPaging(this.currentPage, userId).subscribe(
+      (res) => {
+        this.commentList = res.content;
+        this.totalRecords = res.totalElements;
+        this.loading = false;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
-  public pageChanged(event: any): void {
-    let urlTree: UrlTree = this.router.parseUrl(this.router.url);
-    const g: UrlSegmentGroup = urlTree.root.children[PRIMARY_OUTLET];
-    const s: UrlSegment[] = g.segments;
-    this.router.navigateByUrl(s[0] + "/commenttable/page/" + event.page);
+  public onPage(event: any): void {
+    this.currentPage = parseInt((event.first / event.rows) + "") + 1;
+    this.router.navigateByUrl(`/manage/comment-table/page/${this.currentPage}`);
   }
 
   public delComment(commentId: Number): void {
     console.log(commentId);
-  }
-
-  public onRowSelect(event): void {
-
-  }
-
-  public onRowUnselect(event): void {
-
   }
 }
