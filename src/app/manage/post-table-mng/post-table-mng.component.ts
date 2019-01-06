@@ -18,24 +18,13 @@ export class PostTableComponent implements OnInit {
   public totalRecords: number = 11;
   public cols: any = [
     { field: 'title', header: '标题' },
-    { field: 'postTime', header: '发布时间' },
+    { field: 'time', header: '发布时间' },
     { field: 'userName', header: '作者' },
     { field: 'readTimes', header: '阅读数' },
     { field: 'commentTimes', header: '评论数' },
     { field: 'likedTimes', header: '点赞数' }
   ];
-  public postList: Array<any> = [
-    {
-      "postId": 1,
-      "title": "这是文章的标题",
-      "postTime": "2018-05-17 10:44",
-      "userName": "大漠穷秋",
-      "userId": "1",
-      "readTimes": "10000",
-      "commentTimes": "10000",
-      "likedTimes": "5555"
-    }
-  ];
+  public postList: Array<any> = [];
 
   constructor(
     public router: Router,

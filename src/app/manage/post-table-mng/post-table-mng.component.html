@@ -10,17 +10,38 @@
                         <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
                     </div>
                 </ng-template>
-                <ng-template pTemplate="header" let-columns>
-                    <tr>
-                        <th *ngFor="let col of columns">
-                            {{col.header}}
-                        </th>
-                    </tr>
-                </ng-template>
                 <ng-template pTemplate="body" let-rowData let-columns="columns">
-                    <tr>
-                        <td *ngFor="let col of columns">
-                            {{rowData[col.field]}}
+                    <tr style="border-bottom: 1px solid #ccc;">
+                        <td>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h5>
+                                        {{rowData["title"]}}
+                                    </h5>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-success btn-xs">编辑</button>
+                                    <button class="btn btn-danger btn-xs">删除</button>
+                                    <button class="btn btn-info btn-xs">未定义</button>
+                                </div>
+                            </div>
+                            <div class="row" style="color:#999;">
+                                <div class="col-md-3">
+                                    <span>{{rowData["time"]}}</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span>{{rowData["userName"]}}</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span>阅读数：{{rowData["readTimes"]}}</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span>评论数：{{rowData["commentTimes"]}}</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span>点赞数：{{rowData["likedTimes"]}}</span>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </ng-template>
