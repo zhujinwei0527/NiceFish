@@ -15,9 +15,9 @@ export const manageRoutes = [
 			{ path: '', redirectTo: 'post-table/page/1', pathMatch: 'full' },
 			{ path: 'post-table/page/:page', component: PostTableComponent },
 			{ path: 'comment-table/page/:page', component: CommentTableComponent },
-			{ path: 'usertable/page/:page', component: UserTableComponent },
-			{ path: 'usertable/edituser/:userId', component: UserProfileComponent },
-			{ path: 'usertable/newuser', component: UserProfileComponent },
+			{ path: 'user-table/page/:page', component: UserTableComponent },
+			{ path: 'user-table/edituser/:userId', component: UserProfileComponent },
+			{ path: 'user-table/newuser', component: UserProfileComponent },
 			{ path: 'sysparam', component: SysParamComponent },
 			{ path: 'profile', component: UserProfileComponent },
 			{ path: '**', redirectTo: 'post-table/page/1' }
