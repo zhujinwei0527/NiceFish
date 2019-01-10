@@ -10,7 +10,9 @@
         "articles": "Articles",
         "doc": "Document",
         "console": "Console",
-        "userlist": "UserList"
+        "userlist": "UserList",
+        "read": "Read",
+        "write": "Write"
     },
     "post": {
         "publish": "publish"

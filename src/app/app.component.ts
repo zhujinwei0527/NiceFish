@@ -84,8 +84,4 @@ export class AppComponent {
 		});
 		this.router.navigateByUrl("");
 	}
-
-	public gotoWrite(): void {
-		this.router.navigateByUrl("post/write");
-	}
 }

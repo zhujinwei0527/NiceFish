@@ -10,7 +10,9 @@
         "signup": "注册",
         "doc": "官方文档",
         "console": "管理后台",
-        "userlist": "用户列表"
+        "userlist": "用户列表",
+        "read": "阅读",
+        "write": "写作"
     },
     "post": {
         "publish": "发布文章"
