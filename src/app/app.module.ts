@@ -22,8 +22,6 @@ import { RetrievePwdService } from './blog/user/retrieve-pwd/retrieve-pwd.servic
 
 import { EqualValidator } from './blog/user/sign-up/directives/equal-validator.directive';
 
-import { ChartComponent } from './blog/chart/chart.component';
-import { EChartOptionDirective1 } from './blog/chart/echart-option.directive';
 import { WritePostComponent } from './blog/post/write-post/write-post.component';
 import { PostService } from './blog/post/post.service';
 import { AuthInterceptor } from './shared/auth-interceptor';
@@ -41,8 +39,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     RetrievePwdComponent,
     SignUpComponent,
     EqualValidator,
-    EChartOptionDirective1,
-    ChartComponent,
     WritePostComponent
   ],
   imports: [

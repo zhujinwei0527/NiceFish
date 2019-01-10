@@ -4,6 +4,7 @@ import { CommentTableComponent } from './comment-table-mng/comment-table-mng.com
 import { UserTableComponent } from './user-table-mng/user-table-mng.component';
 import { UserProfileComponent } from '../blog/user/user-profile/user-profile.component';
 import { SysParamComponent } from './sys-param-mng/sys-param-mng.component';
+import { ChartComponent } from './chart/chart.component';
 import { AuthGuard } from '../shared/auth-guard';
 
 export const manageRoutes = [
@@ -12,7 +13,8 @@ export const manageRoutes = [
 		component: ManageMainComponent,
 		canActivate: [AuthGuard],
 		children: [
-			{ path: '', redirectTo: 'post-table/page/1', pathMatch: 'full' },
+			{ path: '', redirectTo: 'chart', pathMatch: 'full' },
+			{ path: 'chart', component: ChartComponent },
 			{ path: 'post-table/page/:page', component: PostTableComponent },
 			{ path: 'comment-table/page/:page', component: CommentTableComponent },
 			{ path: 'user-table/page/:page', component: UserTableComponent },

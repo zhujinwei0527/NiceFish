@@ -1,7 +1,6 @@
 import { SignInComponent } from './blog/user/sign-in/sign-in.component';
 import { RetrievePwdComponent } from './blog/user/retrieve-pwd/retrieve-pwd.component';
 import { SignUpComponent } from './blog/user/sign-up/sign-up.component';
-import { ChartComponent } from './blog/chart/chart.component';
 import { AuthGuard } from './shared/auth-guard';
 import { WritePostComponent } from './blog/post/write-post/write-post.component';
 
@@ -10,10 +9,6 @@ export const appRoutes = [
 		path: '',
 		redirectTo: 'posts',
 		pathMatch: 'full'
-	},
-	{
-		path: "echart",
-		component: ChartComponent
 	},
 	{
 		path: 'home',

@@ -13,6 +13,8 @@ import { PostTableComponent } from '../manage/post-table-mng/post-table-mng.comp
 import { ManageMainComponent } from './manage-main/manage-main.component';
 import { UserTableComponent } from './user-table-mng/user-table-mng.component';
 import { SysParamComponent } from './sys-param-mng/sys-param-mng.component';
+import { ChartComponent } from './chart/chart.component';
+import { EChartOptionDirective1 } from './chart/echart-option.directive';
 
 import { PostTableService } from './post-table-mng/post-table-mng.service';
 import { CommentTableService } from './comment-table-mng/comment-table-mng.service';
@@ -27,7 +29,9 @@ import { manageRoutes } from './manage.routes';
     PostTableComponent,
     ManageMainComponent,
     UserTableComponent,
-    SysParamComponent
+    SysParamComponent,
+    EChartOptionDirective1,
+    ChartComponent
   ],
   imports: [
     CommonModule,
