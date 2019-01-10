@@ -8,6 +8,6 @@ export class TrimStringPipe implements PipeTransform {
 	constructor() { }
 
 	transform(source: string): string {
-		return source.replace(/\n/g, "");
+		return source.replace(/\s+/g, "");
 	}
 }
