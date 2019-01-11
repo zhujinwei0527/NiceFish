@@ -5,8 +5,7 @@
 │  │  ├─model
 │  │  └─services
 │  ├─home 							//这是首页组件
-│  │  ├─online-contact
-│  │  └─social-channel
+│  │  └─online-contact
 │  ├─manage                         //这是管理员后台组件
 │  │  ├─comment-table-mng
 │  │  ├─manage-main
