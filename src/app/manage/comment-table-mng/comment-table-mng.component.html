@@ -11,7 +11,7 @@
                     </div>
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-columns="columns">
-                    <tr style="border-bottom: 1px solid #ccc;">
+                    <tr>
                         <td>
                             <div class="row">
                                 <div class="col-md-9">
@@ -19,7 +19,7 @@
                                         {{rowData["content"]}}
                                     </h5>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3" style="text-align:right;">
                                     <button class="btn btn-success btn-xs">编辑</button>
                                     <button class="btn btn-danger btn-xs">删除</button>
                                     <button class="btn btn-info btn-xs">未定义</button>
