@@ -12,6 +12,7 @@ import { merge } from 'rxjs'
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+	public showToggleMenu: boolean = false;
 	public currentUser: any;
 	private globalClickCallbackFn: Function;
 
@@ -69,11 +70,12 @@ export class AppComponent {
 		}
 	}
 
-	toggle(button: any) {
-		console.log(button);
+	onMenuToggle() {
+		this.showToggleMenu = !this.showToggleMenu;
 	}
 
 	public doLogout(): void {
+		this.showToggleMenu = false;
 		this.signInService.logout();
 		this.messageService.add({
 			severity: 'warn',

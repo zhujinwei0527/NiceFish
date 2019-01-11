@@ -1,8 +1,8 @@
-<div class="comment-table-mng-container" [@flyIn]="active">
+<div class="comment-table-mng-container">
     <div class="row">
         <div class="col-md-12">
-            <p-table #dt [columns]="cols" [value]="commentList" [lazy]="true" [paginator]="true" [rows]="10"
-                [totalRecords]="totalRecords" [loading]="loading" (onPage)="onPage($event)">
+            <p-table #dt [value]="commentList" [lazy]="true" [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
+                [loading]="loading" (onPage)="onPage($event)">
                 <ng-template pTemplate="caption">
                     <div style="text-align:left;">
                         <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')"
