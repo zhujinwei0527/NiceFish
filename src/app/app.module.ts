@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { HttpModule, JsonpModule, Http } from '@angular/http';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -47,9 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     RouterModule,
     ReactiveFormsModule,
-    HttpModule,
     HttpClientModule,
-    JsonpModule,
     CKEditorModule,
     TranslateModule.forRoot({
       loader: {

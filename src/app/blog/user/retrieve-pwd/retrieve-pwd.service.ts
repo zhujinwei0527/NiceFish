@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class RetrievePwdService {
-    constructor(public http: Http) { }
+    constructor(public httpClient: HttpClient) {
+    }
 
     public sendValidationEmail(email: string): Observable<any> {
         // {
