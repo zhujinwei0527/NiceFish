@@ -1,22 +1,22 @@
 import { PostlistComponent } from './post-list/post-list.component';
-import { PostDetailComponent } from './post-detail/post-detail.component';
+import { PostDetailMainComponent } from './post-detail-main/post-detail-main.component';
 
 export const postRoutes = [
 	{
 		path: '',
-		redirectTo: 'page/1',
+		redirectTo: 'post-list/page/1',
 		pathMatch: 'full'
 	},
 	{
-		path: 'page/:page',
+		path: 'post-list/page/:page',
 		component: PostlistComponent
 	},
 	{
 		path: 'post-detail/:postId',
-		component: PostDetailComponent
+		component: PostDetailMainComponent
 	},
 	{
-		path: 'write',
+		path: 'write-post',
 		loadChildren: "./write-post/write-post.module#WritePostModule"
 	}
 ];

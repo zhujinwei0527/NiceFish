@@ -6,7 +6,7 @@ import { AuthGuard } from './shared/auth-guard';
 export const appRoutes = [
 	{
 		path: '',
-		redirectTo: 'posts',
+		redirectTo: 'post',
 		pathMatch: 'full'
 	},
 	{
@@ -14,12 +14,8 @@ export const appRoutes = [
 		loadChildren: './blog/home/home.module#HomeModule'
 	},
 	{
-		path: 'posts',
-		loadChildren: './blog/home/home.module#HomeModule'
-	},
-	{
 		path: 'post',
-		loadChildren: './blog/post/post.module#PostModule'
+		loadChildren: './blog/home/home.module#HomeModule'
 	},
 	{
 		path: 'signin',

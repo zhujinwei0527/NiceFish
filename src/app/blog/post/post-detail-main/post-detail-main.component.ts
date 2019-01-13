@@ -26,7 +26,7 @@ export class PostDetailMainComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      console.log(params);
+      console.log("post-detail>"+params);
       this.postId = params.postId;
     });
 

@@ -10,11 +10,7 @@ import { PostService } from '../post.service';
 export class PostDetailComponent implements OnInit {
   public post: any = {};
 
-  constructor(public postService: PostService,
-    public activeRoute: ActivatedRoute
-  ) {
-    console.log(this.postService);
-  }
+  constructor(public postService: PostService, public activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activeRoute.params.subscribe(
