@@ -9,7 +9,7 @@ import { PostService } from './post.service';
 import { PostDetailMainComponent } from './post-detail-main/post-detail-main.component';
 import { CommentListComponent } from '../comment-list/comment-list.component';
 import { CommentService } from '../comment-list/comment.service';
-import { BooleanPipe } from '../../shared/boolean-pipe';
+import { BooleanPipe } from '../../shared/pipes/boolean-pipe';
 import { AuthGuard } from '../../shared/auth-guard';
 
 import { postRoutes } from './post.routes';

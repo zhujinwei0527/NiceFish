@@ -7,9 +7,9 @@ import { SignInComponent } from '../blog/user/sign-in/sign-in.component';
 import { UserInfoComponent } from '../blog/user/user-info/user-info.component';
 import { UserProfileComponent } from '../blog/user/user-profile/user-profile.component';
 import { FormControlComponent } from '../blog/user/user-profile/dynamic-form/form-control.component';
-import { TrimStringPipe } from './trim-string.pipe';
-import { SanitizeHtmlPipe } from './sanitize-html-pipe';
-import { StripHtmlPipe } from './strip-html.pipe';
+import { TrimStringPipe } from './pipes/trim-string.pipe';
+import { SanitizeHtmlPipe } from './pipes/sanitize-html-pipe';
+import { StripHtmlPipe } from './pipes/strip-html.pipe';
 
 @NgModule({
   imports: [
