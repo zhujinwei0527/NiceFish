@@ -1,4 +1,3 @@
-import { PostDetailMainComponent } from './post-detail-main/post-detail-main.component';
 import { PostlistComponent } from './postlist/postlist.component';
 
 export const postRoutes = [
@@ -13,6 +12,6 @@ export const postRoutes = [
 	},
 	{
 		path: 'post-detail/:postId',
-		component: PostDetailMainComponent
+		loadChildren: "./write-post/write-post.module#WritePostModule"
 	}
 ];

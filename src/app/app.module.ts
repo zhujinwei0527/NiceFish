@@ -22,7 +22,6 @@ import { RetrievePwdService } from './blog/user/retrieve-pwd/retrieve-pwd.servic
 
 import { EqualValidator } from './blog/user/sign-up/directives/equal-validator.directive';
 
-import { WritePostComponent } from './blog/post/write-post/write-post.component';
 import { PostService } from './blog/post/post.service';
 import { AuthInterceptor } from './shared/auth-interceptor';
 import { AuthGuard } from './shared/auth-guard';
@@ -38,8 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     RetrievePwdComponent,
     SignUpComponent,
-    EqualValidator,
-    WritePostComponent
+    EqualValidator
   ],
   imports: [
     BrowserModule,
