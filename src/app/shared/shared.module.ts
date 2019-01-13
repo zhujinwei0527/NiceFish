@@ -9,6 +9,7 @@ import { UserProfileComponent } from '../blog/user/user-profile/user-profile.com
 import { FormControlComponent } from '../blog/user/user-profile/dynamic-form/form-control.component';
 import { TrimStringPipe } from './trim-string.pipe';
 import { SanitizeHtmlPipe } from './sanitize-html-pipe';
+import { StripHtmlPipe } from './strip-html.pipe';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { SanitizeHtmlPipe } from './sanitize-html-pipe';
     UserProfileComponent,
     FormControlComponent,
     TrimStringPipe,
-    SanitizeHtmlPipe
+    SanitizeHtmlPipe,
+    StripHtmlPipe
   ],
   exports: [
     TranslateModule,
@@ -33,7 +35,8 @@ import { SanitizeHtmlPipe } from './sanitize-html-pipe';
     UserInfoComponent,
     UserProfileComponent,
     TrimStringPipe,
-    SanitizeHtmlPipe
+    SanitizeHtmlPipe,
+    StripHtmlPipe
   ]
 })
 

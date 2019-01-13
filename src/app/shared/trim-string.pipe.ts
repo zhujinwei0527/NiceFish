@@ -7,7 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TrimStringPipe implements PipeTransform {
 	constructor() { }
 
-	transform(source: string): string {
+	transform(source: string = ""): string {
+		source = source ? source : "";
 		return source.replace(/\s+/g, "");
 	}
 }
