@@ -5,7 +5,7 @@
             <div *ngIf="!currentUser?.userName">
                 <sign-in></sign-in>
             </div>
-            <comment-list postId={{postId}}></comment-list>
+            <comment-list></comment-list>
         </div>
         <div class="col-md-3">
             <user-info panelTitle="作者信息" (follow)="doFollow()"></user-info>

@@ -11,5 +11,4 @@ export class OnlineContactComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

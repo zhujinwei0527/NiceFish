@@ -27,7 +27,6 @@ import { AuthInterceptor } from './shared/auth-interceptor';
 import { AuthGuard } from './shared/auth-guard';
 import { appRoutes } from './app.routes';
 
-
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }

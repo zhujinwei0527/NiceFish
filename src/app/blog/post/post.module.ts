@@ -13,6 +13,8 @@ import { BooleanPipe } from '../../shared/pipes/boolean-pipe';
 import { AuthGuard } from '../../shared/auth-guard';
 
 import { postRoutes } from './post.routes';
+import { PostListMainComponent } from './post-list-main/post-list-main.component';
+import { OnlineContactComponent } from '../online-contact/online-contact.component';
 
 @NgModule({
     imports: [
@@ -24,6 +26,8 @@ import { postRoutes } from './post.routes';
     ],
     exports: [BooleanPipe],
     declarations: [
+        PostListMainComponent,
+        OnlineContactComponent,
         PostlistComponent,
         PostDetailMainComponent,
         PostDetailComponent,

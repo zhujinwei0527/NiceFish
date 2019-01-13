@@ -1,5 +1,5 @@
-import { PostlistComponent } from './post-list/post-list.component';
 import { PostDetailMainComponent } from './post-detail-main/post-detail-main.component';
+import { PostListMainComponent } from './post-list-main/post-list-main.component';
 
 export const postRoutes = [
 	{
@@ -9,7 +9,7 @@ export const postRoutes = [
 	},
 	{
 		path: 'post-list/page/:page',
-		component: PostlistComponent
+		component: PostListMainComponent
 	},
 	{
 		path: 'post-detail/:postId',

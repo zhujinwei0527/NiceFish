@@ -1,7 +1,6 @@
 import { SignInComponent } from './blog/user/sign-in/sign-in.component';
 import { RetrievePwdComponent } from './blog/user/retrieve-pwd/retrieve-pwd.component';
 import { SignUpComponent } from './blog/user/sign-up/sign-up.component';
-import { AuthGuard } from './shared/auth-guard';
 
 export const appRoutes = [
 	{
@@ -10,12 +9,8 @@ export const appRoutes = [
 		pathMatch: 'full'
 	},
 	{
-		path: 'home',
-		loadChildren: './blog/home/home.module#HomeModule'
-	},
-	{
 		path: 'post',
-		loadChildren: './blog/home/home.module#HomeModule'
+		loadChildren: './blog/post/post.module#PostModule'
 	},
 	{
 		path: 'signin',
@@ -35,6 +30,7 @@ export const appRoutes = [
 	},
 	{
 		path: '**',//fallback router must in the last
-		loadChildren: './blog/home/home.module#HomeModule'
+		redirectTo: 'post',
+		pathMatch: 'full'
 	}
 ];

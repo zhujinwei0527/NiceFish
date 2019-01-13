@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SignInService } from '../user/sign-in/sign-in.service';
+import { SignUpService } from '../user/sign-up/sign-up.service';
 import { CommentService } from './comment.service';
+import { merge } from 'rxjs'
 
 @Component({
   selector: 'comment-list',
@@ -9,7 +12,6 @@ import { CommentService } from './comment.service';
 })
 export class CommentListComponent implements OnInit {
   public currentUser: any;
-  @Input()
   public postId: string;
   public comment: any = {};
 
@@ -22,17 +24,27 @@ export class CommentListComponent implements OnInit {
 
   constructor(
     public commentService: CommentService,
+    public signInService: SignInService,
+    public signUpService: SignUpService,
     public router: Router,
     public activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      (res) => {
-        this.getCommentList();
-      });
+    this.activatedRoute.params.subscribe(params => {
+      this.postId = params.postId;
+      this.getCommentList();
+    });
 
     this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    merge(this.signInService.currentUser, this.signUpService.currentUser)
+      .subscribe(
+        (data) => {
+          this.currentUser = data;
+        },
+        error => console.error(error)
+      );
   }
 
   public getCommentList() {
