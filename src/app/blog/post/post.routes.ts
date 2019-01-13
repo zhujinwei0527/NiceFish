@@ -1,4 +1,4 @@
-import { PostlistComponent } from './postlist/postlist.component';
+import { PostlistComponent } from './post-list/post-list.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 
 export const postRoutes = [

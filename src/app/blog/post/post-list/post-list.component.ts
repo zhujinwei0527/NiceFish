@@ -3,9 +3,9 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { PostService } from '../post.service';
 
 @Component({
-	selector: 'postlist',
-	templateUrl: './postlist.component.html',
-	styleUrls: ['./postlist.component.scss']
+	selector: 'post-list',
+	templateUrl: './post-list.component.html',
+	styleUrls: ['./post-list.component.scss']
 })
 export class PostlistComponent implements OnInit {
 	public rows: number = 10;

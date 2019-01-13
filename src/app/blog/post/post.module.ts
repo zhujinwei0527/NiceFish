@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PaginatorModule } from 'primeng/paginator';
 import { PostDetailComponent } from './post-detail/post-detail.component';
-import { PostlistComponent } from './postlist/postlist.component';
+import { PostlistComponent } from './post-list/post-list.component';
 import { PostService } from './post.service';
 import { PostDetailMainComponent } from './post-detail-main/post-detail-main.component';
 import { CommentListComponent } from '../comment-list/comment-list.component';
