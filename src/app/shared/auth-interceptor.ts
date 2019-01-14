@@ -13,12 +13,16 @@ export class AuthInterceptor implements HttpInterceptor {
         private router: Router) {
     }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (!localStorage.getItem("currentUser")) {
-            return next.handle(req.clone());
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        //auth类的请求不做任何处理
+        if (request.url.indexOf("auth") != -1) {
+            return next.handle(request.clone());
         }
-        const clonedReq = req.clone({
-            headers: req.headers.set("Authorization", "bearer " + JSON.parse(localStorage.getItem("currentUser")).access_token)
+        if (!localStorage.getItem("currentUser")) {
+            return next.handle(request.clone());
+        }
+        const clonedReq = request.clone({
+            headers: request.headers.set("Authorization", "bearer " + JSON.parse(localStorage.getItem("currentUser")).access_token)
         });
         return next.handle(clonedReq).pipe(
             tap(
