@@ -47,6 +47,7 @@ export class PostlistComponent implements OnInit {
 
 	public pageChanged(event: any): void {
 		let temp = parseInt(event.page) + 1;
-		this.router.navigateByUrl("posts/page/" + temp);
+		let url = `post/post-list/page/${temp}`;
+		this.router.navigateByUrl(url);
 	}
 }

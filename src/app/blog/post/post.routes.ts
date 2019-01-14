@@ -1,5 +1,6 @@
 import { PostDetailMainComponent } from './post-detail-main/post-detail-main.component';
 import { PostListMainComponent } from './post-list-main/post-list-main.component';
+import { AuthGuard } from '../../shared/auth-guard';
 
 export const postRoutes = [
 	{
@@ -17,6 +18,7 @@ export const postRoutes = [
 	},
 	{
 		path: 'write-post',
-		loadChildren: "./write-post/write-post.module#WritePostModule"
+		loadChildren: "./write-post/write-post.module#WritePostModule",
+		canActivate: [AuthGuard],
 	}
 ];
