@@ -8,7 +8,7 @@ export class CommentTableService {
 
     public getCommentByUserIdAndPaging(page: number, userId: number): Observable<any> {
         return this.httpClient.post(
-            `http://localhost:9003/manage/comment-table`,
+            `http://localhost:9500/blog/manage/comment-table`,
             {
                 page: page,
                 userId: userId

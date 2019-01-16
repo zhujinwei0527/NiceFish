@@ -9,7 +9,7 @@ export class PostTableService {
 
     public getPostByUserIdAndPaging(page: number, userId: number): Observable<any> {
         return this.httpClient.post(
-            `http://localhost:9003/manage/post-table`,
+            `http://localhost:9500/blog/manage/post-table`,
             {
                 page: page,
                 userId: userId

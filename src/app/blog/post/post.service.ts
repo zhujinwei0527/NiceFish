@@ -12,7 +12,7 @@ export class PostService {
 
     public getPostList(page: number = 1): Observable<any> {
         return this.httpClient.get(
-            `http://localhost:9003/blog/post-list/${page}`,
+            `http://localhost:9500/blog/post-list/${page}`,
             {
                 headers: new HttpHeaders({
                     "Content-Type": "application/json"
@@ -23,13 +23,13 @@ export class PostService {
 
     public getPostDetail(id: string): Observable<any> {
         return this.httpClient.get(
-            `http://localhost:9003/blog/post-detail/${id}`
+            `http://localhost:9500/blog/post-detail/${id}`
         );
     }
 
     public writePost(post: any): Observable<any> {
         return this.httpClient.post(
-            "http://localhost:9003/blog/write-post",
+            "http://localhost:9500/blog/write-post",
             {
                 title: post.title,
                 content: post.content,

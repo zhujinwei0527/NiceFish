@@ -10,13 +10,13 @@ export class CommentService {
 
     public getCommentList(postId: string, page: number = 1): Observable<any> {
         return this.httpClient.get(
-            `http://localhost:9003/blog/comment/${postId}/page/${page}`
+            `http://localhost:9500/blog/comment/${postId}/page/${page}`
         );
     }
 
     public writeComment(comment: any): Observable<any> {
         return this.httpClient.post(
-            `http://localhost:9003/blog/comment/write-comment`,
+            `http://localhost:9500/blog/comment/write-comment`,
             comment,
             {
                 headers: new HttpHeaders({

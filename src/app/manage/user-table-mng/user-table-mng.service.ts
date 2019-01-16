@@ -8,7 +8,7 @@ export class UserTableService {
 
     public getUserListByPaging(page: number): Observable<any> {
         return this.httpClient.post(
-            `http://localhost:9002/users/user-table`,
+            `http://localhost:9500/users/user-table`,
             {
                 page: page
             },
