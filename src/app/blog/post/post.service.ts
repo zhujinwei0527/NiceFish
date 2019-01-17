@@ -42,4 +42,20 @@ export class PostService {
             }
         )
     }
+
+    public editPost(post: any): Observable<any> {
+        return this.httpClient.post(
+            "http://localhost:9500/blog/edit-post",
+            {
+                title: post.title,
+                content: post.content,
+                userId: post.userId
+            },
+            {
+                headers: new HttpHeaders({
+                    "Content-Type": "application/json"
+                })
+            }
+        )
+    }
 }

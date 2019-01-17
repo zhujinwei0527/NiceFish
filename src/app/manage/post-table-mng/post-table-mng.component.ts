@@ -64,11 +64,8 @@ export class PostTableComponent implements OnInit {
     this.router.navigateByUrl(`/manage/post-table/page/${this.currentPage}`);
   }
 
-  public editPost(event): void {
-    var target = event.currentTarget;
-    var nameAttr = target.attributes.name;
-    var value = nameAttr.nodeValue;
-    console.log("postId>" + value);
+  public editPost(id): void {
+    this.router.navigateByUrl(`/post/edit-post/${id}`);
   }
 
   public delPost(id): void {

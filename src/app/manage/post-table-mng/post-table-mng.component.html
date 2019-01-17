@@ -14,7 +14,7 @@
                                     </h5>
                                 </div>
                                 <div class="col-md-3" style="text-align:right;">
-                                    <button class="btn btn-success btn-xs">编辑</button>
+                                    <button class="btn btn-success btn-xs" (click)="editPost(rowData['id'])">编辑</button>
                                     <button class="btn btn-danger btn-xs" (click)="delPost(rowData['id'])">删除</button>
                                 </div>
                             </div>

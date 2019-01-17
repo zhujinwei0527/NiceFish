@@ -1,7 +1,7 @@
 <div class="container write-post-container" [@flyIn]="'active'">
     <div class="row">
         <div class="col-md-12">
-            <form #writePostForm="ngForm" role="form" (ngSubmit)="writePostForm.form.valid&&doWritePost()" novalidate>
+            <form #writePostForm="ngForm" role="form" (ngSubmit)="writePostForm.form.valid&&doCommit()" novalidate>
                 <div class="form-group" [ngClass]="{ 'has-error': writePostForm.submitted && !title.valid }">
                     <input required minlength="2" maxlength="32" name="title" #title="ngModel" [(ngModel)]="post.title"
                         type="text" class="form-control" placeholder="标题，2到32个字符">

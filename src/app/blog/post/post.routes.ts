@@ -20,5 +20,10 @@ export const postRoutes = [
 		path: 'write-post',
 		loadChildren: "./write-post/write-post.module#WritePostModule",
 		canActivate: [AuthGuard],
+	},
+	{
+		path: 'edit-post/:postId',
+		loadChildren: "./write-post/write-post.module#WritePostModule",
+		canActivate: [AuthGuard],
 	}
 ];
