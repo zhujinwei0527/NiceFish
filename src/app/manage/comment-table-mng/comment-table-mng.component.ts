@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommentTableService } from './comment-table-mng.service';
+import { ConfirmationService } from 'primeng/api';
 import { flyIn } from '../../shared/animations/fly-in';
 
 @Component({
@@ -19,7 +20,8 @@ export class CommentTableComponent implements OnInit {
 
   constructor(public router: Router,
     public activeRoute: ActivatedRoute,
-    public commentTableService: CommentTableService) {
+    public commentTableService: CommentTableService,
+    private confirmationService: ConfirmationService) {
 
   }
 
@@ -53,6 +55,18 @@ export class CommentTableComponent implements OnInit {
   }
 
   public delComment(commentId: Number): void {
-    console.log(commentId);
+    this.confirmationService.confirm({
+      message: '确定要删除吗？',
+      accept: () => {
+        this.commentTableService.delComment(commentId).subscribe(
+          (data) => {
+            this.getCommentByUserIdAndPaging();
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      }
+    });
   }
 }

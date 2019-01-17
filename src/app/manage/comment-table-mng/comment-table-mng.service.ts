@@ -20,4 +20,8 @@ export class CommentTableService {
             }
         );
     }
+
+    public delComment(commentId): Observable<any> {
+        return this.httpClient.delete(`http://localhost:9500/blog/manage/del-comment/${commentId}`);
+    }
 }

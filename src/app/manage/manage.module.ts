@@ -4,9 +4,11 @@ import { RouterModule } from "@angular/router";
 
 import { PaginatorModule } from 'primeng/paginator';
 import { TableModule } from 'primeng/table';
-import { SharedModule } from '../shared/shared.module';
-
 import { CalendarModule } from 'primeng/components/calendar/calendar';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+
+import { SharedModule } from '../shared/shared.module';
 import { CommentTableComponent } from '../manage/comment-table-mng/comment-table-mng.component';
 import { PostTableComponent } from '../manage/post-table-mng/post-table-mng.component';
 
@@ -39,6 +41,7 @@ import { manageRoutes } from './manage.routes';
     PaginatorModule,
     TableModule,
     CalendarModule,
+    ConfirmDialogModule,
     RouterModule.forChild(manageRoutes)
   ],
   exports: [
@@ -48,6 +51,7 @@ import { manageRoutes } from './manage.routes';
     PostTableService,
     CommentTableService,
     UserTableService,
+    ConfirmationService,
     AuthGuard
   ]
 })

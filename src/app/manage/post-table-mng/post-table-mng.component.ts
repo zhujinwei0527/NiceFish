@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LazyLoadEvent } from 'primeng/primeng';
 import { PostTableService } from './post-table-mng.service';
+import { ConfirmationService } from 'primeng/api';
 import { flyIn } from '../../shared/animations/fly-in';
 
 @Component({
@@ -29,7 +29,8 @@ export class PostTableComponent implements OnInit {
   constructor(
     public router: Router,
     public activeRoute: ActivatedRoute,
-    public postTableService: PostTableService
+    public postTableService: PostTableService,
+    private confirmationService: ConfirmationService
   ) {
 
   }
@@ -63,10 +64,6 @@ export class PostTableComponent implements OnInit {
     this.router.navigateByUrl(`/manage/post-table/page/${this.currentPage}`);
   }
 
-  public goToWrite(): void {
-    this.router.navigateByUrl("post/write");
-  }
-
   public editPost(event): void {
     var target = event.currentTarget;
     var nameAttr = target.attributes.name;
@@ -74,24 +71,23 @@ export class PostTableComponent implements OnInit {
     console.log("postId>" + value);
   }
 
-  public top(event): void {
-    var target = event.currentTarget;
-    var nameAttr = target.attributes.name;
-    var value = nameAttr.nodeValue;
-    console.log("postId>" + value);
+  public delPost(id): void {
+    this.confirmationService.confirm({
+      message: '确定要删除吗？',
+      accept: () => {
+        this.postTableService.delPost(id).subscribe(
+          (data) => {
+            this.getPostByUserIdAndPaging();
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      }
+    });
   }
 
-  public unTop(event): void {
-    var target = event.currentTarget;
-    var nameAttr = target.attributes.name;
-    var value = nameAttr.nodeValue;
-    console.log("postId>" + value);
-  }
-
-  public delPost(event): void {
-    var target = event.currentTarget;
-    var nameAttr = target.attributes.name;
-    var value = nameAttr.nodeValue;
-    console.log("postId>" + value);
+  public goToWrite(): void {
+    this.router.navigateByUrl("post/write");
   }
 }

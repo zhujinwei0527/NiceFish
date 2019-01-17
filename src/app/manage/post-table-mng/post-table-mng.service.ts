@@ -21,4 +21,8 @@ export class PostTableService {
             }
         );
     }
+
+    public delPost(id): Observable<any> {
+        return this.httpClient.delete(`http://localhost:9500/blog/manage/del-post/${id}`);
+    }
 }

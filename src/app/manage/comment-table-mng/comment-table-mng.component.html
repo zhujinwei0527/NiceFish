@@ -1,15 +1,9 @@
 <div class="comment-table-mng-container">
+    <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
     <div class="row">
         <div class="col-md-12">
             <p-table #dt [value]="commentList" [lazy]="true" [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
                 [loading]="loading" (onPage)="onPage($event)">
-                <ng-template pTemplate="caption">
-                    <div style="text-align:left;">
-                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')"
-                            style="width:auto">
-                        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-                    </div>
-                </ng-template>
                 <ng-template pTemplate="body" let-rowData let-columns="columns">
                     <tr>
                         <td>
@@ -20,9 +14,7 @@
                                     </h5>
                                 </div>
                                 <div class="col-md-3" style="text-align:right;">
-                                    <button class="btn btn-success btn-xs">编辑</button>
-                                    <button class="btn btn-danger btn-xs">删除</button>
-                                    <button class="btn btn-info btn-xs">未定义</button>
+                                    <button class="btn btn-danger btn-xs" (click)="delComment(rowData['id'])">删除</button>
                                 </div>
                             </div>
                         </td>
