@@ -10,12 +10,14 @@ import { FormControlComponent } from '../blog/user/user-profile/dynamic-form/for
 import { TrimStringPipe } from './pipes/trim-string.pipe';
 import { SanitizeHtmlPipe } from './pipes/sanitize-html-pipe';
 import { StripHtmlPipe } from './pipes/strip-html.pipe';
+import { PickListModule } from 'primeng/picklist';
 
 @NgModule({
   imports: [
     TranslateModule,
     CommonModule,
     FormsModule,
+    PickListModule,
     ReactiveFormsModule
   ],
   declarations: [
@@ -31,6 +33,7 @@ import { StripHtmlPipe } from './pipes/strip-html.pipe';
     TranslateModule,
     CommonModule,
     FormsModule,
+    PickListModule,
     SignInComponent,
     UserInfoComponent,
     UserProfileComponent,

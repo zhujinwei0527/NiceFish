@@ -7,12 +7,12 @@
 │  ├─home 							//这是首页组件
 │  │  └─online-contact
 │  ├─manage                         //这是管理员后台组件
-│  │  ├─comment-table-mng
+│  │  ├─comment-table
 │  │  ├─manage-main
-│  │  ├─post-table-mng
+│  │  ├─post-table
 │  │  │  └─services
-│  │  ├─sys-param-mng
-│  │  └─user-table-mng
+│  │  ├─sys-param
+│  │  └─user-table
 │  ├─post 							//这是跟文章有关的组件
 │  │  ├─model
 │  │  ├─post-detail

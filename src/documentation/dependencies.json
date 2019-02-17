@@ -1485,14 +1485,14 @@
     "declarations": [
       {
         "name": "CommentTableComponent",
-        "file": "manage/comment-table-mng/comment-table-mng.component.ts",
-        "selector": "comment-table-mng",
+        "file": "manage/comment-table/comment-table.component.ts",
+        "selector": "comment-table",
         "providers": [],
         "templateUrl": [
-          "comment-table-mng.component.html"
+          "comment-table.component.html"
         ],
         "styleUrls": [
-          "comment-table-mng.component.scss"
+          "comment-table.component.scss"
         ],
         "__raw": [
           {
@@ -1512,7 +1512,7 @@
               "pos": 241,
               "end": 261,
               "flags": 0,
-              "text": "comment-table-mng"
+              "text": "comment-table"
             }
           },
           {
@@ -1532,7 +1532,7 @@
               "pos": 278,
               "end": 311,
               "flags": 0,
-              "text": "./comment-table-mng.component.html"
+              "text": "./comment-table.component.html"
             }
           },
           {
@@ -1558,7 +1558,7 @@
                   "pos": 328,
                   "end": 360,
                   "flags": 0,
-                  "text": "./comment-table-mng.component.scss"
+                  "text": "./comment-table.component.scss"
                 }
               ]
             }
@@ -1596,14 +1596,14 @@
       },
       {
         "name": "PostTableComponent",
-        "file": "manage/post-table-mng/post-table-mng.component.ts",
-        "selector": "post-table-mng",
+        "file": "manage/post-table/post-table.component.ts",
+        "selector": "post-table",
         "providers": [],
         "templateUrl": [
-          "post-table-mng.component.html"
+          "post-table.component.html"
         ],
         "styleUrls": [
-          "post-table-mng.component.scss"
+          "post-table.component.scss"
         ],
         "__raw": [
           {
@@ -1623,7 +1623,7 @@
               "pos": 315,
               "end": 332,
               "flags": 0,
-              "text": "post-table-mng"
+              "text": "post-table"
             }
           },
           {
@@ -1643,7 +1643,7 @@
               "pos": 349,
               "end": 379,
               "flags": 0,
-              "text": "./post-table-mng.component.html"
+              "text": "./post-table.component.html"
             }
           },
           {
@@ -1669,7 +1669,7 @@
                   "pos": 396,
                   "end": 425,
                   "flags": 0,
-                  "text": "./post-table-mng.component.scss"
+                  "text": "./post-table.component.scss"
                 }
               ]
             }
@@ -2068,14 +2068,14 @@
       },
       {
         "name": "UserTableComponent",
-        "file": "manage/user-table-mng/user-table-mng.component.ts",
-        "selector": "user-table-mng",
+        "file": "manage/user-table/user-table.component.ts",
+        "selector": "user-table",
         "providers": [],
         "templateUrl": [
-          "user-table-mng.component.html"
+          "user-table.component.html"
         ],
         "styleUrls": [
-          "user-table-mng.component.scss"
+          "user-table.component.scss"
         ],
         "__raw": [
           {
@@ -2095,7 +2095,7 @@
               "pos": 187,
               "end": 204,
               "flags": 0,
-              "text": "user-table-mng"
+              "text": "user-table"
             }
           },
           {
@@ -2115,7 +2115,7 @@
               "pos": 221,
               "end": 251,
               "flags": 0,
-              "text": "./user-table-mng.component.html"
+              "text": "./user-table.component.html"
             }
           },
           {
@@ -2141,7 +2141,7 @@
                   "pos": 268,
                   "end": 297,
                   "flags": 0,
-                  "text": "./user-table-mng.component.scss"
+                  "text": "./user-table.component.scss"
                 }
               ]
             }
@@ -2179,14 +2179,14 @@
       },
       {
         "name": "SysParamComponent",
-        "file": "manage/sys-param-mng/sys-param-mng.component.ts",
-        "selector": "sys-param-mng",
+        "file": "manage/sys-param/sys-param.component.ts",
+        "selector": "sys-param",
         "providers": [],
         "templateUrl": [
-          "sys-param-mng.component.html"
+          "sys-param.component.html"
         ],
         "styleUrls": [
-          "sys-param-mng.component.scss"
+          "sys-param.component.scss"
         ],
         "__raw": [
           {
@@ -2206,7 +2206,7 @@
               "pos": 128,
               "end": 144,
               "flags": 0,
-              "text": "sys-param-mng"
+              "text": "sys-param"
             }
           },
           {
@@ -2226,7 +2226,7 @@
               "pos": 161,
               "end": 190,
               "flags": 0,
-              "text": "./sys-param-mng.component.html"
+              "text": "./sys-param.component.html"
             }
           },
           {
@@ -2252,7 +2252,7 @@
                   "pos": 207,
                   "end": 235,
                   "flags": 0,
-                  "text": "./sys-param-mng.component.scss"
+                  "text": "./sys-param.component.scss"
                 }
               ]
             }

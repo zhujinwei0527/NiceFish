@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { FieldBase, Textbox, TextArea, Image } from './dynamic-form/form-field';
@@ -20,8 +20,12 @@ export class UserProfileComponent implements OnInit {
       type: "file"
     }),
     new Textbox({
-      label: "邮箱:",
-      placeholder: "邮箱"
+      label: "用户名:",
+      placeholder: "用户名"
+    }),
+    new Textbox({
+      label: "常用邮箱:",
+      placeholder: "常用邮箱"
     }),
     new Textbox({
       label: "密码:",
@@ -41,6 +45,25 @@ export class UserProfileComponent implements OnInit {
   ];
 
   public form: FormGroup;
+
+  public error: Error;
+
+  public srcList: any[] = [
+    {
+      roleId: '1',
+      roleName: '系统管理员'
+    },
+    {
+      roleId: '2',
+      roleName: '签约作者'
+    }
+  ];
+  public selectedList: any[] = [
+    {
+      roleId: '3',
+      roleName: '默认权限'
+    }
+  ];
 
   constructor(public router: Router,
     public activeRoute: ActivatedRoute) {
@@ -62,5 +85,9 @@ export class UserProfileComponent implements OnInit {
       group[field.key] = new FormControl(field.value || '');
     });
     return new FormGroup(group);
+  }
+
+  public cancel(): void {
+    window.history.back();
   }
 }
