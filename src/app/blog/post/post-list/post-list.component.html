@@ -1,21 +1,31 @@
+<post-headline></post-headline>
 <div class="post-list-container">
     <div class="row">
         <div class="col-md-12">
             <div class="post-item-container" *ngFor="let post of postList">
-                <h3>
-                    <a [routerLink]="['/post/post-detail',post.id]">{{post.title}}</a>
-                </h3>
-                <div class="user-name-intitle">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <span>{{post.nickName}}</span>
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="assets/imgs/img-alt.png" alt="..." class="img-thumbnail">
+                    </div>
+                    <div class="col-md-10">
+                        <h3>
+                            <a [routerLink]="['/post/post-detail',post.postId]">{{post.title}}</a>
+                        </h3>
+                        <div class="user-name-intitle">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="fa fa-user"></span>
+                                    <span>{{post.nickName}}</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="fa fa-clock-o"></span>
+                                    <span>{{post.postTime}}</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-3">
-                            <span>{{post.time}}</span>
-                        </div>
+                        <div class="abs">{{post.content | slice:0:140 | trim}}...</div>
                     </div>
                 </div>
-                <div class="abs">{{post.content | slice:0:140 | trim | stripHtml }}...</div>
             </div>
             <p-paginator rows="{{rows}}" totalRecords="{{totalElements}}" first="{{offset}}" pageLinkSize="3"
                 (onPageChange)="pageChanged($event)">
