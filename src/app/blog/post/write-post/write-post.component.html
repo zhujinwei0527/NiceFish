@@ -1,4 +1,4 @@
-<div class="container write-post-container" [@flyIn]="'active'">
+<div class="container write-post-container" [@fadeIn]="'active'">
     <div class="row">
         <div class="col-md-12">
             <form #writePostForm="ngForm" role="form" (ngSubmit)="writePostForm.form.valid&&doCommit()" novalidate>
