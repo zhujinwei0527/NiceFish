@@ -12,10 +12,9 @@ import { CommentListComponent } from '../comment-list/comment-list.component';
 import { CommentService } from '../comment-list/comment.service';
 import { BooleanPipe } from '../../shared/pipes/boolean-pipe';
 import { AuthGuard } from '../../shared/auth-guard';
-
-import { postRoutes } from './post.routes';
 import { PostListMainComponent } from './post-list-main/post-list-main.component';
 import { OnlineContactComponent } from '../online-contact/online-contact.component';
+import { postRoutes } from './post.routes';
 
 @NgModule({
     imports: [

@@ -9,10 +9,10 @@
 	</div>
 	<div class="row post-info">
 		<div class="col-md-3">
-			<span class="fa fa-user"></span>{{ post.author }}
+			<span class="fa fa-user"></span>{{ post.nickName }}
 		</div>
 		<div class="col-md-3">
-			<span class="fa fa-clock-o"></span>{{ post.postTime }}
+			<span class="fa fa-clock-o"></span>{{ post.time }}
 		</div>
 		<div class="col-md-3">
 			<span class="fa fa-hand-pointer-o"></span>点击：{{ post.readTimes }}
@@ -22,7 +22,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12 post-content" [innerHTML]="post.text | sanitizeHtml">
+		<div class="col-md-12 post-content" [innerHTML]="post.content | sanitizeHtml">
 		</div>
 	</div>
 </div>
