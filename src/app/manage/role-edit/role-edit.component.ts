@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { flyIn } from '../../shared/animations/fly-in';
 import { fadeIn } from '../../shared/animations/fade-in';
 
 @Component({
   selector: 'role-edit',
   templateUrl: './role-edit.component.html',
   styleUrls: ['./role-edit.component.scss'],
-  animations: [flyIn, fadeIn]
+  animations: [fadeIn]
 })
 export class RoleEditComponent implements OnInit {
   public role: any = {};

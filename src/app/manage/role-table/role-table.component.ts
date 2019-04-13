@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { flyIn } from '../../shared/animations/fly-in';
+import { fadeIn } from '../../shared/animations/fade-in';
 
 @Component({
   selector: 'role-table',
   templateUrl: './role-table.component.html',
   styleUrls: ['./role-table.component.scss'],
   animations: [
-    flyIn
+    fadeIn
   ]
 })
 export class RoleTableComponent implements OnInit {

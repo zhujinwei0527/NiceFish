@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { flyIn } from '../../shared/animations/fly-in';
+import { fadeIn } from '../../shared/animations/fade-in';
 
 @Component({
   selector: 'manage-main',
   templateUrl: './manage-main.component.html',
   styleUrls: ['./manage-main.component.scss'],
   animations: [
-    flyIn
+    fadeIn
   ]
 })
 export class ManageMainComponent implements OnInit {

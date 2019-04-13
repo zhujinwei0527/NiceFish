@@ -2,14 +2,14 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostTableService } from './post-table.service';
 import { ConfirmationService } from 'primeng/api';
-import { flyIn } from '../../shared/animations/fly-in';
+import { fadeIn } from '../../shared/animations/fade-in';
 
 @Component({
   selector: 'post-table',
   templateUrl: './post-table.component.html',
   styleUrls: ['./post-table.component.scss'],
   animations: [
-    flyIn
+    fadeIn
   ]
 })
 export class PostTableComponent implements OnInit {

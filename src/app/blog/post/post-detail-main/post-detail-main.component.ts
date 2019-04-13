@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { flyIn } from '../../../shared/animations/fly-in';
+import { fadeIn } from '../../../shared/animations/fade-in';
 import { SignInService } from '../../user/sign-in/sign-in.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './post-detail-main.component.html',
   styleUrls: ['./post-detail-main.component.scss'],
   animations: [
-    flyIn
+    fadeIn
   ]
 })
 export class PostDetailMainComponent implements OnInit {

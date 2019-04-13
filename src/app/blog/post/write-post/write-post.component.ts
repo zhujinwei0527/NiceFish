@@ -3,13 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../post.service';
 import { MessageService } from 'primeng/api';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { flyIn } from '../../../shared/animations/fly-in';
+import { fadeIn } from '../../../shared/animations/fade-in';
 
 @Component({
   selector: 'write-post',
   templateUrl: './write-post.component.html',
   styleUrls: ['./write-post.component.scss'],
-  animations: [flyIn]
+  animations: [fadeIn]
 })
 
 export class WritePostComponent implements OnInit {
