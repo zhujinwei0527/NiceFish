@@ -16,7 +16,7 @@ export class CommentListComponent implements OnInit {
   public comment: any = {};
 
   public comments: Array<any>;
-  public rows: number = 5;
+  public rows: number = 10;
   public totalElements: number = 0;
   public currentPage: number = 1;
   public offset: number = 0;
