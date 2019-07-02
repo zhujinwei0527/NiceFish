@@ -82,21 +82,12 @@ webpack-bundle-analyzer 使用方法：
 
 ## 学习资源
 
-历次演讲中的所有 PPT 已经本项目对应的资料都在这里，您可以随意使用，https://gitee.com/mumu-osc/NiceFish/attach_files 。
+- 历次演讲中的所有 PPT 已经本项目对应的资料都在这里，您可以随意使用，https://gitee.com/mumu-osc/NiceFish/attach_files 。
+- Angular开发者论坛在这里：http://www.ngfans.net/ 。
 
-“Angular开发者”论坛在这里：http://www.ngfans.net/ 。
+## 联系我
 
-免费视频教程在这里【有点老但是还能用】：https://www.youtube.com/channel/UC6cY3GTGIk4-ahaIRj7Bk-Q?view_as=subscriber
-
-如果您需要那种详尽的图文教程，用微信扫二维码：
-
-<img src="/src/assets/imgs/qr-code.png"/>
-
-## 线上交流
-
-<img src="/src/assets/imgs/qq-1.jpg" width="250"/>
-
-<img src="/src/assets/imgs/wx-1.jpg" width="250"/>
+<img src="./src/assets/imgs/damoqiongqiu-wechat.jpg" width="250"/>
 
 ## 开源许可证
 
