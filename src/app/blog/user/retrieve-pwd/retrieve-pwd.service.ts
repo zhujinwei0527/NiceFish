@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 
 @Injectable()
 export class RetrievePwdService {
-    public validateEmailURL = "mock-data/forget-pwd-mock.json";
+    public validateEmailURL = "/mock-data/forget-pwd-mock.json";
 
     constructor(public httpClient: HttpClient) {
     }

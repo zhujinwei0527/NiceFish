@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http"
 
 @Injectable()
 export class SignInService {
-  public userLoginURL = "mock-data/user-login-mock.json";
+  public userLoginURL = "/mock-data/user-login-mock.json";
   public subject: Subject<any> = new Subject<any>();
 
   constructor(public httpClient: HttpClient) {

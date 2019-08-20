@@ -4,7 +4,7 @@ import { Observable, Subject } from "rxjs";
 
 @Injectable()
 export class SignUpService {
-    public signUpURL = "mock-data/user-register-mock.json";
+    public signUpURL = "/mock-data/user-register-mock.json";
     public testEmailURL = "";
     public subject: Subject<any> = new Subject<any>();
 

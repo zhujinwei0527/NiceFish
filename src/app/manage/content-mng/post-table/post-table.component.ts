@@ -12,7 +12,7 @@ import { flyIn } from "../../../shared/animations/fly-in";
   ]
 })
 export class PostTableComponent implements OnInit {
-  @Input() dataURL = "mock-data/postlist-mock.json";
+  @Input() dataURL = "/mock-data/postlist-mock.json";
 
   public postList: Array<any>;
 
