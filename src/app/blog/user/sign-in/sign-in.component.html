@@ -11,7 +11,7 @@
                     <div class="col-md-10">
                         <input required name="userName" [(ngModel)]="user.userName" #userName="ngModel" type="text"
                             class="form-control" placeholder="请输入邮箱">
-                        <div *ngIf="form.submitted && !userName.valid" class="text-danger">用户名必须输入！</div>
+                        <div *ngIf="form.submitted && !userName.valid" class="text-danger">用户名必须输入</div>
                     </div>
                 </div>
                 <div class="form-group" [ngClass]="{ 'has-error': form.submitted && !password.valid }">
@@ -19,7 +19,20 @@
                     <div class="col-md-10">
                         <input required minlength="8" [(ngModel)]="user.password" name="password" #password="ngModel"
                             type="password" class="form-control" placeholder="至少8位">
-                        <div *ngIf="form.submitted && !password.valid" class="text-danger">密码必须输入,至少要8位！</div>
+                        <div *ngIf="form.submitted && !password.valid" class="text-danger">密码必须输入,至少要8位</div>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{ 'has-error': form.submitted && !password.valid }">
+                    <label class="col-md-2 control-label">验证码：</label>
+                    <div class="col-md-10">
+                        <input required minlength="1" maxlength="4" [(ngModel)]="user.captcha" name="captcha" 
+                            type="text" class="form-control" placeholder="至少1位，最多4位">
+                        <div *ngIf="form.submitted && !captcha.valid" class="text-danger">至少1位，最多4位</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <img src={{capchaURL}} (click)="refreshCaptcha()"/>
                     </div>
                 </div>
                 <div *ngIf="error" class="col-md-offset-2 col-md-10 alert alert-danger">{{error}}</div>
