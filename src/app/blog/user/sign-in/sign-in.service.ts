@@ -4,7 +4,8 @@ import { HttpClient } from "@angular/common/http"
 
 @Injectable()
 export class SignInService {
-  public userLoginURL = "/mock-data/user-login-mock.json";
+  // public userLoginURL = "/mock-data/user-login-mock.json";
+  public userLoginURL = "/auth/shiro/login";
   public subject: Subject<any> = new Subject<any>();
 
   constructor(public httpClient: HttpClient) {
@@ -14,13 +15,19 @@ export class SignInService {
     return this.subject.asObservable();
   }
 
-  public login() {
+  public login(user:any) {
+    //TODO:passowrd用MD5加密之后传输
     return this.httpClient
-      .get(this.userLoginURL)
+      .post(this.userLoginURL,{
+        userName:user.userName,
+        password:user.password,
+        validateCode : user.captcha,
+        rememberMe:user.rememberMe
+      })
       .subscribe(
         data => {
           console.log("login success>" + data);
-          let user = data;
+          user = data;
           console.log("user object>" + user);
           localStorage.setItem("currentUser", JSON.stringify(user));
           this.subject.next(Object.assign({}, user));

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterState, RouterStateSnapshot } from "@angular/router";
 import { SignInService } from "./sign-in.service";
+import {ApiEndpoints} from "../../../ApiEndpoints";
 import { fadeIn } from "../../../shared/animations/fade-in";
 
 @Component({
@@ -10,11 +11,15 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   animations: [fadeIn]
 })
 export class SignInComponent implements OnInit {
-  private URL_CONST = "http://localhost:80/nicefish/auth/captcha/captchaImage?type=math";
-  public capchaURL = "http://localhost:80/nicefish/auth/captcha/captchaImage?type=math";
-  public user: any = {};
+  public capchaURL = `${ApiEndpoints.API_ENDPOINT}/auth/captcha/captchaImage?type=math`;
   public captcha: any = "";
   public error: Error;
+  public user: any = {
+    userName:"",
+    password:"",
+    captcha:"",
+    rememberMe:true
+  };
 
   constructor(
     public router: Router,
@@ -40,7 +45,7 @@ export class SignInComponent implements OnInit {
 
   public doLogin(): void {
     console.log(this.user);
-    this.signInService.login();
+    this.signInService.login(this.user);
   }
 
   public doLogout(): void {
@@ -53,6 +58,6 @@ export class SignInComponent implements OnInit {
   }
 
   public refreshCaptcha(): void {
-    this.capchaURL = `${this.URL_CONST}&kill_cache=${new Date().getTime()}`;
+    this.capchaURL = `${this.capchaURL}&kill_cache=${new Date().getTime()}`;
   }
 }
