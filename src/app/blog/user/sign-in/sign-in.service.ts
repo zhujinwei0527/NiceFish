@@ -7,7 +7,7 @@ import { MessageService } from "primeng/api";
 export class SignInService {
   // public loginURL = "/mock-data/user-login-mock.json";
   public loginURL = "/auth/shiro/login";
-  public logoutURL="/logout";
+  public logoutURL="/auth/shiro/logout";
   public subject: Subject<any> = new Subject<any>();
 
   constructor(public httpClient: HttpClient,
@@ -48,8 +48,18 @@ export class SignInService {
   }
 
   public logout(): void {
-    window.localStorage.removeItem("currentUser");
-    this.subject.next(Object.assign({}));
-    this.httpClient.get(this.logoutURL);
+    this.httpClient
+    .get(this.logoutURL)
+    .subscribe(
+      (data:any) => {
+        console.log(data);
+        window.localStorage.removeItem("currentUser");
+        this.subject.next(Object.assign({}));
+        this.messageService.add({ severity: "success", summary: "Success Message", detail:"退出成功", life: 1000 });
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 }
