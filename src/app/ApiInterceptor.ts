@@ -14,7 +14,11 @@ export class ApiInterceptor implements HttpInterceptor {
             return next.handle(req);
         }
         const baseUrl = ApiEndpoints.API_ENDPOINT;
-        const apiReq = req.clone({ url: `${baseUrl}${req.url}` });
+        //NOTE: 这里必须设置withCredentials为true，否则跨域请求不能保持sessionID一致
+        const apiReq = req.clone({
+            withCredentials: true,
+            url: `${baseUrl}${req.url}`
+        });
         return next.handle(apiReq);
     }
 }

@@ -1,14 +1,17 @@
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { HttpClient,HttpHeaders } from "@angular/common/http"
+import { MessageService } from "primeng/api";
 
 @Injectable()
 export class SignInService {
-  // public userLoginURL = "/mock-data/user-login-mock.json";
-  public userLoginURL = "/auth/shiro/login";
+  // public loginURL = "/mock-data/user-login-mock.json";
+  public loginURL = "/auth/shiro/login";
+  public logoutURL="/logout";
   public subject: Subject<any> = new Subject<any>();
 
-  constructor(public httpClient: HttpClient) {
+  constructor(public httpClient: HttpClient,
+    private messageService: MessageService) {
   }
 
   public get currentUser(): Observable<any> {
@@ -19,8 +22,8 @@ export class SignInService {
     //TODO:passowrd用MD5加密之后传输，服务端需要做一些对应的处理
     return this.httpClient
       .post(
-        this.userLoginURL,
-        `userName=${user.userName}&password=${user.password}&validateCode=${user.validateCode}&rememberMe=${user.rememberMe}`,
+        this.loginURL,
+        `userName=${user.userName}&password=${user.password}&validateCode=${user.captcha}&rememberMe=${user.rememberMe}`,
         {
           headers: new HttpHeaders({
             "Content-Type": "application/x-www-form-urlencoded",
@@ -29,13 +32,13 @@ export class SignInService {
       )
       .subscribe(
         (data:any) => {
-          if(data&&data.success) {
+          if(data.success) {
             console.log("login success>");
             console.log("user object>" + user);
-            localStorage.setItem("currentUser", JSON.stringify(user));
+            window.localStorage.setItem("currentUser", JSON.stringify(user));
             this.subject.next(Object.assign({}, user));
           } else {
-            alert("登录失败");
+            this.messageService.add({ severity: "error", summary: "Fail Message", detail: data.msg, life: 3000 });
           }
         },
         error => {
@@ -45,7 +48,8 @@ export class SignInService {
   }
 
   public logout(): void {
-    localStorage.removeItem("currentUser");
+    window.localStorage.removeItem("currentUser");
     this.subject.next(Object.assign({}));
+    this.httpClient.get(this.logoutURL);
   }
 }
