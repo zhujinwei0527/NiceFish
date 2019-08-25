@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
 
 @Injectable()
@@ -15,20 +15,24 @@ export class SignUpService {
         return this.subject.asObservable();
     }
 
-    public register() {
-        return this.httpClient
-            .get(this.signUpURL)
-            .subscribe(
-                data => {
-                    console.log("用户信息>" + data);
-                    let user = data;
-                    localStorage.setItem("currentUser", JSON.stringify(user));
-                    this.subject.next(user);
-                },
-                error => {
-                    console.error(error);
-                }
-            );
+    public signup(user) {
+        console.log(user);
+        //TODO:user.password用MD5加密后传输
+        return this.httpClient.post(
+            "/auth/user/register",
+            {
+                userName:user.email,
+                nickName:user.nickName,
+                password:user.password,
+                email:user.email,
+                captcha:user.captcha
+            },
+            {
+                headers: new HttpHeaders({
+                    "Content-Type": "application/json"
+                })
+            }
+        );
     }
 
     public testEmail(): Observable<any> {
