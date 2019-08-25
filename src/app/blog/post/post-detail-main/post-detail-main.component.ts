@@ -15,7 +15,7 @@ import { Subscription } from "rxjs/Subscription";
 export class PostDetailMainComponent implements OnInit {
   private subscription: Subscription;
   public postId: string;
-  public currentUser: any;
+  // public currentUser: any;
 
   constructor(
     public router: Router,
@@ -29,18 +29,6 @@ export class PostDetailMainComponent implements OnInit {
       console.log("post-detail>" + params);
       this.postId = params.postId;
     });
-
-    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-    this.subscription = this.signInService.currentUser
-      .subscribe(
-        (data) => {
-          this.currentUser = data;
-        },
-        error => {
-          console.error(error);
-        }
-      );
   }
 
   ngOnDestroy() {

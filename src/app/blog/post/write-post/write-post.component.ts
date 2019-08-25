@@ -68,8 +68,6 @@ export class WritePostComponent {
   }
 
   doEditPost() {
-    let currentUser = JSON.parse(window.localStorage.getItem("currentUser"));
-    this.post.userId = currentUser.id;
     this.postService.editPost(this.post).subscribe(
       (res) => {
         this.messageService.add({

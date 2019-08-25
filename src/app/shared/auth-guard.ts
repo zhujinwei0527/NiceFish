@@ -5,11 +5,10 @@ import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from
 export class AuthGuard implements CanActivate {
 	constructor(
 		private router: Router) {
-
 	}
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-		if (localStorage.getItem("currentUser")) {
+		if(window.localStorage.getItem("currentUser")){
 			return true;
 		}
 		this.router.navigateByUrl("login");

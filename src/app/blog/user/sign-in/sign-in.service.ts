@@ -8,6 +8,7 @@ export class SignInService {
   // public loginURL = "/mock-data/user-login-mock.json";
   public loginURL = "/auth/shiro/login";
   public logoutURL="/auth/shiro/logout";
+  public getSessionUserURL="/auth/user/getSessionUser";
   public subject: Subject<any> = new Subject<any>();
 
   constructor(public httpClient: HttpClient,
@@ -31,14 +32,17 @@ export class SignInService {
         }
       )
       .subscribe(
-        (data:any) => {
-          if(data.success) {
+        (userEntity:any)=> {
+          console.log(userEntity);
+          if(userEntity&&userEntity.userId) {
             console.log("login success>");
-            console.log("user object>" + user);
-            window.localStorage.setItem("currentUser", JSON.stringify(user));
-            this.subject.next(Object.assign({}, user));
+            console.log("user object>" + userEntity);
+            this.subject.next(userEntity);
+            window.localStorage.setItem("currentUser", JSON.stringify(userEntity));
           } else {
-            this.messageService.add({ severity: "error", summary: "Fail Message", detail: data.msg, life: 3000 });
+            this.subject.next(Object.assign({}));
+            window.localStorage.removeItem("currentUser");
+            this.messageService.add({ severity: "error", summary: "Fail Message", detail:userEntity, life: 3000 });
           }
         },
         error => {
@@ -53,11 +57,31 @@ export class SignInService {
     .subscribe(
       (data:any) => {
         console.log(data);
-        window.localStorage.removeItem("currentUser");
         this.subject.next(Object.assign({}));
+        window.localStorage.removeItem("currentUser");
         this.messageService.add({ severity: "success", summary: "Success Message", detail:"退出成功", life: 1000 });
       },
       error => {
+        console.error(error);
+      }
+    );
+  }
+
+  public getSessionUser():void {
+    this.httpClient
+    .get(this.getSessionUserURL)
+    .subscribe(
+      (userEntity:any)=> {
+        console.log(userEntity);
+        if(userEntity&&userEntity.userId){
+          this.subject.next(userEntity);
+          window.localStorage.setItem("currentUser", JSON.stringify(userEntity));
+        } else {
+          this.subject.next(Object.assign({}));
+          window.localStorage.removeItem("currentUser");
+        }
+      },
+      error=> {
         console.error(error);
       }
     );

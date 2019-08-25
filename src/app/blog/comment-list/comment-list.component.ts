@@ -13,7 +13,7 @@ import { merge } from "rxjs"
 })
 export class CommentListComponent implements OnInit {
   public capchaURL = `${ApiEndpoints.API_ENDPOINT}/auth/captcha/captchaImage?type=math`;
-  public currentUser: any;
+  // public currentUser: any;
   public postId: string;
   public comment: any = {};
 
@@ -37,16 +37,6 @@ export class CommentListComponent implements OnInit {
       this.postId = params.postId;
       this.getCommentList();
     });
-
-    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-    merge(this.signInService.currentUser, this.signUpService.currentUser)
-      .subscribe(
-        (data) => {
-          this.currentUser = data;
-        },
-        error => console.error(error)
-      );
   }
 
   public getCommentList() {
