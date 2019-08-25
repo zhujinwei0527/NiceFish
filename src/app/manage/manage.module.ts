@@ -17,7 +17,7 @@ import { EChartOptionDirective } from "./chart/echart-option.directive";
 
 import { PostTableService } from "./content-mng/post-table/post-table.service";
 import { AuthGuard } from "../shared/auth-guard";
-
+import { NgxEchartsModule } from "ngx-echarts";
 import { ManageRoutingModule } from "./manage.routing.module";
 
 @NgModule({
@@ -37,6 +37,7 @@ import { ManageRoutingModule } from "./manage.routing.module";
     SharedModule,
     PostSharedModule,
     PaginatorModule,
+    NgxEchartsModule,
     ManageRoutingModule
   ],
   exports: [
