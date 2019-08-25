@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-
+import { ActivatedRoute, Router } from "@angular/router";
+import { SignInService } from "../user/sign-in/sign-in.service";
+import { SignUpService } from "../user/sign-up/sign-up.service";
 import { CommentListService } from "./comment-list.service";
+import { merge } from "rxjs"
 
 @Component({
   selector: "comment-list",
@@ -9,27 +11,73 @@ import { CommentListService } from "./comment-list.service";
   styleUrls: ["./comment-list.component.scss"]
 })
 export class CommentListComponent implements OnInit {
+  public currentUser: any;
+  public postId: string;
+  public comment: any = {};
+
   public comments: Array<any>;
+  public rows = 10;
+  public totalElements = 0;
+  public currentPage = 1;
+  public offset = 0;
+  public end = 0;
 
   constructor(
-    public commentService: CommentListService,
-    public activeRoute: ActivatedRoute) {
-
+    public commentListService: CommentListService,
+    public signInService: SignInService,
+    public signUpService: SignUpService,
+    public router: Router,
+    public activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.activeRoute.params.subscribe(
-      params => this.getCommentList(params["postId"])
-    );
-  }
+    this.activatedRoute.params.subscribe(params => {
+      this.postId = params.postId;
+      this.getCommentList();
+    });
 
-  public getCommentList(postId: number) {
-    this.commentService.getCommentList(postId)
+    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    merge(this.signInService.currentUser, this.signUpService.currentUser)
       .subscribe(
-        data => {
-          this.comments = data["items"]
+        (data) => {
+          this.currentUser = data;
         },
         error => console.error(error)
       );
+  }
+
+  public getCommentList() {
+    this.offset = (this.currentPage - 1) * this.rows;
+    this.end = (this.currentPage) * this.rows;
+    this.commentListService.getCommentList(this.postId, this.currentPage)
+      .subscribe(
+        (res) => {
+          console.log(res);
+          this.comments = res.content;
+          this.totalElements = res.totalElements;
+        },
+        error => console.error(error)
+      );
+  }
+
+  public doWriteComment() {
+    this.comment.userId = this.currentUser.id;
+    this.comment.postId = this.postId;
+    this.commentListService.writeComment(this.comment).subscribe(
+      (res) => {
+        this.comment= {};
+        this.currentPage = 1;
+        this.getCommentList();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  public pageChanged(event: any): void {
+    this.currentPage = parseInt(event.page) + 1;
+    this.getCommentList();
   }
 }

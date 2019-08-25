@@ -4,6 +4,6 @@
  */
 export class ApiEndpoints {
     //NOTE:多个地方都会引用这个配置，慎改
-    public static API_ENDPOINT = "http://127.0.0.1:80/nicefish";
+    public static API_ENDPOINT = "http://localhost:80/nicefish";
 }
 

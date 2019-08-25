@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 import { PostDetailMainComponent } from "./post-detail-main/post-detail-main.component";
 import { PostListComponent } from "./post-list/post-list.component";
 
@@ -14,7 +14,7 @@ export const postRoutes:Routes = [
 		component: PostListComponent
 	},
 	{
-		path: "post-detail/:id",
+		path: "post-detail/:postId",
 		component: PostDetailMainComponent
 	},
 	{
