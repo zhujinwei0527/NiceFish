@@ -13,7 +13,6 @@ import { CommentListComponent } from "../comment-list/comment-list.component";
 
 import { CommentListService } from "../comment-list/comment-list.service";
 import { BooleanPipe } from "../../shared/pipes/boolean-pipe";
-
 import { PostRoutingModule } from "./post.routing.module";
 
 @NgModule({

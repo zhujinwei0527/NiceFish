@@ -19,6 +19,7 @@ import { RetrievePwdService } from "./blog/user/retrieve-pwd/retrieve-pwd.servic
 import { EqualValidator } from "./blog/user/sign-up/equal-validator.directive";
 import { AppRoutingModule } from "./app.routing.module";
 import { ApiInterceptor } from "./ApiInterceptor";
+import { AuthGuard } from "./shared/auth-guard";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SignUpService,
     RetrievePwdService,
     MessageService,
+    AuthGuard,
     [
       { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }
     ]

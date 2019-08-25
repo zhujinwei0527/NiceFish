@@ -1,13 +1,15 @@
 import { Component } from "@angular/core";
-import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { ActivatedRoute, Router } from "@angular/router";
-import { flyIn } from "../../../shared/animations/fly-in";
+import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { PostService } from "../post.service";
+import { MessageService } from "primeng/api";
+import { fadeIn } from "../../../shared/animations/fade-in";
 
 @Component({
   selector: "write-post",
   templateUrl: "./write-post.component.html",
   styleUrls: ["./write-post.component.scss"],
-  animations: [flyIn]
+  animations: [fadeIn]
 })
 
 /**
@@ -16,16 +18,32 @@ import { flyIn } from "../../../shared/animations/fly-in";
  */
 export class WritePostComponent {
   //绑定到编辑器的数据模型，里面可以带HTML标签
-  public content = "";
+  public post: any = {
+    title: "",
+    content: ""
+  };
   public Editor = ClassicEditor;
+  private isEdit = false;
 
   constructor(
     public router: Router,
-    public activeRoute: ActivatedRoute) {
+    public activeRoute: ActivatedRoute,
+    public postService: PostService,
+    private messageService: MessageService) {
   }
 
   ngOnInit() {
-
+    console.log(this.router.url);
+    if (this.router.url.indexOf("edit") != -1) {
+      this.isEdit = true;
+    } else {
+      this.isEdit = false;
+    }
+    if(this.isEdit) {
+      this.activeRoute.params.subscribe(
+        params => this.getPostDetail(params["postId"])
+      );
+    }
   }
 
   public onReady( editor ) {
@@ -35,7 +53,53 @@ export class WritePostComponent {
       );
   }
 
-  public doAddPost() {
-    console.log(this.content);
+  public getPostDetail(id: string) {
+    this.postService
+      .getPostDetail(id)
+      .subscribe(
+        (data) => {
+          this.post = data;
+        },
+        error => console.error(error)
+      );
+  }
+
+  doEditPost() {
+    let currentUser = JSON.parse(window.localStorage.getItem("currentUser"));
+    this.post.userId = currentUser.id;
+    this.postService.editPost(this.post).subscribe(
+      (res) => {
+        this.messageService.add({
+          severity: "success",
+          summary: "Success Message",
+          detail: "编辑成功",
+          sticky: true,
+          life: 1000
+        });
+        this.router.navigateByUrl("/home");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  doWritePost() {
+    this.postService.writePost(this.post).subscribe(
+      (res) => {
+        this.router.navigateByUrl("/home");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  doCommit() {
+    if (this.isEdit) {
+      this.doEditPost();
+    } else {
+      this.doWritePost();
+    }
   }
 }

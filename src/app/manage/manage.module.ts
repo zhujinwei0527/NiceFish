@@ -13,10 +13,8 @@ import { PermissionTableComponent } from "./permission/permission-table/permissi
 import { PermissionEditComponent } from "./permission/permission-edit/permission-edit.component";
 import { SysParamComponent } from "./sys-param/sys-param.component";
 import { ChartComponent } from "./chart/chart.component";
-import { EChartOptionDirective } from "./chart/echart-option.directive";
 
 import { PostTableService } from "./content-mng/post-table/post-table.service";
-import { AuthGuard } from "../shared/auth-guard";
 import { NgxEchartsModule } from "ngx-echarts";
 import { ManageRoutingModule } from "./manage.routing.module";
 
@@ -26,7 +24,6 @@ import { ManageRoutingModule } from "./manage.routing.module";
     UserTableComponent,
     SysParamComponent,
     ChartComponent,
-    EChartOptionDirective,
     RoleTableComponent,
     PermissionTableComponent,
     RoleEditComponent,
@@ -44,8 +41,7 @@ import { ManageRoutingModule } from "./manage.routing.module";
     ManageMainComponent
   ],
   providers: [
-    PostTableService,
-    AuthGuard
+    PostTableService
   ]
 })
 export class ManageModule { }

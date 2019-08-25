@@ -2,8 +2,9 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { PostDetailMainComponent } from "./post-detail-main/post-detail-main.component";
 import { PostListComponent } from "./post-list/post-list.component";
+import { AuthGuard } from "../../shared/auth-guard";
 
-export const postRoutes:Routes = [
+export const routes:Routes = [
 	{
 		path: "",
 		redirectTo: "page/1",
@@ -19,12 +20,13 @@ export const postRoutes:Routes = [
 	},
 	{
 		path: "write",
+		canActivate: [AuthGuard],
 		loadChildren: () => import("./write-post/write-post.module").then(m => m.WritePostModule)
 	},
 ];
 
 @NgModule({
-	imports: [RouterModule.forChild(postRoutes)],
+	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule]
 })
 export class PostRoutingModule { }
