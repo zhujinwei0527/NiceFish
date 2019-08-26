@@ -36,7 +36,7 @@
                                 {{rowData.time}}
                             </td>
                             <td style="text-align:center">
-                                <button pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="delPost(rowData, ri)"></button>
+                                <a href="javascript:void(0);" (click)="delPost(rowData, ri)"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                     </ng-template>

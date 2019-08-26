@@ -36,7 +36,7 @@
                                 {{rowData.nickName}}
                             </td>
                             <td style="text-align:center">
-                                <button pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="delComment(rowData, ri)"></button>
+                                <a href="javascript:void(0);" (click)="delComment(rowData, ri)"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                     </ng-template>
