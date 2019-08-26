@@ -32,7 +32,8 @@ export class SignUpComponent implements OnInit {
     },
     "nickName": {
       "required": "昵称必须输入。",
-      "pattern": "请输入正确的昵称。"
+      "pattern": "请输入正确的昵称。",
+      "minlength": "至少2个字符"
     },
     "password": {
       "required": "密码必须输入。",
@@ -73,7 +74,7 @@ export class SignUpComponent implements OnInit {
         this.userInfo.nickName,
         [
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(2),
         ]
       ],
       "password": [
