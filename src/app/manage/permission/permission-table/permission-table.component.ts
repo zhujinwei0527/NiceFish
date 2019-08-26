@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { flyIn } from "../../../shared/animations/fly-in";
+import { fadeIn } from "../../../shared/animations/fade-in";
 
 @Component({
   selector: "permission-table",
   templateUrl: "./permission-table.component.html",
   styleUrls: ["./permission-table.component.scss"],
   animations: [
-    flyIn
+    fadeIn
   ]
 })
 export class PermissionTableComponent implements OnInit {

@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from "@angular/router";
-import { flyIn } from "../../../shared/animations/fly-in";
+import { fadeIn } from "../../../shared/animations/fade-in";
 
 @Component({
   selector: "comment-table",
   templateUrl: "./comment-table.component.html",
   styleUrls: ["./comment-table.component.scss"],
   animations: [
-    flyIn
+    fadeIn
   ]
 })
 export class CommentTableComponent implements OnInit {
