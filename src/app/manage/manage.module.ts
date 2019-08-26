@@ -14,7 +14,7 @@ import { PermissionEditComponent } from "./permission/permission-edit/permission
 import { SysParamComponent } from "./sys-param/sys-param.component";
 import { ChartComponent } from "./chart/chart.component";
 
-import { PostTableService } from "./content-mng/post-table/post-table.service";
+import { PostTableService } from "./post-mng/post-table/post-table.service";
 import { NgxEchartsModule } from "ngx-echarts";
 import { ManageRoutingModule } from "./manage.routing.module";
 

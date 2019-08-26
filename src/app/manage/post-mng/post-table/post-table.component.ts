@@ -12,7 +12,9 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   ]
 })
 export class PostTableComponent implements OnInit {
-  @Input() dataURL = "/mock-data/postlist-mock.json";
+  @Input() postListURL = "/blog/post/manage/post-table/";
+  @Input() editURL="";
+  @Input() delURL="";
 
   public postList: Array<any>;
 
@@ -32,10 +34,10 @@ export class PostTableComponent implements OnInit {
 
   public getPostsByPage(page: Number) {
     console.log("页码>" + page);
-    return this.postTableService.getPostTable(this.dataURL).subscribe(
-      res => {
-        console.log(res);
-        this.postList = res.items;
+    return this.postTableService.getPostTable(this.postListURL+page).subscribe(
+      data => {
+        console.log(data);
+        this.postList=data.content;
       },
       error => { console.log(error) },
       () => { }

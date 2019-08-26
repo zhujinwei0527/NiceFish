@@ -4,20 +4,17 @@ import { Observable } from "rxjs";
 
 @Injectable()
 export class PostTableService {
-    public delURL = "";
-    public toEditURL = "";
-
     constructor(public httpClient: HttpClient) { }
 
     public getPostTable(dataURL: string): Observable<any> {
         return this.httpClient.get(dataURL);
     }
 
-    public del(): Observable<any> {
-        return this.httpClient.delete(this.delURL);
+    public del(delURL:string): Observable<any> {
+        return this.httpClient.delete(delURL);
     }
 
-    public toEdit(): Observable<any> {
-        return this.httpClient.get(this.toEditURL);
+    public toEdit(editURL:string): Observable<any> {
+        return this.httpClient.get(editURL);
     }
 }
