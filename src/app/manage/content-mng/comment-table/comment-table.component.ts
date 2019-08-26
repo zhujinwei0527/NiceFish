@@ -13,7 +13,7 @@ import { CommentTableService } from "./comment-table.service";
 })
 export class CommentTableComponent implements OnInit {
   @Input() commentListURL = "/blog/comment/manage/comment-table/";
-  @Input() editURL="";
+  @Input() editURL="/blog/comment/manage/delete/";
   @Input() delURL="";
 
   public commentList: Array<any> = [];
@@ -49,15 +49,12 @@ export class CommentTableComponent implements OnInit {
     this.router.navigateByUrl(s[0] + "/commenttable/page/" + event.page);
   }
 
-  public delComment(commentId: Number): void {
-    console.log(commentId);
-  }
-
-  public onRowSelect(event): void {
-
-  }
-
-  public onRowUnselect(event): void {
-
+  public delComment(rowData,ri): void {
+    this.commentTableService.delComment(this.delURL+rowData.id)
+    .subscribe(res=> {
+      console.log(res);
+    },error=> {
+      console.log(error);
+    });
   }
 }
