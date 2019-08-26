@@ -14,7 +14,8 @@ import { PermissionEditComponent } from "./permission/permission-edit/permission
 import { SysParamComponent } from "./sys-param/sys-param.component";
 import { ChartComponent } from "./chart/chart.component";
 
-import { PostTableService } from "./post-mng/post-table/post-table.service";
+import { PostTableService } from "./content-mng/post-table/post-table.service";
+import { CommentTableService } from "./content-mng/comment-table/comment-table.service";
 import { NgxEchartsModule } from "ngx-echarts";
 import { ManageRoutingModule } from "./manage.routing.module";
 
@@ -41,7 +42,8 @@ import { ManageRoutingModule } from "./manage.routing.module";
     ManageMainComponent
   ],
   providers: [
-    PostTableService
+    PostTableService,
+    CommentTableService
   ]
 })
 export class ManageModule { }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from "@angular/router";
 import { fadeIn } from "../../../shared/animations/fade-in";
+import { CommentTableService } from "./comment-table.service";
 
 @Component({
   selector: "comment-table",
@@ -11,13 +12,15 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   ]
 })
 export class CommentTableComponent implements OnInit {
+  @Input() commentListURL = "/blog/comment/manage/comment-table/";
+  @Input() editURL="";
+  @Input() delURL="";
 
-  public commentList: Array<any> = [
-    { id: "1", content: "这是一条不合法的评论", userName: "damoqiongqiu", time: "2017-07-15 16:22:58" }
-  ];
+  public commentList: Array<any> = [];
 
   constructor(public router: Router,
-    public activeRoute: ActivatedRoute) {
+    public activeRoute: ActivatedRoute,
+    private commentTableService:CommentTableService) {
 
   }
 
@@ -27,8 +30,16 @@ export class CommentTableComponent implements OnInit {
     );
   }
 
-  public getCommentsByPage(page: Number): void {
-    console.log("页码>" + page);
+  public getCommentsByPage(page: Number) {
+    this.commentTableService
+    .getCommentTable(this.commentListURL+page)
+    .subscribe(
+      data => {
+        console.log(data);
+        this.commentList=data.content;
+      },
+      error => { console.log(error) }
+    );
   }
 
   public pageChanged(event: any): void {

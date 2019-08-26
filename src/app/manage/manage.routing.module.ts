@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ManageMainComponent } from "./manage-main/manage-main.component";
-import { PostTableComponent } from "./post-mng/post-table/post-table.component";
+import { PostTableComponent } from "./content-mng/post-table/post-table.component";
 import { CommentTableComponent } from "./content-mng/comment-table/comment-table.component";
 import { UserProfileComponent } from "../blog/user/user-profile/user-profile.component";
 import { SysParamComponent } from "./sys-param/sys-param.component";

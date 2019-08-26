@@ -33,14 +33,12 @@ export class PostTableComponent implements OnInit {
   }
 
   public getPostsByPage(page: Number) {
-    console.log("页码>" + page);
     return this.postTableService.getPostTable(this.postListURL+page).subscribe(
       data => {
         console.log(data);
         this.postList=data.content;
       },
-      error => { console.log(error) },
-      () => { }
+      error => { console.log(error) }
     );
   }
 
