@@ -13,10 +13,10 @@ import { CommentTableService } from "./comment-table.service";
 })
 export class CommentTableComponent implements OnInit {
   @Input() commentListURL = "/blog/comment/manage/comment-table/";
-  @Input() editURL="/blog/comment/manage/delete/";
   @Input() delURL="";
 
   public commentList: Array<any> = [];
+  public totalRecords=0;
 
   constructor(public router: Router,
     public activeRoute: ActivatedRoute,
@@ -37,16 +37,15 @@ export class CommentTableComponent implements OnInit {
       data => {
         console.log(data);
         this.commentList=data.content;
+        this.totalRecords=data.totalElements;
       },
       error => { console.log(error) }
     );
   }
 
   public pageChanged(event: any): void {
-    let urlTree: UrlTree = this.router.parseUrl(this.router.url);
-    const g: UrlSegmentGroup = urlTree.root.children[PRIMARY_OUTLET];
-    const s: UrlSegment[] = g.segments;
-    this.router.navigateByUrl(s[0] + "/commenttable/page/" + event.page);
+    let currentPage=(event.first/event.rows)+1;
+    this.router.navigateByUrl("/manage/comment-table/page/"+ currentPage);
   }
 
   public delComment(rowData,ri): void {

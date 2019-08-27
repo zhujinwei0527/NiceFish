@@ -17,6 +17,7 @@ export class PostTableComponent implements OnInit {
   @Input() delURL="";
 
   public postList: Array<any>;
+  public totalRecords=0;
 
   constructor(
     public router: Router,
@@ -37,16 +38,15 @@ export class PostTableComponent implements OnInit {
       data => {
         console.log(data);
         this.postList=data.content;
+        this.totalRecords=data.totalElements;
       },
       error => { console.log(error) }
     );
   }
 
   public pageChanged(event: any): void {
-    let urlTree: UrlTree = this.router.parseUrl(this.router.url);
-    const g: UrlSegmentGroup = urlTree.root.children[PRIMARY_OUTLET];
-    const s: UrlSegment[] = g.segments;
-    this.router.navigateByUrl(s[0] + "/posttable/page/" + event.page);
+    let currentPage=(event.first/event.rows)+1;
+    this.router.navigateByUrl("/manage/post-table/page/" + currentPage);
   }
 
   public goToWrite(): void {
