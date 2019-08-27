@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { RoleTableService } from "./role-table.service";
+import { RoleTableService } from "../role-table.service";
 import { MessageService } from "primeng/api";
 import { fadeIn } from "../../../shared/animations/fade-in";
 
@@ -98,5 +98,14 @@ export class RoleTableComponent implements OnInit {
         life: 1000
       });
     });
+  }
+
+  public newRole() {
+    this.router.navigateByUrl("/manage/role-table/new-role");
+  }
+
+  public editRole(rowData, ri) {
+    let roleId=rowData.roleId;
+    this.router.navigateByUrl("/manage/role-table/edit-role/"+roleId);
   }
 }

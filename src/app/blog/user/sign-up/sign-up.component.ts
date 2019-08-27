@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MessageService } from "primeng/api";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { SignUpService } from "./sign-up.service";
 import { ApiEndpoints } from "../../../ApiEndpoints";
 import { fadeIn } from "../../../shared/animations/fade-in";
@@ -56,8 +56,8 @@ export class SignUpComponent implements OnInit {
 
   constructor(public fb: FormBuilder,
     public signUpService: SignUpService,
-    public router: Router,
     public route: ActivatedRoute,
+    public router: Router,
     private messageService: MessageService) {
   }
 

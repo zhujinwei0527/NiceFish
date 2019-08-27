@@ -2,11 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: "user-edit",
-  templateUrl: "./user-edit.component.html",
-  styleUrls: ["./user-edit.component.scss"]
+  selector: "new-role",
+  templateUrl: "./new-role.component.html",
+  styleUrls: ["./new-role.component.scss"]
 })
-export class UserEditComponent implements OnInit {
+export class NewRoleComponent implements OnInit {
   constructor(
     public router: Router,
     public activeRoute: ActivatedRoute
@@ -16,6 +16,7 @@ export class UserEditComponent implements OnInit {
   }
 
   public onSaveSuccess() {
-    this.router.navigateByUrl("/manage/user-table/page/1");
+    this.router.navigateByUrl("/manage/role-table/page/1");
   }
+
 }
