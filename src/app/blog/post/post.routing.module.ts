@@ -23,6 +23,11 @@ export const routes:Routes = [
 		canActivate: [AuthGuard],
 		loadChildren: () => import("./write-post/write-post.module").then(m => m.WritePostModule)
 	},
+	{
+		path: "edit-post/:postId",
+		canActivate: [AuthGuard],
+		loadChildren: () => import("./write-post/write-post.module").then(m => m.WritePostModule)
+	}
 ];
 
 @NgModule({
