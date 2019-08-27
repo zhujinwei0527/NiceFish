@@ -47,6 +47,8 @@ export class SignInService {
         },
         error => {
           console.error(error);
+          this.subject.next(Object.assign({}));
+          window.localStorage.removeItem("currentUser");
         }
       );
   }

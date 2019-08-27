@@ -24,8 +24,8 @@
     <div class="row">
         <div class="col-md-12">
             <div *ngFor="let comment of comments" class="comment-item-container">
+                <p>{{comment.nickName}} {{comment.time}}</p>
                 <h5>{{comment.content}}</h5>
-                <p>{{comment.nickName}} {{comment.date}}</p>
             </div>
             <p-paginator rows="{{rows}}" totalRecords="{{totalElements}}" first="{{offset}}" pageLinkSize="3"
                 (onPageChange)="pageChanged($event)">
