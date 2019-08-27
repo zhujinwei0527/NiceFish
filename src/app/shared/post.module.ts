@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 
-import { TableModule } from "primeng/table";
 import { CalendarModule } from "primeng/components/calendar/calendar";
 
 import { SharedModule } from "./shared.module";
@@ -11,7 +10,6 @@ import { PostTableComponent } from "../manage/content-mng/post-table/post-table.
 @NgModule({
   imports: [
     SharedModule,
-    TableModule,
     CalendarModule
   ],
   declarations: [

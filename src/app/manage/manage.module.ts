@@ -14,9 +14,12 @@ import { PermissionEditComponent } from "./permission/permission-edit/permission
 import { SysParamComponent } from "./sys-param/sys-param.component";
 import { ChartComponent } from "./chart/chart.component";
 
-import { PostTableService } from "./content-mng/post-table/post-table.service";
 import { CommentTableService } from "./content-mng/comment-table/comment-table.service";
 import { NgxEchartsModule } from "ngx-echarts";
+import { PostTableService } from "./content-mng/post-table/post-table.service";
+import { UserTableService } from "./permission/user-table/user-table.service";
+import { RoleTableService } from "./permission/role-table/role-table.service";
+import { PermissionTableService } from "./permission/permission-table/permission-table.service";
 import { ManageRoutingModule } from "./manage.routing.module";
 
 @NgModule({
@@ -43,7 +46,10 @@ import { ManageRoutingModule } from "./manage.routing.module";
   ],
   providers: [
     PostTableService,
-    CommentTableService
+    CommentTableService,
+    UserTableService,
+    RoleTableService,
+    PermissionTableService
   ]
 })
 export class ManageModule { }

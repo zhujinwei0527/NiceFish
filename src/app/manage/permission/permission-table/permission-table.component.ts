@@ -1,4 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { PermissionTableService } from "./permission-table.service";
+import { MessageService } from "primeng/api";
 import { fadeIn } from "../../../shared/animations/fade-in";
 
 @Component({
@@ -11,9 +14,74 @@ import { fadeIn } from "../../../shared/animations/fade-in";
 })
 export class PermissionTableComponent implements OnInit {
 
-  constructor() { }
+  @Input() permissionListURL = "/auth/permission/list2/";
+  @Input() delURL="/auth/permission/delete2/";
 
-  ngOnInit() {
+  public permissionList: Array<any>;
+  public totalRecords=0;
+  public currentPage=1;
+
+  constructor(
+    public router: Router,
+    public activeRoute: ActivatedRoute,
+    public permissionTableService: PermissionTableService,
+    public messageService:MessageService
+  ) {
   }
 
+  ngOnInit() {
+    this.activeRoute.params.subscribe(
+      params => {
+        this.currentPage=params["page"];
+        this.getPermissionListByPage();
+      }
+    );
+  }
+
+  public getPermissionListByPage() {
+    return this.permissionTableService.getPermissionTable(this.permissionListURL+this.currentPage).subscribe(
+      data => {
+        this.permissionList=data.content;
+        this.totalRecords=data.totalElements;
+      },
+    );
+  }
+
+  public pageChanged(event: any): void {
+    this.currentPage=(event.first/event.rows)+1;
+    this.router.navigateByUrl("/manage/permission-table/page/" + this.currentPage);
+  }
+
+  public delPermission(rowData,ri): void {
+    let permissionId=rowData.permissionId;
+    this.permissionTableService.del(this.delURL+permissionId)
+    .subscribe(data=> {
+      if(data&&data.success) {
+        this.messageService.add({
+          severity: "success",
+          summary: "Success Message",
+          detail: "删除成功",
+          sticky: false,
+          life: 1000
+        });
+        this.getPermissionListByPage();
+      } else {
+        this.messageService.add({
+          severity: "error",
+          summary: "Fail Message",
+          detail: data.msg||"删除失败",
+          sticky: false,
+          life: 1000
+        });
+      }
+    },error=> {
+      this.messageService.add({
+        severity: "error",
+        summary: "Fail Message",
+        detail: error||"删除失败",
+        sticky: false,
+        life: 1000
+      });
+    });
+  }
 }

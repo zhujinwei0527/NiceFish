@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { ActivatedRoute, Router, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from "@angular/router";
+import { ActivatedRoute, Router} from "@angular/router";
 import { PostTableService } from "./post-table.service";
 import { MessageService } from "primeng/api";
 import { fadeIn } from "../../../shared/animations/fade-in";
