@@ -6,8 +6,8 @@ import { Observable } from "rxjs";
 export class RoleTableService {
     constructor(public httpClient: HttpClient) { }
 
-    public getRoleTable(dataURL: string): Observable<any> {
-        return this.httpClient.get(dataURL);
+    public getRoleTable(dataURL: string,data={}): Observable<any> {
+        return this.httpClient.post(dataURL,data);
     }
 
     public del(delURL:string): Observable<any> {
