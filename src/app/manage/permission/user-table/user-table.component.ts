@@ -43,7 +43,7 @@ export class UserTableComponent implements OnInit {
     this.getUserListByPage();
   }
 
-  public resetSearch(){
+  public resetSearch() {
     this.currentPage=1;
     this.searchStr="";
     this.getUserListByPage();
@@ -102,7 +102,7 @@ export class UserTableComponent implements OnInit {
   }
 
   public newUser(): void {
-    this.router.navigateByUrl("manage/usertable/newuser");
+    this.router.navigateByUrl("/manage/user-table/new-user");
   }
 
   public blockUser(userId: Number): void {

@@ -12,6 +12,7 @@ import { RoleEditComponent } from "./permission/role-edit/role-edit.component";
 import { PermissionTableComponent } from "./permission/permission-table/permission-table.component";
 import { PermissionEditComponent } from "./permission/permission-edit/permission-edit.component";
 import { SysParamComponent } from "./sys-param/sys-param.component";
+import { UserEditComponent } from "./permission/user-edit/user-edit.component";
 import { ChartComponent } from "./chart/chart.component";
 
 import { CommentTableService } from "./content-mng/comment-table/comment-table.service";
@@ -27,6 +28,7 @@ import { ManageRoutingModule } from "./manage.routing.module";
     ManageMainComponent,
     UserTableComponent,
     SysParamComponent,
+    UserEditComponent,
     ChartComponent,
     RoleTableComponent,
     PermissionTableComponent,

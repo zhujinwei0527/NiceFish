@@ -12,6 +12,7 @@ import { RoleEditComponent } from "./permission/role-edit/role-edit.component";
 import { PermissionTableComponent } from "./permission/permission-table/permission-table.component";
 import { PermissionEditComponent } from "./permission/permission-edit/permission-edit.component";
 import { AuthGuard } from "../shared/auth-guard";
+import { UserEditComponent } from './permission/user-edit/user-edit.component';
 
 export const manageRoutes:Routes = [
 	{
@@ -24,6 +25,7 @@ export const manageRoutes:Routes = [
 			{ path: "post-table/page/:page", component: PostTableComponent },
 			{ path: "comment-table/page/:page", component: CommentTableComponent },
 			{ path: "user-table/page/:page", component: UserTableComponent },
+			{ path: "user-table/new-user", component: UserEditComponent },
 			{ path: "user-table/edituser/:userId", component: UserProfileComponent },
 			{ path: "role-table/page/:page", component: RoleTableComponent },
 			{ path: "role-edit/:roleId", component: RoleEditComponent },

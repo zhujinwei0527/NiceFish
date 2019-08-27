@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MessageService } from "primeng/api";
 import { SignUpService } from "./sign-up.service";
-import {ApiEndpoints} from "../../../ApiEndpoints";
+import { ApiEndpoints } from "../../../ApiEndpoints";
 import { fadeIn } from "../../../shared/animations/fade-in";
 
 @Component({
@@ -13,6 +13,10 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   animations: [fadeIn]
 })
 export class SignUpComponent implements OnInit {
+  @Input() panelTitle="用户注册";
+  @Input() btnLabel="注册";
+  @Input() isEdit=true;
+  @Output() saveSuccess = new EventEmitter();
   public capchaURL = `${ApiEndpoints.API_ENDPOINT}/auth/captcha/captchaImage?type=math`;
   public userForm: FormGroup;
   public userInfo: any = {};
@@ -131,8 +135,12 @@ export class SignUpComponent implements OnInit {
         .subscribe(
           (response: any) => {
             if (response && response.success) {
-              this.messageService.add({ severity: "success", summary: "注册成功", detail: "请登录" });
-              this.router.navigateByUrl("login");
+              if(!this.isEdit) {
+                this.messageService.add({ severity: "success", summary: "注册成功", detail: "请登录" });
+                this.router.navigateByUrl("login");
+              } else {
+                this.saveSuccess.emit("saveSuccess");
+              }
             } else {
               this.formErrors.formError = response.msg;
             }
