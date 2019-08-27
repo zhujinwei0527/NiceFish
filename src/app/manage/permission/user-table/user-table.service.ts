@@ -6,8 +6,8 @@ import { Observable } from "rxjs";
 export class UserTableService {
     constructor(public httpClient: HttpClient) { }
 
-    public getUserTable(dataURL: string): Observable<any> {
-        return this.httpClient.get(dataURL);
+    public getUserTable(dataURL: string,data={}): Observable<any> {
+        return this.httpClient.post(dataURL,data);
     }
 
     public del(delURL:string): Observable<any> {

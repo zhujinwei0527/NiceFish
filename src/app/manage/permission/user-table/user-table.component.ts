@@ -16,6 +16,7 @@ export class UserTableComponent implements OnInit {
   @Input() userListURL = "/auth/user/list2/";
   @Input() delURL="/auth/user/delete2/";
 
+  public searchStr="";
   public userList: Array<any>;
   public totalRecords=0;
   public currentPage=1;
@@ -37,8 +38,24 @@ export class UserTableComponent implements OnInit {
     );
   }
 
+  public searchUser() {
+    this.currentPage=1;
+    this.getUserListByPage();
+  }
+
+  public resetSearch(){
+    this.currentPage=1;
+    this.searchStr="";
+    this.getUserListByPage();
+  }
+
   public getUserListByPage() {
-    return this.userTableService.getUserTable(this.userListURL+this.currentPage).subscribe(
+    return this.userTableService.getUserTable(
+      this.userListURL+this.currentPage,
+      {
+        userName:this.searchStr
+      }
+    ).subscribe(
       data => {
         this.userList=data.content;
         this.totalRecords=data.totalElements;
