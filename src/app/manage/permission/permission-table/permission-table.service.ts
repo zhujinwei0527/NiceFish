@@ -6,8 +6,8 @@ import { Observable } from "rxjs";
 export class PermissionTableService {
     constructor(public httpClient: HttpClient) { }
 
-    public getPermissionTable(dataURL: string): Observable<any> {
-        return this.httpClient.get(dataURL);
+    public getPermissionTable(dataURL: string,data={}): Observable<any> {
+        return this.httpClient.post(dataURL,data);
     }
 
     public del(delURL:string): Observable<any> {

@@ -3,10 +3,14 @@
     <div class="row">
       <div class="col-md-10">
         <div class="input-group">
-          <input class="form-control" type="text" placeholder="权限名称，权限代码">
+          <input class="form-control" type="text" placeholder="权限名称">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i>
-              搜索</button>
+              <button class="btn btn-default" type="button" (click)="searchPermission()">
+                  <i class="fa fa-search" aria-hidden="true"></i>搜索
+              </button>
+              <button class="btn btn-default" type="button" (click)="resetSearch()">
+                  <i class="fa fa-search" aria-hidden="true"></i>清除搜索
+              </button>
           </span>
         </div>
       </div>

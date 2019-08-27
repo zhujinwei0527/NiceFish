@@ -16,7 +16,7 @@ export class PermissionTableComponent implements OnInit {
 
   @Input() permissionListURL = "/auth/permission/list2/";
   @Input() delURL="/auth/permission/delete2/";
-
+  public searchStr="";
   public permissionList: Array<any>;
   public totalRecords=0;
   public currentPage=1;
@@ -39,12 +39,28 @@ export class PermissionTableComponent implements OnInit {
   }
 
   public getPermissionListByPage() {
-    return this.permissionTableService.getPermissionTable(this.permissionListURL+this.currentPage).subscribe(
+    return this.permissionTableService.getPermissionTable(
+        this.permissionListURL+this.currentPage,
+        {
+          permissionStr:this.searchStr
+        }
+      ).subscribe(
       data => {
         this.permissionList=data.content;
         this.totalRecords=data.totalElements;
       },
     );
+  }
+
+  public searchPermission() {
+    this.currentPage=1;
+    this.getPermissionListByPage();
+  }
+
+  public resetSearch() {
+    this.currentPage=1;
+    this.searchStr="";
+    this.getPermissionListByPage();
   }
 
   public pageChanged(event: any): void {
