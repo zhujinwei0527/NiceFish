@@ -14,8 +14,8 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   ]
 })
 export class UserTableComponent implements OnInit {
-  @Input() userListURL = "/auth/user/list2/";
-  @Input() delURL="/auth/user/delete2/";
+  private USER_LIST_URL = "/auth/user/list2/";
+  private DEL_URL="/auth/user/delete2/";
 
   public searchStr="";
   public userList: Array<any>;
@@ -53,7 +53,7 @@ export class UserTableComponent implements OnInit {
 
   public getUserListByPage() {
     return this.userTableService.getUserTable(
-      this.userListURL+this.currentPage,
+      this.USER_LIST_URL+this.currentPage,
       {
         userName:this.searchStr
       }
@@ -75,7 +75,7 @@ export class UserTableComponent implements OnInit {
         message: "确定要删除吗？",
         accept: () => {
           let userId=rowData.userId;
-          this.userTableService.del(this.delURL+userId)
+          this.userTableService.del(this.DEL_URL+userId)
           .subscribe(data=> {
             if(data&&data.success) {
               this.messageService.add({

@@ -14,9 +14,8 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   ]
 })
 export class PermissionTableComponent implements OnInit {
-
-  @Input() permissionListURL = "/auth/permission/list2/";
-  @Input() delURL="/auth/permission/delete2/";
+  private PERMISSION_LIST_URL = "/auth/permission/list2/";
+  private DEL_URL="/auth/permission/delete2/";
   public searchStr="";
   public permissionList: Array<any>;
   public totalRecords=0;
@@ -42,7 +41,7 @@ export class PermissionTableComponent implements OnInit {
 
   public getPermissionListByPage() {
     return this.permissionTableService.getPermissionTable(
-        this.permissionListURL+this.currentPage,
+        this.PERMISSION_LIST_URL+this.currentPage,
         {
           permissionStr:this.searchStr
         }
@@ -75,7 +74,7 @@ export class PermissionTableComponent implements OnInit {
         message: "确定要删除吗？",
         accept: () => {
           let permissionId=rowData.permissionId;
-          this.permissionTableService.del(this.delURL+permissionId)
+          this.permissionTableService.del(this.DEL_URL+permissionId)
           .subscribe(data=> {
             if(data&&data.success) {
               this.messageService.add({

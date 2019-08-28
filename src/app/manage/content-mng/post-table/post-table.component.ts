@@ -14,12 +14,12 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   ]
 })
 export class PostTableComponent implements OnInit {
-  @Input() postListURL = "/blog/post/manage/post-table/";
-  @Input() delURL="/blog/post/manage/del-post/";
-
+  private POST_LIST_URL = "/blog/post/manage/post-table/";
+  private DEL_URL="/blog/post/manage/del-post/";
   public postList: Array<any>;
   public totalRecords=0;
   public currentPage=1;
+  public searchStr="";
 
   constructor(
     public router: Router,
@@ -34,13 +34,13 @@ export class PostTableComponent implements OnInit {
     this.activeRoute.params.subscribe(
       params => {
         this.currentPage=params["page"];
-        this.getPostsByPage();
+        this.getPostListByPage();
       }
     );
   }
 
-  public getPostsByPage() {
-    return this.postTableService.getPostTable(this.postListURL+this.currentPage).subscribe(
+  public getPostListByPage() {
+    return this.postTableService.getPostTable(this.POST_LIST_URL+this.currentPage).subscribe(
       data => {
         this.postList=data.content;
         this.totalRecords=data.totalElements;
@@ -67,7 +67,7 @@ export class PostTableComponent implements OnInit {
         message: "确定要删除吗？",
         accept: () => {
           let postId=rowData.postId;
-          this.postTableService.del(this.delURL+postId)
+          this.postTableService.del(this.DEL_URL+postId)
           .subscribe(data=> {
             if(data&&data.success) {
               this.messageService.add({
@@ -77,7 +77,7 @@ export class PostTableComponent implements OnInit {
                 sticky: false,
                 life: 1000
               });
-              this.getPostsByPage();
+              this.getPostListByPage();
             } else {
               this.messageService.add({
                 severity: "error",
@@ -110,5 +110,16 @@ export class PostTableComponent implements OnInit {
     let target = event.currentTarget;
     let nameAttr = target.attributes.name;
     let value = nameAttr.nodeValue;
+  }
+
+  public searchRole() {
+    this.currentPage=1;
+    this.getPostListByPage();
+  }
+
+  public resetSearch() {
+    this.currentPage=1;
+    this.searchStr="";
+    this.getPostListByPage();
   }
 }

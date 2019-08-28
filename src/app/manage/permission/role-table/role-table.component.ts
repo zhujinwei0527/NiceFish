@@ -14,8 +14,8 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   ]
 })
 export class RoleTableComponent implements OnInit {
-  @Input() roleListURL = "/auth/role/list2/";
-  @Input() delURL="/auth/role/delete2/";
+  private ROLE_LIST_URL = "/auth/role/list2/";
+  private DEL_URL="/auth/role/delete2/";
   public searchStr="";
   public roleList: Array<any>;
   public totalRecords=0;
@@ -41,7 +41,7 @@ export class RoleTableComponent implements OnInit {
 
   public getRoleListByPage() {
     return this.roleTableService.getRoleTable(
-      this.roleListURL+this.currentPage,
+      this.ROLE_LIST_URL+this.currentPage,
       {
         roleName:this.searchStr
       }
@@ -74,7 +74,7 @@ export class RoleTableComponent implements OnInit {
         message: "确定要删除吗？",
         accept: () => {
           let roleId=rowData.roleId;
-          this.roleTableService.del(this.delURL+roleId)
+          this.roleTableService.del(this.DEL_URL+roleId)
           .subscribe(data=> {
             if(data&&data.success) {
               this.messageService.add({

@@ -14,12 +14,12 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   ]
 })
 export class CommentTableComponent implements OnInit {
-  @Input() commentListURL = "/blog/comment/manage/comment-table/";
-  @Input() delURL="/blog/comment/manage/delete/";
-
+  private COMMENT_LIST_URL = "/blog/comment/manage/comment-table/";
+  private DEL_URL="/blog/comment/manage/delete/";
   public commentList: Array<any> = [];
   public totalRecords=0;
   public currentPage=1;
+  public searchStr="";
 
   constructor(public router: Router,
     public activeRoute: ActivatedRoute,
@@ -34,14 +34,14 @@ export class CommentTableComponent implements OnInit {
     this.activeRoute.params.subscribe(
       params => {
         this.currentPage=params["page"];
-        this.getCommentsByPage()
+        this.getCommentListByPage()
       }
     );
   }
 
-  public getCommentsByPage() {
+  public getCommentListByPage() {
     this.commentTableService
-    .getCommentTable(this.commentListURL+this.currentPage)
+    .getCommentTable(this.COMMENT_LIST_URL+this.currentPage)
     .subscribe(
       data => {
         this.commentList=data.content;
@@ -60,12 +60,12 @@ export class CommentTableComponent implements OnInit {
     this.confirmationService.confirm({
         message: "确定要删除吗？",
         accept: () => {
-          this.commentTableService.delComment(this.delURL+rowData.id)
+          this.commentTableService.delComment(this.DEL_URL+rowData.id)
           .subscribe(
             data=> {
               console.log(data);
               if(data&&data.success) {
-                this.getCommentsByPage();
+                this.getCommentListByPage();
               } else {
                 this.messageService.add({ severity: "error", summary: "删除失败", detail: data.msg||"删除失败" });
               }
@@ -74,5 +74,16 @@ export class CommentTableComponent implements OnInit {
             });
         }
     });
+  }
+
+  public searchRole() {
+    this.currentPage=1;
+    this.getCommentListByPage();
+  }
+
+  public resetSearch() {
+    this.currentPage=1;
+    this.searchStr="";
+    this.getCommentListByPage();
   }
 }
