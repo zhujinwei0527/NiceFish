@@ -17,7 +17,7 @@ import { fadeIn } from "../../../shared/animations/fade-in";
  * @see https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/angular.html
  */
 export class WritePostComponent {
-  public capchaURL = `/auth/captcha/captchaImage?type=math`;
+  public capchaURL = `/nicefish/auth/captcha/captchaImage?type=math`;
   //绑定到编辑器的数据模型，里面可以带HTML标签
   public post: any = {
     title: "",

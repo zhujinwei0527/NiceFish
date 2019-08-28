@@ -10,7 +10,7 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   animations: [fadeIn]
 })
 export class SignInComponent implements OnInit {
-  public capchaURL = `/auth/captcha/captchaImage?type=math`;
+  public capchaURL = `/nicefish/auth/captcha/captchaImage?type=math`;
   public captcha: any = "";
   public error: Error;
   public user: any = {

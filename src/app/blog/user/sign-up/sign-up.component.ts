@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit {
   @Input() btnLabel="注册";
   @Input() isEdit=false;
   @Output() saveSuccess = new EventEmitter();
-  public capchaURL = `/auth/captcha/captchaImage?type=math`;
+  public capchaURL = `/nicefish/auth/captcha/captchaImage?type=math`;
   public userForm: FormGroup;
   public userInfo: any = {};
 
