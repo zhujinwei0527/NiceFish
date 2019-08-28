@@ -46,6 +46,7 @@ export class EditRoleComponent implements OnInit {
         this.getRoleDetails();
       });
     }
+    this.getAllPermissions();
   }
 
   public getRoleDetails() {
@@ -69,6 +70,9 @@ export class EditRoleComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  public getAllPermissions():void {
     this.roleMngService.getAllPermissions(
       EditRoleComponent.GET_ALL_PERMISSIONS_URL,
       {
@@ -90,22 +94,26 @@ export class EditRoleComponent implements OnInit {
   }
 
   public save():void {
+    this.role.permissionEntities=this.selectedList;
     if(this.isEdit) {
-      this.role.permissionEntities=this.selectedList;
-      this.roleMngService.updateRole(EditRoleComponent.UPDATE_ROLE_URL,this.role)
-        .subscribe(
-          data=> {
-            console.log(data);
-            this.allPermissions=data;
-          },
-          error=> {
-            console.log(error);
-          }
-        );
+      this.roleMngService.updateRole(
+        EditRoleComponent.UPDATE_ROLE_URL,
+        this.role
+      )
+      .subscribe(
+        data=> {
+          this.allPermissions=data;
+          this.messageService.add({ severity: "success", summary: "保存成功", detail: data.msg||"保存成功" });
+          this.router.navigateByUrl("/manage/role-table/page/1");
+        },
+        error=> {
+          this.messageService.add({ severity: "error", summary: "保存失败", detail: error||"保存失败" });
+        }
+      );
     } else {
       this.roleMngService.newRole(
-        EditRoleComponent.CREATE_ROLE_URL
-        ,this.role
+        EditRoleComponent.CREATE_ROLE_URL,
+        this.role
       )
       .subscribe(
         data=> {
