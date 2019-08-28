@@ -2,11 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: "user-edit",
-  templateUrl: "./user-edit.component.html",
-  styleUrls: ["./user-edit.component.scss"]
+  selector: "new-user",
+  templateUrl: "./new-user.component.html",
+  styleUrls: ["./new-user.component.scss"]
 })
-export class UserEditComponent implements OnInit {
+export class NewUserComponent implements OnInit {
   constructor(
     public router: Router,
     public activeRoute: ActivatedRoute

@@ -12,7 +12,7 @@ import { RoleEditComponent } from "./permission/role-edit/role-edit.component";
 import { PermissionTableComponent } from "./permission/permission-table/permission-table.component";
 import { PermissionEditComponent } from "./permission/permission-edit/permission-edit.component";
 import { SysParamComponent } from "./sys-param/sys-param.component";
-import { UserEditComponent } from "./permission/user-edit/user-edit.component";
+import { NewUserComponent } from "./permission/new-user/new-user.component";
 import { NewRoleComponent } from "./permission/new-role/new-role.component";
 import { NewPermissionComponent } from "./permission/new-permission/new-permission.component";
 import { ChartComponent } from "./chart/chart.component";
@@ -30,7 +30,7 @@ import { ManageRoutingModule } from "./manage.routing.module";
     ManageMainComponent,
     UserTableComponent,
     SysParamComponent,
-    UserEditComponent,
+    NewUserComponent,
     NewRoleComponent,
     NewPermissionComponent,
     ChartComponent,
