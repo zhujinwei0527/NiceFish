@@ -11,7 +11,7 @@ import { merge } from "rxjs"
   styleUrls: ["./comment-list.component.scss"]
 })
 export class CommentListComponent implements OnInit {
-  public capchaURL = `/auth/captcha/captchaImage?type=math`;
+  public capchaURL = `/nicefish/auth/captcha/captchaImage?type=math`;
   public currentUser: any;
   public postId: string;
   public comment: any = {};
