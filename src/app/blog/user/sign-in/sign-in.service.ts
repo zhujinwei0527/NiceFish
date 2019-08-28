@@ -32,9 +32,10 @@ export class SignInService {
         }
       )
       .subscribe(
-        (userEntity:any)=> {
-          console.log(userEntity);
-          if(userEntity&&userEntity.userId) {
+        (res:any)=> {
+          console.log(res);
+          if(res&&res.success) {
+            let userEntity=res.data;
             console.log("login success>");
             console.log("user object>" + userEntity);
             this.subject.next(userEntity);
@@ -42,7 +43,7 @@ export class SignInService {
           } else {
             this.subject.next(Object.assign({}));
             window.localStorage.removeItem("currentUser");
-            this.messageService.add({ severity: "error", summary: "Fail Message", detail:userEntity, life: 3000 });
+            this.messageService.add({ severity: "error", summary: "Fail Message", detail:res.msg||"登录失败", life: 3000 });
           }
         },
         error => {
@@ -75,7 +76,7 @@ export class SignInService {
     .subscribe(
       (userEntity:any)=> {
         console.log(userEntity);
-        if(userEntity&&userEntity.userId){
+        if(userEntity&&userEntity.userId) {
           this.subject.next(userEntity);
           window.localStorage.setItem("currentUser", JSON.stringify(userEntity));
         } else {
