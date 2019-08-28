@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { MessageService } from "primeng/api";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { SignUpService } from "./sign-up.service";
-import { ApiEndpoints } from "../../../ApiEndpoints";
 import { fadeIn } from "../../../shared/animations/fade-in";
 /**
  * 用户注册和后台创建都使用这个组件完成。
@@ -20,7 +19,7 @@ export class SignUpComponent implements OnInit {
   @Input() btnLabel="注册";
   @Input() isEdit=false;
   @Output() saveSuccess = new EventEmitter();
-  public capchaURL = `${ApiEndpoints.API_ENDPOINT}/auth/captcha/captchaImage?type=math`;
+  public capchaURL = `/auth/captcha/captchaImage?type=math`;
   public userForm: FormGroup;
   public userInfo: any = {};
 

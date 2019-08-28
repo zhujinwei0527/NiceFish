@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { SignInService } from "../user/sign-in/sign-in.service";
 import { SignUpService } from "../user/sign-up/sign-up.service";
 import { CommentListService } from "./comment-list.service";
-import {ApiEndpoints} from "../../ApiEndpoints";
 import { merge } from "rxjs"
 
 @Component({
@@ -12,7 +11,7 @@ import { merge } from "rxjs"
   styleUrls: ["./comment-list.component.scss"]
 })
 export class CommentListComponent implements OnInit {
-  public capchaURL = `${ApiEndpoints.API_ENDPOINT}/auth/captcha/captchaImage?type=math`;
+  public capchaURL = `/auth/captcha/captchaImage?type=math`;
   public currentUser: any;
   public postId: string;
   public comment: any = {};

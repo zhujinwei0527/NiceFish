@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterState, RouterStateSnapshot } from "@angular/router";
 import { SignInService } from "./sign-in.service";
-import {ApiEndpoints} from "../../../ApiEndpoints";
 import { fadeIn } from "../../../shared/animations/fade-in";
 
 @Component({
@@ -11,7 +10,7 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   animations: [fadeIn]
 })
 export class SignInComponent implements OnInit {
-  public capchaURL = `${ApiEndpoints.API_ENDPOINT}/auth/captcha/captchaImage?type=math`;
+  public capchaURL = `/auth/captcha/captchaImage?type=math`;
   public captcha: any = "";
   public error: Error;
   public user: any = {

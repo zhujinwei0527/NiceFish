@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { PostService } from "../post.service";
 import { MessageService } from "primeng/api";
-import {ApiEndpoints} from "../../../ApiEndpoints";
 import { fadeIn } from "../../../shared/animations/fade-in";
 
 @Component({
@@ -18,7 +17,7 @@ import { fadeIn } from "../../../shared/animations/fade-in";
  * @see https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/angular.html
  */
 export class WritePostComponent {
-  public capchaURL = `${ApiEndpoints.API_ENDPOINT}/auth/captcha/captchaImage?type=math`;
+  public capchaURL = `/auth/captcha/captchaImage?type=math`;
   //绑定到编辑器的数据模型，里面可以带HTML标签
   public post: any = {
     title: "",
