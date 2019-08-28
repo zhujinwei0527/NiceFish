@@ -18,7 +18,7 @@ import { fadeIn } from "../../../shared/animations/fade-in";
 export class SignUpComponent implements OnInit {
   @Input() panelTitle="用户注册";
   @Input() btnLabel="注册";
-  @Input() isEdit=true;
+  @Input() isEdit=false;
   @Output() saveSuccess = new EventEmitter();
   public capchaURL = `${ApiEndpoints.API_ENDPOINT}/auth/captcha/captchaImage?type=math`;
   public userForm: FormGroup;
@@ -136,16 +136,15 @@ export class SignUpComponent implements OnInit {
       this.signUpService
         .signup(this.userInfo)
         .subscribe(
-          (response: any) => {
-            if (response && response.success) {
+          (data: any) => {
+            if (data && data.success) {
+              this.messageService.add({ severity: "success", summary: "注册成功", detail: "请登录" });
+              this.saveSuccess.emit("saveSuccess");
               if(!this.isEdit) {
-                this.messageService.add({ severity: "success", summary: "注册成功", detail: "请登录" });
                 this.router.navigateByUrl("login");
-              } else {
-                this.saveSuccess.emit("saveSuccess");
               }
             } else {
-              this.formErrors.formError = response.msg;
+              this.formErrors.formError = data.msg;
             }
           },
           error => {
