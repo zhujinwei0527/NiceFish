@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { RoleTableService } from "../role-table.service";
+import { RoleMngService } from "../role-mng.service";
 import { MessageService } from "primeng/api";
 import { ConfirmationService } from "primeng/api";
 import { fadeIn } from "../../../shared/animations/fade-in";
@@ -24,7 +24,7 @@ export class RoleTableComponent implements OnInit {
   constructor(
     public router: Router,
     public activeRoute: ActivatedRoute,
-    public roleTableService: RoleTableService,
+    public roleMngService: RoleMngService,
     public messageService:MessageService,
     private confirmationService: ConfirmationService
   ) {
@@ -40,7 +40,7 @@ export class RoleTableComponent implements OnInit {
   }
 
   public getRoleListByPage() {
-    return this.roleTableService.getRoleTable(
+    return this.roleMngService.getRoleTable(
       this.ROLE_LIST_URL+this.currentPage,
       {
         roleName:this.searchStr
@@ -74,7 +74,7 @@ export class RoleTableComponent implements OnInit {
         message: "确定要删除吗？",
         accept: () => {
           let roleId=rowData.roleId;
-          this.roleTableService.del(this.DEL_URL+roleId)
+          this.roleMngService.del(this.DEL_URL+roleId)
           .subscribe(data=> {
             if(data&&data.success) {
               this.messageService.add({

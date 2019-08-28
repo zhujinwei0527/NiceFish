@@ -1,16 +1,20 @@
 import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
-import { PermissionTableService } from "../permission-table.service";
+import { PermissionMngService } from "../permission-mng.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MessageService } from "primeng/api";
 import { fadeIn } from "../../../shared/animations/fade-in";
 
+/**
+ * 新建和编辑都使用这个组件完成。
+ * @author 大漠穷秋
+ */
 @Component({
-  selector: "permission-edit",
-  templateUrl: "./permission-edit.component.html",
-  styleUrls: ["./permission-edit.component.scss"],
+  selector: "edit-permission",
+  templateUrl: "./edit-permission.component.html",
+  styleUrls: ["./edit-permission.component.scss"],
   animations: [fadeIn]
 })
-export class PermissionEditComponent implements OnInit {
+export class EditPermissionComponent implements OnInit {
   private static PERMISSION_DETAIL_URL="/auth/permission/detail/";
   private static UPDATE_PERMISSION_URL="/auth/permission/edit2/";
   private static CREATE_PERMISSION_URL="/auth/permission/create2/";
@@ -28,7 +32,7 @@ export class PermissionEditComponent implements OnInit {
     public router: Router,
     public activatedRoute:ActivatedRoute,
     private messageService: MessageService,
-    public permissionService: PermissionTableService
+    public permissionService: PermissionMngService
     ) { }
 
   ngOnInit() {
@@ -42,7 +46,7 @@ export class PermissionEditComponent implements OnInit {
 
   public getPermissionDetails() {
     this.permissionService.getPermissionDetails(
-        PermissionEditComponent.PERMISSION_DETAIL_URL,
+        EditPermissionComponent.PERMISSION_DETAIL_URL,
         this.permissionId)
         .subscribe(
           data=> {
@@ -58,7 +62,7 @@ export class PermissionEditComponent implements OnInit {
     console.log(this.isEdit);
     if(this.isEdit) {
       this.permissionService.updatePermission(
-        PermissionEditComponent.UPDATE_PERMISSION_URL,
+        EditPermissionComponent.UPDATE_PERMISSION_URL,
         this.permission
       )
       .subscribe(
@@ -78,7 +82,7 @@ export class PermissionEditComponent implements OnInit {
       );
     } else {
       this.permissionService.newPermission(
-        PermissionEditComponent.CREATE_PERMISSION_URL,
+        EditPermissionComponent.CREATE_PERMISSION_URL,
         this.permission
       )
       .subscribe(

@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 @Injectable()
-export class UserTableService {
+export class UserMngService {
     constructor(public httpClient: HttpClient) { }
 
     public getUserTable(dataURL: string,data={}): Observable<any> {

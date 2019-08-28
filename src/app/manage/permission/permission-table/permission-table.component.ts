@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { PermissionTableService } from "../permission-table.service";
+import { PermissionMngService } from "../permission-mng.service";
 import { MessageService } from "primeng/api";
 import { ConfirmationService } from "primeng/api";
 import { fadeIn } from "../../../shared/animations/fade-in";
@@ -24,7 +24,7 @@ export class PermissionTableComponent implements OnInit {
   constructor(
     public router: Router,
     public activeRoute: ActivatedRoute,
-    public permissionTableService: PermissionTableService,
+    public permissionMngService: PermissionMngService,
     public messageService:MessageService,
     private confirmationService: ConfirmationService
   ) {
@@ -40,7 +40,7 @@ export class PermissionTableComponent implements OnInit {
   }
 
   public getPermissionListByPage() {
-    return this.permissionTableService.getPermissionTable(
+    return this.permissionMngService.getPermissionTable(
         this.PERMISSION_LIST_URL+this.currentPage,
         {
           permissionStr:this.searchStr
@@ -74,7 +74,7 @@ export class PermissionTableComponent implements OnInit {
         message: "确定要删除吗？",
         accept: () => {
           let permissionId=rowData.permissionId;
-          this.permissionTableService.del(this.DEL_URL+permissionId)
+          this.permissionMngService.del(this.DEL_URL+permissionId)
           .subscribe(data=> {
             if(data&&data.success) {
               this.messageService.add({

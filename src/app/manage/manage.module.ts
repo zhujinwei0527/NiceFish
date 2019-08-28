@@ -8,9 +8,9 @@ import { PostSharedModule } from "../shared/post.module";
 import { ManageMainComponent } from "./manage-main/manage-main.component";
 import { UserTableComponent } from "./permission/user-table/user-table.component";
 import { RoleTableComponent } from "./permission/role-table/role-table.component";
-import { RoleEditComponent } from "./permission/role-edit/role-edit.component";
+import { EditRoleComponent } from "./permission/edit-role/edit-role.component";
 import { PermissionTableComponent } from "./permission/permission-table/permission-table.component";
-import { PermissionEditComponent } from "./permission/permission-edit/permission-edit.component";
+import { EditPermissionComponent } from "./permission/edit-permission/edit-permission.component";
 import { SysParamComponent } from "./sys-param/sys-param.component";
 import { NewUserComponent } from "./permission/new-user/new-user.component";
 import { NewRoleComponent } from "./permission/new-role/new-role.component";
@@ -20,9 +20,9 @@ import { ChartComponent } from "./chart/chart.component";
 import { CommentTableService } from "./content-mng/comment-table/comment-table.service";
 import { NgxEchartsModule } from "ngx-echarts";
 import { PostTableService } from "./content-mng/post-table/post-table.service";
-import { UserTableService } from "./permission/user-table.service";
-import { RoleTableService } from "./permission/role-table.service";
-import { PermissionTableService } from "./permission/permission-table.service";
+import { UserMngService } from "./permission/user-mng.service";
+import { RoleMngService } from "./permission/role-mng.service";
+import { PermissionMngService } from "./permission/permission-mng.service";
 import { ManageRoutingModule } from "./manage.routing.module";
 
 @NgModule({
@@ -36,8 +36,8 @@ import { ManageRoutingModule } from "./manage.routing.module";
     ChartComponent,
     RoleTableComponent,
     PermissionTableComponent,
-    RoleEditComponent,
-    PermissionEditComponent
+    EditRoleComponent,
+    EditPermissionComponent
   ],
   imports: [
     CommonModule,
@@ -53,9 +53,9 @@ import { ManageRoutingModule } from "./manage.routing.module";
   providers: [
     PostTableService,
     CommentTableService,
-    UserTableService,
-    RoleTableService,
-    PermissionTableService
+    UserMngService,
+    RoleMngService,
+    PermissionMngService
   ]
 })
 export class ManageModule { }

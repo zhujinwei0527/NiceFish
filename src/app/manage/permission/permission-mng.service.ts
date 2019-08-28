@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 @Injectable()
-export class PermissionTableService {
+export class PermissionMngService {
     constructor(public httpClient: HttpClient) { }
 
     public getPermissionTable(dataURL: string,data={}): Observable<any> {

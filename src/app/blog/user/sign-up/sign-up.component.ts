@@ -5,7 +5,10 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { SignUpService } from "./sign-up.service";
 import { ApiEndpoints } from "../../../ApiEndpoints";
 import { fadeIn } from "../../../shared/animations/fade-in";
-
+/**
+ * 用户注册和后台创建都使用这个组件完成。
+ * @author 大漠穷秋
+ */
 @Component({
   selector: "sign-up",
   templateUrl: "./sign-up.component.html",

@@ -11,9 +11,9 @@ import { NewRoleComponent } from "./permission/new-role/new-role.component";
 import { NewPermissionComponent } from "./permission/new-permission/new-permission.component";
 import { NewUserComponent } from "./permission/new-user/new-user.component";
 import { RoleTableComponent } from "./permission/role-table/role-table.component";
-import { RoleEditComponent } from "./permission/role-edit/role-edit.component";
+import { EditRoleComponent } from "./permission/edit-role/edit-role.component";
 import { PermissionTableComponent } from "./permission/permission-table/permission-table.component";
-import { PermissionEditComponent } from "./permission/permission-edit/permission-edit.component";
+import { EditPermissionComponent } from "./permission/edit-permission/edit-permission.component";
 import { AuthGuard } from "../shared/auth-guard";
 
 export const manageRoutes:Routes = [
@@ -31,10 +31,10 @@ export const manageRoutes:Routes = [
 			{ path: "user-table/edit-user/:userId", component: UserProfileComponent },
 			{ path: "role-table/page/:page", component: RoleTableComponent },
 			{ path: "role-table/new-role", component: NewRoleComponent },
-			{ path: "role-table/edit-role/:roleId", component: RoleEditComponent },
+			{ path: "role-table/edit-role/:roleId", component: EditRoleComponent },
 			{ path: "permission-table/page/:page", component: PermissionTableComponent },
 			{ path: "permission-table/new-permission", component: NewPermissionComponent },
-			{ path: "permission-table/edit-permission/:permissionId", component: PermissionEditComponent },
+			{ path: "permission-table/edit-permission/:permissionId", component: EditPermissionComponent },
 			{ path: "profile", component: UserProfileComponent },
 			{ path: "sysparam", component: SysParamComponent },
 			{ path: "**", redirectTo: "posttable/page/1" }

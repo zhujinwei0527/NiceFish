@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 @Injectable()
-export class RoleTableService {
+export class RoleMngService {
     constructor(public httpClient: HttpClient) { }
 
     public getRoleTable(dataURL: string,data={}): Observable<any> {

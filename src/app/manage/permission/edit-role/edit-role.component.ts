@@ -1,16 +1,20 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
-import { RoleTableService } from "../role-table.service";
+import { RoleMngService } from "../role-mng.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MessageService } from "primeng/api";
 import { fadeIn } from "../../../shared/animations/fade-in";
 
+/**
+ * 新建和编辑都使用这个组件完成。
+ * @author 大漠穷秋
+ */
 @Component({
-  selector: "role-edit",
-  templateUrl: "./role-edit.component.html",
-  styleUrls: ["./role-edit.component.scss"],
+  selector: "edit-role",
+  templateUrl: "./edit-role.component.html",
+  styleUrls: ["./edit-role.component.scss"],
   animations: [fadeIn]
 })
-export class RoleEditComponent implements OnInit {
+export class EditRoleComponent implements OnInit {
   private static ROLE_DETAIL_URL="/auth/role/detail2/";
   private static UPDATE_ROLE_URL="/auth/role/edit2/";
   private static CREATE_ROLE_URL="/auth/role/create2/";
@@ -32,7 +36,7 @@ export class RoleEditComponent implements OnInit {
     public router: Router,
     public activatedRoute:ActivatedRoute,
     private messageService: MessageService,
-    public roleTableService: RoleTableService
+    public roleMngService: RoleMngService
     ) { }
 
   ngOnInit() {
@@ -45,7 +49,7 @@ export class RoleEditComponent implements OnInit {
   }
 
   public getRoleDetails() {
-    this.roleTableService.getRoleDetails(RoleEditComponent.ROLE_DETAIL_URL,this.roleId)
+    this.roleMngService.getRoleDetails(EditRoleComponent.ROLE_DETAIL_URL,this.roleId)
       .subscribe(
         data=> {
           console.log(data);
@@ -55,7 +59,7 @@ export class RoleEditComponent implements OnInit {
           console.log(error);
         }
       );
-    this.roleTableService.getAllPermissionsByRoleId(RoleEditComponent.GET_ALL_PERMISSIONS_BY_ROLE_ID_URL,this.roleId)
+    this.roleMngService.getAllPermissionsByRoleId(EditRoleComponent.GET_ALL_PERMISSIONS_BY_ROLE_ID_URL,this.roleId)
       .subscribe(
         data=> {
           console.log(data);
@@ -65,8 +69,8 @@ export class RoleEditComponent implements OnInit {
           console.log(error);
         }
       );
-    this.roleTableService.getAllPermissions(
-      RoleEditComponent.GET_ALL_PERMISSIONS_URL,
+    this.roleMngService.getAllPermissions(
+      EditRoleComponent.GET_ALL_PERMISSIONS_URL,
       {
         roleId:this.roleId
       })
@@ -88,7 +92,7 @@ export class RoleEditComponent implements OnInit {
   public save():void {
     if(this.isEdit) {
       this.role.permissionEntities=this.selectedList;
-      this.roleTableService.updateRole(RoleEditComponent.UPDATE_ROLE_URL,this.role)
+      this.roleMngService.updateRole(EditRoleComponent.UPDATE_ROLE_URL,this.role)
         .subscribe(
           data=> {
             console.log(data);
@@ -99,8 +103,8 @@ export class RoleEditComponent implements OnInit {
           }
         );
     } else {
-      this.roleTableService.newRole(
-        RoleEditComponent.CREATE_ROLE_URL
+      this.roleMngService.newRole(
+        EditRoleComponent.CREATE_ROLE_URL
         ,this.role
       )
       .subscribe(

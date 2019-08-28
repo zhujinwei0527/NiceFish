@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from "@angular/router";
-import { UserTableService } from "../user-table.service";
+import { UserMngService } from "../user-mng.service";
 import { MessageService } from "primeng/api";
 import { ConfirmationService } from "primeng/api";
 import { fadeIn } from "../../../shared/animations/fade-in";
@@ -25,7 +25,7 @@ export class UserTableComponent implements OnInit {
   constructor(
     public router: Router,
     public activeRoute: ActivatedRoute,
-    public userTableService: UserTableService,
+    public userMngService: UserMngService,
     public messageService:MessageService,
     private confirmationService: ConfirmationService
   ) {
@@ -52,7 +52,7 @@ export class UserTableComponent implements OnInit {
   }
 
   public getUserListByPage() {
-    return this.userTableService.getUserTable(
+    return this.userMngService.getUserTable(
       this.USER_LIST_URL+this.currentPage,
       {
         userName:this.searchStr
@@ -75,7 +75,7 @@ export class UserTableComponent implements OnInit {
         message: "确定要删除吗？",
         accept: () => {
           let userId=rowData.userId;
-          this.userTableService.del(this.DEL_URL+userId)
+          this.userMngService.del(this.DEL_URL+userId)
           .subscribe(data=> {
             if(data&&data.success) {
               this.messageService.add({
