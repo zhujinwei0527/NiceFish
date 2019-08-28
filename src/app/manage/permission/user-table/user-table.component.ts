@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from "@angular/router";
 import { UserTableService } from "../user-table.service";
 import { MessageService } from "primeng/api";
+import { ConfirmationService } from "primeng/api";
 import { fadeIn } from "../../../shared/animations/fade-in";
 
 @Component({
@@ -25,7 +26,8 @@ export class UserTableComponent implements OnInit {
     public router: Router,
     public activeRoute: ActivatedRoute,
     public userTableService: UserTableService,
-    public messageService:MessageService
+    public messageService:MessageService,
+    private confirmationService: ConfirmationService
   ) {
   }
 
@@ -69,35 +71,40 @@ export class UserTableComponent implements OnInit {
   }
 
   public delUser(rowData,ri): void {
-    let userId=rowData.userId;
-    this.userTableService.del(this.delURL+userId)
-    .subscribe(data=> {
-      if(data&&data.success) {
-        this.messageService.add({
-          severity: "success",
-          summary: "Success Message",
-          detail: "删除成功",
-          sticky: false,
-          life: 1000
-        });
-        this.getUserListByPage();
-      } else {
-        this.messageService.add({
-          severity: "error",
-          summary: "Fail Message",
-          detail: data.msg||"删除失败",
-          sticky: false,
-          life: 1000
-        });
-      }
-    },error=> {
-      this.messageService.add({
-        severity: "error",
-        summary: "Fail Message",
-        detail: error||"删除失败",
-        sticky: false,
-        life: 1000
-      });
+    this.confirmationService.confirm({
+        message: "确定要删除吗？",
+        accept: () => {
+          let userId=rowData.userId;
+          this.userTableService.del(this.delURL+userId)
+          .subscribe(data=> {
+            if(data&&data.success) {
+              this.messageService.add({
+                severity: "success",
+                summary: "Success Message",
+                detail: "删除成功",
+                sticky: false,
+                life: 1000
+              });
+              this.getUserListByPage();
+            } else {
+              this.messageService.add({
+                severity: "error",
+                summary: "Fail Message",
+                detail: data.msg||"删除失败",
+                sticky: false,
+                life: 1000
+              });
+            }
+          },error=> {
+            this.messageService.add({
+              severity: "error",
+              summary: "Fail Message",
+              detail: error||"删除失败",
+              sticky: false,
+              life: 1000
+            });
+          });
+        }
     });
   }
 

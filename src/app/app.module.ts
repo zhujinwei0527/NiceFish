@@ -9,6 +9,8 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateService, TranslateStore } from "@ngx-translate/core";
 import { ToastModule } from "primeng/toast";
 import { MessageService } from "primeng/api";
+import { ConfirmDialogModule } from "primeng/confirmdialog";
+import { ConfirmationService } from "primeng/api";
 import { SharedModule } from "./shared/shared.module";
 import { AppComponent } from "./app.component";
 import { SignInService } from "./blog/user/sign-in/sign-in.service";
@@ -44,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     SharedModule,
     ToastModule,
+    ConfirmDialogModule,
     AppRoutingModule
   ],
   providers: [
@@ -52,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SignInService,
     RetrievePwdService,
     MessageService,
+    ConfirmationService,
     AuthGuard,
     [
       { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }

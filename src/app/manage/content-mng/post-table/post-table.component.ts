@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router} from "@angular/router";
 import { PostTableService } from "./post-table.service";
 import { MessageService } from "primeng/api";
+import { ConfirmationService } from "primeng/api";
 import { fadeIn } from "../../../shared/animations/fade-in";
 
 @Component({
@@ -24,7 +25,8 @@ export class PostTableComponent implements OnInit {
     public router: Router,
     public activeRoute: ActivatedRoute,
     public postTableService: PostTableService,
-    public messageService:MessageService
+    public messageService:MessageService,
+    private confirmationService: ConfirmationService
   ) {
   }
 
@@ -61,35 +63,40 @@ export class PostTableComponent implements OnInit {
   }
 
   public delPost(rowData,ri): void {
-    let postId=rowData.postId;
-    this.postTableService.del(this.delURL+postId)
-    .subscribe(data=> {
-      if(data&&data.success) {
-        this.messageService.add({
-          severity: "success",
-          summary: "Success Message",
-          detail: "删除成功",
-          sticky: false,
-          life: 1000
-        });
-        this.getPostsByPage();
-      } else {
-        this.messageService.add({
-          severity: "error",
-          summary: "Fail Message",
-          detail: data.msg||"删除失败",
-          sticky: false,
-          life: 1000
-        });
-      }
-    },error=> {
-      this.messageService.add({
-        severity: "error",
-        summary: "Fail Message",
-        detail: error||"删除失败",
-        sticky: false,
-        life: 1000
-      });
+    this.confirmationService.confirm({
+        message: "确定要删除吗？",
+        accept: () => {
+          let postId=rowData.postId;
+          this.postTableService.del(this.delURL+postId)
+          .subscribe(data=> {
+            if(data&&data.success) {
+              this.messageService.add({
+                severity: "success",
+                summary: "Success Message",
+                detail: "删除成功",
+                sticky: false,
+                life: 1000
+              });
+              this.getPostsByPage();
+            } else {
+              this.messageService.add({
+                severity: "error",
+                summary: "Fail Message",
+                detail: data.msg||"删除失败",
+                sticky: false,
+                life: 1000
+              });
+            }
+          },error=> {
+            this.messageService.add({
+              severity: "error",
+              summary: "Fail Message",
+              detail: error||"删除失败",
+              sticky: false,
+              life: 1000
+            });
+          });
+        }
     });
   }
 

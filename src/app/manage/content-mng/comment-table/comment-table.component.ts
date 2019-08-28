@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MessageService } from "primeng/api";
+import { ConfirmationService } from "primeng/api";
 import { CommentTableService } from "./comment-table.service";
 import { fadeIn } from "../../../shared/animations/fade-in";
 
@@ -23,7 +24,9 @@ export class CommentTableComponent implements OnInit {
   constructor(public router: Router,
     public activeRoute: ActivatedRoute,
     private messageService: MessageService,
-    private commentTableService:CommentTableService) {
+    private commentTableService:CommentTableService,
+    private confirmationService: ConfirmationService
+    ) {
 
   }
 
@@ -54,17 +57,22 @@ export class CommentTableComponent implements OnInit {
   }
 
   public delComment(rowData,ri): void {
-    this.commentTableService.delComment(this.delURL+rowData.id)
-    .subscribe(
-      data=> {
-        console.log(data);
-        if(data&&data.success) {
-          this.getCommentsByPage();
-        } else {
-          this.messageService.add({ severity: "error", summary: "删除失败", detail: data.msg||"删除失败" });
+    this.confirmationService.confirm({
+        message: "确定要删除吗？",
+        accept: () => {
+          this.commentTableService.delComment(this.delURL+rowData.id)
+          .subscribe(
+            data=> {
+              console.log(data);
+              if(data&&data.success) {
+                this.getCommentsByPage();
+              } else {
+                this.messageService.add({ severity: "error", summary: "删除失败", detail: data.msg||"删除失败" });
+              }
+            },error=> {
+              console.log(error);
+            });
         }
-      },error=> {
-        console.log(error);
-      });
+    });
   }
 }
