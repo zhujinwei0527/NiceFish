@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { ActivatedRoute, Router, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from "@angular/router";
-import { fadeIn } from "../../../shared/animations/fade-in";
+import { ActivatedRoute, Router } from "@angular/router";
+import { MessageService } from "primeng/api";
 import { CommentTableService } from "./comment-table.service";
+import { fadeIn } from "../../../shared/animations/fade-in";
 
 @Component({
   selector: "comment-table",
@@ -13,29 +14,33 @@ import { CommentTableService } from "./comment-table.service";
 })
 export class CommentTableComponent implements OnInit {
   @Input() commentListURL = "/blog/comment/manage/comment-table/";
-  @Input() delURL="";
+  @Input() delURL="/blog/comment/manage/delete/";
 
   public commentList: Array<any> = [];
   public totalRecords=0;
+  public currentPage=1;
 
   constructor(public router: Router,
     public activeRoute: ActivatedRoute,
+    private messageService: MessageService,
     private commentTableService:CommentTableService) {
 
   }
 
   ngOnInit() {
     this.activeRoute.params.subscribe(
-      params => this.getCommentsByPage(params["page"])
+      params => {
+        this.currentPage=params["page"];
+        this.getCommentsByPage()
+      }
     );
   }
 
-  public getCommentsByPage(page: Number) {
+  public getCommentsByPage() {
     this.commentTableService
-    .getCommentTable(this.commentListURL+page)
+    .getCommentTable(this.commentListURL+this.currentPage)
     .subscribe(
       data => {
-        console.log(data);
         this.commentList=data.content;
         this.totalRecords=data.totalElements;
       },
@@ -50,10 +55,16 @@ export class CommentTableComponent implements OnInit {
 
   public delComment(rowData,ri): void {
     this.commentTableService.delComment(this.delURL+rowData.id)
-    .subscribe(res=> {
-      console.log(res);
-    },error=> {
-      console.log(error);
-    });
+    .subscribe(
+      data=> {
+        console.log(data);
+        if(data&&data.success) {
+          this.getCommentsByPage();
+        } else {
+          this.messageService.add({ severity: "error", summary: "删除失败", detail: data.msg||"删除失败" });
+        }
+      },error=> {
+        console.log(error);
+      });
   }
 }
