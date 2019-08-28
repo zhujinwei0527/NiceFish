@@ -14,6 +14,7 @@ import { PermissionEditComponent } from "./permission/permission-edit/permission
 import { SysParamComponent } from "./sys-param/sys-param.component";
 import { UserEditComponent } from "./permission/user-edit/user-edit.component";
 import { NewRoleComponent } from "./permission/new-role/new-role.component";
+import { NewPermissionComponent } from "./permission/new-permission/new-permission.component";
 import { ChartComponent } from "./chart/chart.component";
 
 import { CommentTableService } from "./content-mng/comment-table/comment-table.service";
@@ -21,7 +22,7 @@ import { NgxEchartsModule } from "ngx-echarts";
 import { PostTableService } from "./content-mng/post-table/post-table.service";
 import { UserTableService } from "./permission/user-table.service";
 import { RoleTableService } from "./permission/role-table.service";
-import { PermissionTableService } from "./permission/permission-table/permission-table.service";
+import { PermissionTableService } from "./permission/permission-table.service";
 import { ManageRoutingModule } from "./manage.routing.module";
 
 @NgModule({
@@ -31,6 +32,7 @@ import { ManageRoutingModule } from "./manage.routing.module";
     SysParamComponent,
     UserEditComponent,
     NewRoleComponent,
+    NewPermissionComponent,
     ChartComponent,
     RoleTableComponent,
     PermissionTableComponent,

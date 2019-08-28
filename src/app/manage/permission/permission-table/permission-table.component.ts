@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { PermissionTableService } from "./permission-table.service";
+import { PermissionTableService } from "../permission-table.service";
 import { MessageService } from "primeng/api";
 import { fadeIn } from "../../../shared/animations/fade-in";
 
@@ -99,5 +99,14 @@ export class PermissionTableComponent implements OnInit {
         life: 1000
       });
     });
+  }
+
+  public newPermission() {
+    this.router.navigateByUrl("/manage/permission-table/new-permission");
+  }
+
+  public editPermission(rowData,ri): void {
+    let permissionId=rowData.permissionId;
+    this.router.navigateByUrl("/manage/permission-table/edit-permission/"+permissionId);
   }
 }

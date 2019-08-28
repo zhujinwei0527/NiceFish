@@ -8,6 +8,7 @@ import { SysParamComponent } from "./sys-param/sys-param.component";
 import { ChartComponent } from "./chart/chart.component";
 import { UserTableComponent } from "./permission/user-table/user-table.component";
 import { NewRoleComponent } from "./permission/new-role/new-role.component";
+import { NewPermissionComponent } from "./permission/new-permission/new-permission.component";
 import { RoleTableComponent } from "./permission/role-table/role-table.component";
 import { RoleEditComponent } from "./permission/role-edit/role-edit.component";
 import { PermissionTableComponent } from "./permission/permission-table/permission-table.component";
@@ -32,7 +33,8 @@ export const manageRoutes:Routes = [
 			{ path: "role-table/new-role", component: NewRoleComponent },
 			{ path: "role-table/edit-role/:roleId", component: RoleEditComponent },
 			{ path: "permission-table/page/:page", component: PermissionTableComponent },
-			{ path: "permission-edit/:permissionId", component: PermissionEditComponent },
+			{ path: "permission-table/new-permission", component: NewPermissionComponent },
+			{ path: "permission-table/edit-permission/:permissionId", component: PermissionEditComponent },
 			{ path: "profile", component: UserProfileComponent },
 			{ path: "sysparam", component: SysParamComponent },
 			{ path: "**", redirectTo: "posttable/page/1" }

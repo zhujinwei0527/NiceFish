@@ -11,15 +11,17 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   animations: [fadeIn]
 })
 export class RoleEditComponent implements OnInit {
-  @Input() panelTitle="创建角色";
+  private static ROLE_DETAIL_URL="/auth/role/detail2/";
+  private static UPDATE_ROLE_URL="/auth/role/edit2/";
+  private static CREATE_ROLE_URL="/auth/role/create2/";
+  private static GET_ALL_PERMISSIONS_BY_ROLE_ID_URL="/auth/role/get-all-permissions/";
+  private static GET_ALL_PERMISSIONS_URL="/auth/permission/all";
+
+  @Input() panelTitle="编辑角色";
   @Input() btnLabel="保存";
   @Input() isEdit=true;
   @Output() saveSuccess=new EventEmitter();
 
-  private getRoleDetailURL="/auth/role/detail2/";
-  private updateRoleURL="/auth/role/edit2/";
-  private getAllPermissionsByRoleIdURL="/auth/role/get-all-permissions/";
-  private getAllPermissions="/auth/permission/all";
   private roleId;//编辑角色的时候用到
   public role: any = {};
   public error: Error;
@@ -37,13 +39,13 @@ export class RoleEditComponent implements OnInit {
     if(this.isEdit) {
       this.activatedRoute.params.subscribe(params => {
         this.roleId = params.roleId;
+        this.getRoleDetails();
       });
-      this.getRoleDetails();
     }
   }
 
   public getRoleDetails() {
-    this.roleTableService.getRoleDetails(this.getRoleDetailURL,this.roleId)
+    this.roleTableService.getRoleDetails(RoleEditComponent.ROLE_DETAIL_URL,this.roleId)
       .subscribe(
         data=> {
           console.log(data);
@@ -53,7 +55,7 @@ export class RoleEditComponent implements OnInit {
           console.log(error);
         }
       );
-    this.roleTableService.getAllPermissionsByRoleId(this.getAllPermissionsByRoleIdURL,this.roleId)
+    this.roleTableService.getAllPermissionsByRoleId(RoleEditComponent.GET_ALL_PERMISSIONS_BY_ROLE_ID_URL,this.roleId)
       .subscribe(
         data=> {
           console.log(data);
@@ -64,7 +66,7 @@ export class RoleEditComponent implements OnInit {
         }
       );
     this.roleTableService.getAllPermissions(
-      this.getAllPermissions,
+      RoleEditComponent.GET_ALL_PERMISSIONS_URL,
       {
         roleId:this.roleId
       })
@@ -86,7 +88,7 @@ export class RoleEditComponent implements OnInit {
   public save():void {
     if(this.isEdit) {
       this.role.permissionEntities=this.selectedList;
-      this.roleTableService.updateRole(this.updateRoleURL,this.role)
+      this.roleTableService.updateRole(RoleEditComponent.UPDATE_ROLE_URL,this.role)
         .subscribe(
           data=> {
             console.log(data);
@@ -97,7 +99,10 @@ export class RoleEditComponent implements OnInit {
           }
         );
     } else {
-      this.roleTableService.newRole("/auth/role/create2",this.role)
+      this.roleTableService.newRole(
+        RoleEditComponent.CREATE_ROLE_URL
+        ,this.role
+      )
       .subscribe(
         data=> {
           if(data&&data.success) {

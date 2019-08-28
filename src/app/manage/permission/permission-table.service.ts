@@ -17,4 +17,16 @@ export class PermissionTableService {
     public toEdit(editURL:string): Observable<any> {
         return this.httpClient.get(editURL);
     }
+
+    public newPermission(newURL:string,data:any): Observable<any> {
+        return this.httpClient.post(newURL,data);
+    }
+
+    public updatePermission(updateURL:string,permission:any): Observable<any> {
+        return this.httpClient.post(updateURL,permission);
+    }
+
+    public getPermissionDetails(dataURL: string,permissionId): Observable<any> {
+        return this.httpClient.get(dataURL+permissionId);
+    }
 }
