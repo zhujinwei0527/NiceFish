@@ -14,8 +14,8 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   ]
 })
 export class CommentTableComponent implements OnInit {
-  private COMMENT_LIST_URL = "/blog/comment/manage/comment-table/";
-  private DEL_URL="/blog/comment/manage/delete/";
+  private COMMENT_LIST_URL = "/cms/comment/manage/comment-table/";
+  private DEL_URL="/cms/comment/manage/delete/";
   public commentList: Array<any> = [];
   public totalRecords=0;
   public currentPage=1;

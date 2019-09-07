@@ -14,8 +14,8 @@ import { fadeIn } from "../../../shared/animations/fade-in";
   ]
 })
 export class PostTableComponent implements OnInit {
-  private POST_LIST_URL = "/blog/post/manage/post-table/";
-  private DEL_URL="/blog/post/manage/del-post/";
+  private POST_LIST_URL = "/cms/post/manage/post-table/";
+  private DEL_URL="/cms/post/manage/del-post/";
   public postList: Array<any>;
   public totalRecords=0;
   public currentPage=1;

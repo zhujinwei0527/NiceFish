@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-
+import { NgxEchartsModule } from "ngx-echarts";
 import { PaginatorModule } from "primeng/paginator";
 import { SharedModule } from "../shared/shared.module";
 import { PostSharedModule } from "../shared/post.module";
@@ -17,12 +17,13 @@ import { NewRoleComponent } from "./permission/new-role/new-role.component";
 import { NewPermissionComponent } from "./permission/new-permission/new-permission.component";
 import { ChartComponent } from "./chart/chart.component";
 
-import { CommentTableService } from "./content-mng/comment-table/comment-table.service";
-import { NgxEchartsModule } from "ngx-echarts";
 import { PostTableService } from "./content-mng/post-table/post-table.service";
+import { CommentTableService } from "./content-mng/comment-table/comment-table.service";
 import { UserMngService } from "./permission/user-mng.service";
 import { RoleMngService } from "./permission/role-mng.service";
 import { PermissionMngService } from "./permission/permission-mng.service";
+import { SysParamService } from "./sys-param/sys-param.service";
+
 import { ManageRoutingModule } from "./manage.routing.module";
 
 @NgModule({
@@ -55,7 +56,8 @@ import { ManageRoutingModule } from "./manage.routing.module";
     CommentTableService,
     UserMngService,
     RoleMngService,
-    PermissionMngService
+    PermissionMngService,
+    SysParamService
   ]
 })
 export class ManageModule { }
