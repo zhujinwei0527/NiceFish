@@ -41,8 +41,8 @@ How to: Configure your server to work with html5Mode 这个小节里面把常见
 
 ## 主要依赖
 
-- Angular 8.0
-- PrimeNG 8.0.2
+- Angular 10.0.3
+- PrimeNG 10.0.0
 - Bootstrap 3.3.7
 - Echarts 4.1.0
 - ngx-echarts 4.1.0
@@ -60,10 +60,6 @@ How to: Configure your server to work with html5Mode 这个小节里面把常见
 | OpenWMS  | 用来示范管理后台型系统的最佳实践，https://gitee.com/mumu-osc/OpenWMS-Frontend|
 | nicefish-springboot  | 用来示范前后端分离模式下，前端代码与后端服务的对接方式，已经完成了基线版本，并且在腾讯云上面做了实际的部署。代码仓库在这里： https://gitee.com/mumu-osc/nicefish-spring-boot ，腾讯云上的演示地址在这里： http://118.25.136.164 ，以此为基础，你可以继续开发出适合自己业务场景的代码。|
 | nicefish-springcloug  | 用来示范前后端分离模式下，前端代码与分布式后端服务的对接方式，即将完成，代码最近放出。|
-
-## 线上演示
-
-http://118.25.136.164
 
 ## 界面截图
 
@@ -99,11 +95,10 @@ webpack-bundle-analyzer 使用方法：
 ## 学习资源
 
 - 历次演讲中的所有 PPT 已经本项目对应的资料都在这里，您可以随意使用，https://gitee.com/mumu-osc/NiceFish/attach_files 。
-- Angular开发者论坛在这里：http://www.ngfans.net/ 。
 
-## 联系我
+以下是2018年录制的付费视频教程，现在已经过去了快2年，我把它公开出来，免费播放。虽然版本号不是最新的，但是核心的思路和用法基本相同，希望能帮助到有需要的人。
 
-<img src="./src/assets/imgs/damoqiongqiu-wechat.jpg" width="250"/>
+- 油管地址：https://www.youtube.com/watch?v=sIa_KF0cUnE&list=PLbhC27Bf6WlmpDh_66g7Fpn8uCYG7jUn8
 
 ## 开源许可证
 
